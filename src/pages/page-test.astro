@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/Layout.astro';
+import Slider from '../components/slider.astro';
+import Posts from '../components/posts.vue';
+// import Slider from '../components/slider.vue';
+import { ClientRouter } from 'astro:transitions';
+import { slide } from "astro:transitions";
+
+// src/pages/index.astro
+// Ejemplo: fetch de una lista de páginas
+const response = await fetch('http://dpack.local/wp-json/wp/v2/posts');
+const pages = await response.json();
+
+---
+
+
+<BaseLayout>
+    <!-- El atributo client:load hidrata el componente en el cliente -->
+    <Posts client:load />
+	 <Slider  pageId={52}/>
+	 <a href="/">Ir a Slider 2</a>
+</BaseLayout>
+
+	
+

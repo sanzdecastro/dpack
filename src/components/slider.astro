@@ -1,0 +1,76 @@
+---
+import { slide } from "astro:transitions";
+import LazyImage from '../components/lazyImage.astro';
+
+
+
+const { pageId } = Astro.props; // Se recibe el id de la página como propiedad
+let repeaterItems = [];
+let title = "";
+
+try {
+  const response = await fetch(`http://dpack.local/wp-json/wp/v2/pages/${pageId}`);
+  const data = await response.json();
+  console.log(data.acf);
+  // Se asume que el repeater se llama "slider" dentro de ACF
+  repeaterItems = data.acf.slider;
+  title = data.title.rendered;
+} catch (error) {
+  console.error('Error al obtener los datos:', error);
+}
+---
+<div >
+  <h1>{title}</h1>
+  {repeaterItems.length > 0 ? (
+    <ul >
+      {repeaterItems.map((item: any, index: number) => (
+        <li >
+          <h2>{item.caption}</h2>
+          <div class="image-wrapper">
+            <LazyImage
+                 src={item.imagen.url}  alt="Imagen del slider" width="1024" 
+                 height="768" 
+            />
+          </div>
+          
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>Cargando contenido...</p>
+  )}
+</div>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    display: flex;
+    width: 100%;
+    h2 {
+        display: inline-block;
+    }
+  }
+  li {
+    margin-bottom: 1.5rem;
+    width: 50%;
+    img {
+      
+    }
+    .image-wrapper {
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        overflow: hidden;
+        img {
+            height: 100%;
+             width: 100%; 
+             object-fit: cover;
+        }
+    }
+  }
+</style>

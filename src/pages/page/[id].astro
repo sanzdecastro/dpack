@@ -1,0 +1,20 @@
+---
+// src/pages/[id].astro
+const { id } = Astro.params; // Capturamos el parámetro dinámico de la URL
+
+// Realizamos el fetch a la API de WordPress usando el id
+const response = await fetch(`http://dpack.local/wp-json/wp/v2/pages/${id}`);
+const pageData = await response.json();
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{pageData.title.rendered}</title>
+  </head>
+  <body>
+    <h1>{pageData.title.rendered}</h1>
+    <!-- Inyectamos el contenido HTML renderizado -->
+   
+  </body>
+</html>
