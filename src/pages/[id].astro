@@ -4,6 +4,9 @@ import BaseLayout from '../layouts/Layout.astro';
 const response = await fetch('http://dpack.local/wp-json/wp/v2/pages');
 const pages = await response.json();
 
+
+export const prerender = false;
+
 export async function getStaticPaths() {
   const response = await fetch('http://dpack.local/wp-json/wp/v2/pages');
   const pages = await response.json();
