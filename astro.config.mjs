@@ -1,11 +1,14 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-import vue from '@astrojs/vue';
-import vercel from '@astrojs/vercel';
-
-// https://astro.build/config
+// Also can be @astrojs/vercel/static
+import vercel from '@astrojs/vercel/serverless';
+ 
 export default defineConfig({
-    integrations: [vue()],
-    output: 'server',
-    adapter: vercel(),
-  });
+  // Also can be 'static' or 'hybrid'
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    maxDuration: 8,
+  }),
+});
