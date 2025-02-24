@@ -16,7 +16,7 @@ export default {
   },
   mounted() {
     // Reemplaza la URL por la de tu sitio WordPress
-    fetch(`https://dpack.local/wp-json/wp/v2/pages/${this.pageId}`)
+    fetch(`https://santisanchez.ovh/wp-json/wp/v2/pages/${this.pageId}`)
       .then(response => response.json())
       
       .then(data => {
