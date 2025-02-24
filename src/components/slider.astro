@@ -4,6 +4,7 @@ import LazyImage from '../components/lazyImage.astro';
 
 
 
+  
 const { pageId } = Astro.props; // Se recibe el id de la página como propiedad
 let repeaterItems = [];
 let title = "";
@@ -19,8 +20,23 @@ try {
   console.error('Error al obtener los datos:', error);
 }
 ---
+
+<script>
+  console.log("HOLAAAA")
+    import { gsap } from "gsap";
+
+    gsap.to(".box",{
+        xPercent: 50,
+    });
+  
+</script>
+
+
 <div >
   <h1>{title}</h1>
+  <div class="box">
+
+  </div>
   {repeaterItems.length > 0 ? (
     <ul >
       {repeaterItems.map((item: any, index: number) => (
@@ -42,6 +58,11 @@ try {
 </div>
 
 <style>
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
   h1 {
     margin-bottom: 1rem;
   }
@@ -74,3 +95,4 @@ try {
     }
   }
 </style>
+

@@ -1,3 +1,39 @@
-<nav>
-    <a href="/">Home</a>
-</nav>
+---
+
+import { getPages, getPosts } from '../lib/api.js';
+const pages = await getPages();
+const posts = await getPosts();
+
+// Obtenemos el pathname actual a partir de la URL
+const currentPath = new URL(Astro.request.url).pathname;
+---
+<header class="bg-black">
+    <nav class="flex justify-between">
+        <ul class="flex gap-10 p-4">
+            <li>
+                <a class="text-white" href="/">Home</a>
+            </li>
+           
+            {pages.map((page: any) => (
+            <li class={page.slug == currentPath ? 'active' : 'fff'}>
+                <!-- El href se genera dinámicamente a partir del slug -->
+                <a class="text-white" href={`/${page.slug}`}>{page.title.rendered}</a>
+            </li>
+            ))}
+        </ul>
+        <ul class="flex gap-10 p-4">
+            {posts.map((post: any) => (
+            <li class={post.slug == currentPath ? 'active' : 'fff'}>
+                <!-- El href se genera dinámicamente a partir del slug -->
+                <a class="text-white" href={`/posts/${post.slug}`}>{post.title.rendered}</a>
+            </li>
+            ))}
+        </ul>
+    </nav>
+</header>
+
+<style>
+   
+</style>
+
+

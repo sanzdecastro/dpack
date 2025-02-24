@@ -1,15 +1,12 @@
 ---
+
+import { getPages } from '../lib/api.js';
+const pages = await getPages();
+
 import BaseLayout from '../layouts/Layout.astro';
 import Slider from '../components/slider.astro';
 import Posts from '../components/posts.vue';
-// import Slider from '../components/slider.vue';
-import { ClientRouter } from 'astro:transitions';
-import { slide } from "astro:transitions";
 
-
-// Ejemplo: fetch de una lista de páginas
-const response = await fetch('http://dpack.local/wp-json/wp/v2/pages');
-const pages = await response.json();
 ---
 
 
@@ -17,15 +14,14 @@ const pages = await response.json();
 	<!-- El atributo client:load hidrata el componente en el cliente -->
 	<Posts client:load />
 	<Slider  pageId={2}/>
-	<a href="/page-test">Ir a Slider 2</a>
+
 	<ul>
 		{pages.map((page: any) => (
 		<li>
 			<!-- El href se genera dinámicamente a partir del slug -->
-			<a href={`/${page.id}`}>{page.title.rendered}</a>
+			<a href={`/${page.slug}`}>{page.title.rendered}</a>
 		</li>
 		))}
 	</ul>
 </BaseLayout>
    
-
