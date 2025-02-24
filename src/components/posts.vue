@@ -19,7 +19,7 @@
       }
     },
     mounted() {
-      fetch('http://dpack.local/wp-json/wp/v2/posts')
+      fetch('https://santisanchez.ovh/wp-json/wp/v2/posts')
         .then(response => response.json())
         .then(data => {
           this.posts = data;
