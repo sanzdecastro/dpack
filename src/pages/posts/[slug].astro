@@ -18,7 +18,7 @@ const { slug } = Astro.params;
 
 // Para obtener la información de la página a partir del slug, se consulta con el parámetro "slug"
 // La respuesta es un arreglo; tomamos el primer elemento (si existe)
-const post = await fetch(`http://dpack.local/wp-json/wp/v2/posts?slug=${slug}`);
+const post = await fetch(`http://santisanchez.ovh/wp-json/wp/v2/posts?slug=${slug}`);
 const postDataArray = await post.json();
 const postData = postDataArray[0] || null;
 
