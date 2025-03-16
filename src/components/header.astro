@@ -1,36 +1,42 @@
 ---
 
-import { getPages, getPosts } from '../lib/api.js';
-const pages = await getPages();
-const posts = await getPosts();
+import { getPage, getPost } from '../lib/api.js';
+import { getLangFromUrl, languages } from '../lib/i18n.js';
 
-// Obtenemos el pathname actual a partir de la URL
-const currentPath = new URL(Astro.request.url).pathname;
+
+
+const lang = getLangFromUrl(Astro.url);
+const slug = Astro.params.slug;
+const page = await getPage(slug, lang);
+
+
+const translations = page?.translations || {};
+
+
 ---
 <header class="bg-black">
     <nav class="flex justify-between">
-        <ul class="flex gap-10 p-4">
+      <ul>
+        {Object.entries(languages).map(([newLang, label]) => {
+        
+
+          let translatedSlug = `/${newLang}/`; // Redirección predeterminada a la home
+
+          if (translations[newLang]) {
+            translatedSlug = `/${newLang}/${translations[newLang]}`; // Si hay traducción, usar su slug
+          }
+
+          return (
             <li>
-                <a class="text-white" href="/">Home</a>
+              <a href={translatedSlug}>{label}</a>
             </li>
-           
-            {pages.map((page: any) => (
-            <li class={page.slug == currentPath ? 'active' : 'fff'}>
-                <!-- El href se genera dinámicamente a partir del slug -->
-                <a class="text-white" href={`/${page.slug}`}>{page.title.rendered}</a>
-            </li>
-            ))}
-        </ul>
-        <ul class="flex gap-10 p-4">
-            {posts.map((post: any) => (
-            <li class={post.slug == currentPath ? 'active' : 'fff'}>
-                <!-- El href se genera dinámicamente a partir del slug -->
-                <a class="text-white" href={`/posts/${post.slug}`}>{post.title.rendered}</a>
-            </li>
-            ))}
-        </ul>
+          );
+        })}
+      </ul>
+      
     </nav>
 </header>
+
 
 <style>
    

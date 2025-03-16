@@ -7,11 +7,12 @@ import { slide } from 'astro:transitions';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/header.astro';
 
+const { lang } = Astro.props;
 
 ---
 
 <!doctype html>
-<html lang="en"  >
+<html lang={lang}  >
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -26,7 +27,7 @@ import Header from '../components/header.astro';
 		<div id="barba-wrapper" data-barba="wrapper">
 			<div class="barba-container" data-barba="container">
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
-				<div class="wrapper bg-santo-100">d
+				<div class="wrapper bg-santo-100">
 					<slot/>
 				</div>
 				<!-- </div> -->	
@@ -53,6 +54,7 @@ import Header from '../components/header.astro';
 							y: '100%',
 							scale: 1.1,
 							duration: 0.5,
+							autoAlpha: 0,
 							ease: 'power2.inOut'
 						});
 					}

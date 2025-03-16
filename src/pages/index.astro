@@ -1,27 +1,2 @@
----
+<meta http-equiv="refresh" content="0;url=/es" />
 
-import { getPages } from '../lib/api.js';
-const pages = await getPages();
-
-import BaseLayout from '../layouts/Layout.astro';
-import Slider from '../components/slider.astro';
-import Posts from '../components/posts.vue';
-
----
-
-
-<BaseLayout>
-	<!-- El atributo client:load hidrata el componente en el cliente -->
-	<Posts client:load />
-	<Slider  pageId={2}/>
-
-	<ul>
-		{pages.map((page: any) => (
-		<li>
-			<!-- El href se genera dinámicamente a partir del slug -->
-			<a href={`/${page.slug}`}>{page.title.rendered}</a>
-		</li>
-		))}
-	</ul>
-</BaseLayout>
-   

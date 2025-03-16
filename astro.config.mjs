@@ -10,7 +10,6 @@ export default defineConfig({
   integrations: [vue()],
   output: 'server',
   adapter: vercel(),
-
   vite: {
     plugins: [tailwindcss()]
   },
