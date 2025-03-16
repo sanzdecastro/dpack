@@ -19,34 +19,35 @@ export async function getPage(slug, lang) {
      const response = await fetch(`${apiUrl}/pages?slug=${slug}&lang=${lang}`);
      const pages = await response.json();
  
-     if (!pages.length) return null;
+     return pages.length ? pages[0] : null;
+    //  if (!pages.length) return null;
  
-     const page = pages[0]; // La página encontrada ya tiene la información básica
-     const translations = {};
+    //  const page = pages[0]; // La página encontrada ya tiene la información básica
+    //  const translations = {};
  
-     // Si existen traducciones, hacemos una sola consulta paralela para obtener los slugs
-     if (page.translations && Object.keys(page.translations).length > 0) {
-         const translationIds = Object.entries(page.translations);
+    //  // Si existen traducciones, hacemos una sola consulta paralela para obtener los slugs
+    //  if (page.translations && Object.keys(page.translations).length > 0) {
+    //      const translationIds = Object.entries(page.translations);
 
         
  
-         // Hacemos las peticiones en paralelo
-         const translationPromises = translationIds.map(([key, id]) =>
-             fetch(`${apiUrl}/pages/${id}`).then(res => res.json())
-         );
+    //      // Hacemos las peticiones en paralelo
+    //      const translationPromises = translationIds.map(([key, id]) =>
+    //          fetch(`${apiUrl}/pages/${id}`).then(res => res.json())
+    //      );
  
-         const translationData = await Promise.all(translationPromises);
+    //      const translationData = await Promise.all(translationPromises);
  
-         // Mapeamos los slugs directamente
-         translationData.forEach((transData, index) => {
-             const langKey = translationIds[index][0]; // El idioma correspondiente
-             translations[langKey] = transData.slug;
-         });
+    //      // Mapeamos los slugs directamente
+    //      translationData.forEach((transData, index) => {
+    //          const langKey = translationIds[index][0]; // El idioma correspondiente
+    //          translations[langKey] = transData.slug;
+    //      });
 
          
-     }
+    //  }
  
-     return { ...page, translations };
+    //  return { ...page, translations };
 
 
   }
