@@ -1,6 +1,6 @@
 ---
 
-import { getPage, getPost } from '../lib/api.js';
+import { getPage, getPost,  getTranslations } from '../lib/api.js';
 import { getLangFromUrl, languages } from '../lib/i18n.js';
 
 
@@ -9,22 +9,21 @@ const lang = getLangFromUrl(Astro.url);
 const slug = Astro.params.slug;
 const page = await getPage(slug, lang);
 
+let translations = {};
+// Después de la transición, cargamos las traducciones
+setTimeout(async () => {
+  translations = await getTranslations(page);
+  console.log("Traducciones cargadas:", translations);
+}, 100);
 
-const translations = page?.translations || {};
 
-console.log(translations);
 ---
 <header class="bg-black">
     <nav class="flex justify-between">
       <ul>
         {Object.entries(languages).map(([newLang, label]) => {
-        
-
-          let translatedSlug = `/${newLang}/`; // Redirección predeterminada a la home
-
-          if (translations[newLang]) {
-            translatedSlug = `/${newLang}/${translations[newLang]}`; // Si hay traducción, usar su slug
-          }
+          // Si aún no se han cargado las traducciones, mostramos la home por defecto
+          const translatedSlug = translations[newLang] ? `/${newLang}/${translations[newLang]}` : `/${newLang}/`;
 
           return (
             <li>

@@ -19,40 +19,29 @@ export async function getPage(slug, lang) {
      const response = await fetch(`${apiUrl}/pages?slug=${slug}&lang=${lang}`);
      const pages = await response.json();
 
- 
-    //  return pages.length ? pages[0] : null;
      if (!pages.length) return null;
- 
+
      const page = pages[0]; // La página encontrada ya tiene la información básica
-     const translations = {};
  
-     // Si existen traducciones, hacemos una sola consulta paralela para obtener los slugs
-    
-         const translationIds = Object.entries(page.translations);
-
-        
- 
-         // Hacemos las peticiones en paralelo
-         const translationPromises = translationIds.map(([key, id]) =>
-             fetch(`${apiUrl}/pages/${id}`).then(res => res.json())
-         );
- 
-         const translationData = await Promise.all(translationPromises);
- 
-         // Mapeamos los slugs directamente
-         translationData.forEach((transData, index) => {
-             const langKey = translationIds[index][0]; // El idioma correspondiente
-             translations[langKey] = transData.slug;
-         });
-
-         
-     
- 
-     return { ...page, translations };
+     // Devolver la página de inmediato sin traducciones
+     return { ...page, translations: {} };
 
 
   }
 
+  // Nueva función para cargar traducciones después de la transición
+export async function getTranslations(page) {
+  if (!page || !page.translations) return {};
+
+  const translationPromises = Object.entries(page.translations).map(async ([key, id]) => {
+      const res = await fetch(`${apiUrl}/pages/${id}`);
+      const transData = await res.json();
+      return [key, transData.slug]; // Guardamos un array con [idioma, slug]
+  });
+
+  const resolvedTranslations = await Promise.all(translationPromises);
+  return Object.fromEntries(resolvedTranslations);
+}
 
 export async function getPost(slug, lang) {
     const response = await fetch(`${apiUrl}/posts?slug=${slug}&lang=${lang}`);
