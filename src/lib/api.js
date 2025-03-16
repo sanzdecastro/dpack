@@ -28,7 +28,7 @@ export async function getPage(slug, lang) {
      if (page.translations && Object.keys(page.translations).length > 0) {
          const translationIds = Object.entries(page.translations);
 
-         console.log(translationIds);
+        
  
          // Hacemos las peticiones en paralelo
          const translationPromises = translationIds.map(([key, id]) =>
@@ -43,7 +43,7 @@ export async function getPage(slug, lang) {
              translations[langKey] = transData.slug;
          });
 
-         console.log(translations);
+         
      }
  
      return { ...page, translations };
