@@ -10,13 +10,13 @@ const slug = Astro.params.slug;
 const page = await getPage(slug, lang);
 const pages = await getPages(lang);
 
-
+import Header from '../../components/header.astro';
 import BaseLayout from '../../layouts/Layout.astro';
 import Slider from '../../components/slider.vue';
 ---
 
 <BaseLayout >
-
+  <Header />
   <div class="bg-yellow-100">
     <h1>{page.title.rendered}</h1>
 

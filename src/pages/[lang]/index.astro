@@ -8,6 +8,7 @@ import Posts from '../../components/posts.vue';
 
 import { getPages, getPage } from '../../lib/api.js';
 import { getLangFromUrl } from '../../lib/i18n.js';
+import Header from '../../components/header.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const slug = Astro.params.slug;
@@ -16,7 +17,7 @@ const page = await getPage('sample-page', lang);
 ---
 
 <BaseLayout>
-    
+    <Header />
     <!-- <Header /> -->
     <Posts lang={lang} client:load />
      <!-- <Slider pageId={page.id} client:load/> -->

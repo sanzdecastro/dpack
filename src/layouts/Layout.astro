@@ -5,7 +5,7 @@
 import { slide } from 'astro:transitions';
 
 import { ClientRouter } from 'astro:transitions';
-import Header from '../components/header.astro';
+
 
 const { lang } = Astro.props;
 
@@ -23,7 +23,7 @@ const { lang } = Astro.props;
 	</head>
 
 	<body >
-		<Header />
+	
 		<div id="barba-wrapper" data-barba="wrapper">
 			<div class="barba-container" data-barba="container" data-barba-namespace="slide-up">
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
