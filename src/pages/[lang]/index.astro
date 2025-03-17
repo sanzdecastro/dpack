@@ -19,19 +19,19 @@ const page = await getPage('sample-page', lang);
 <BaseLayout>
     
 
-    <Posts lang={lang} client:load />
+    <!-- <Posts lang={lang} client:load /> -->
      <!-- <Slider pageId={page.id} client:load/> -->
 
-    <h1>Pages</h1>
+    <!-- <h1>Pages</h1> -->
 
     
-    <ul>
+    <!-- <ul>
         {pages.map((page: any) => (
         <li>
             <a href={`/${lang}/${page.slug}`}>{page.title.rendered}</a>
         </li>
         ))}
-    </ul>
+    </ul> -->
 
     <Slider pageId={page.id} client:load/>
     

@@ -1,5 +1,5 @@
 ---
-
+// import LenisScroll from '../components/LenisScroll.astro';
 import "../styles/global.css";
 
 import { slide } from 'astro:transitions';
@@ -27,7 +27,7 @@ const slug = Astro.params.slug;
 	</head>
 
 	<body >
-		
+		<!-- <LenisScroll/> -->
 		<div id="barba-wrapper" data-barba="wrapper">
 			<Header lang={lang} languages={languages} pages={pages} client:load/>
 			<div class="barba-container" data-barba="container" data-barba-namespace="slide-up">
@@ -42,6 +42,23 @@ const slug = Astro.params.slug;
 		<script>
 			import { gsap } from 'gsap';
 			import barba from '@barba/core';
+			import Lenis from 'lenis';
+
+			function initLenis() {
+			  const lenis = new Lenis({
+			    duration: 1.2,
+			    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+			  });
+
+			  function raf(time: any) {
+			    lenis.raf(time);
+			    requestAnimationFrame(raf);
+			  }
+			  requestAnimationFrame(raf);
+			}
+
+			initLenis();
+
 			barba.init({
 				transitions: [
 				{
@@ -53,6 +70,10 @@ const slug = Astro.params.slug;
 							autoAlpha: 0,
 							ease: 'power2.inOut'
 						});
+					},
+					beforeEnter() {
+						window.scrollTo(0, 0);
+						initLenis();
 					},
 					enter() {
 						
@@ -78,14 +99,13 @@ const slug = Astro.params.slug;
 <style>
 	
 	 .barba-container {
-		overflow: hidden;
+		
 		position: absolute;
-		width: 100vw;
-		height: 100vh;
-		overflow-y: scroll;
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: hidden;
 		top: 0px;
 		left: 0px;
 		z-index: -1;
-		padding-top: 10vh;
 	}
 </style>

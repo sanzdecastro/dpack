@@ -1,0 +1,21 @@
+---
+// LenisScroll.astro
+---
+<script >
+    import Lenis from 'lenis';
+  
+    // Inicializa Lenis con las opciones que desees
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+ 
+    });
+  
+    // Función para el ciclo de animación
+    function raf(time:any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    
+    requestAnimationFrame(raf);
+  </script>

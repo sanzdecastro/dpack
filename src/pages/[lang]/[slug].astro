@@ -1,8 +1,10 @@
 ---
 
 
-import { getPages } from '../../lib/api.js';
-import { getPage } from '../../lib/api.js';
+
+import { apiUrl } from '../../lib/api.js';
+
+import { getPages, getPage } from '../../lib/api.js';
 import { getLangFromUrl } from '../../lib/i18n.js';
 
 const lang = getLangFromUrl(Astro.url);
@@ -13,23 +15,61 @@ const pages = await getPages(lang);
 
 import BaseLayout from '../../layouts/Layout.astro';
 import Slider from '../../components/slider.vue';
+import Data from '../../components/data.vue';
+import Services from '../../components/services.vue';
+
+
+const flexibleSections = page.acf?.flexible || [];
 ---
 
+
 <BaseLayout >
-
+ 
   <div class="">
-    <h1>{page.title.rendered}</h1>
+    <!-- <h1>{page.title.rendered}</h1> -->
 
-    <ul>
+    <!-- <ul>
       {pages.map((page: any) => (
         <li>
           <a href={`/${lang}/${page.slug}`}>{page.title.rendered}</a>
         </li>
       ))}
-    </ul>
+    </ul> -->
       
-    <Slider pageId={page.id} client:load/>
-    
+    <!-- <Slider apiUrl={apiUrl} pageId={page.id} client:load/> -->
+    <div>
+      {flexibleSections.map((section: any, index: any) => {
+        if (section.acf_fc_layout === 'slider') {
+          return (
+            <Slider
+              key={index}
+              pageId={page.id}
+              section={section}
+              client:load
+            />
+          );
+        } else if (section.acf_fc_layout === 'data') {
+          return (
+            <Data
+              key={index}
+              pageId={page.id}
+              section={section}
+              client:load
+            />
+          );
+        } else if (section.acf_fc_layout === 'services') {
+          return (
+            <Services
+              key={index}
+              pageId={page.id}
+              section={section}
+              client:load
+            />
+          );
+        }
+        return null;
+      })}
+    </div>
 
    
   </div>
