@@ -74,7 +74,7 @@ export default {
         </ul>
         <ul class="flex">
             <li v-for="(label, key) in languages" :key="key">
-                <a :href="`/${key}/`" @click="changeLanguage(key)">{{ label }}</a>
+                <a :href="`/${key}/home`" @click="changeLanguage(key)">{{ label }}</a>
             </li>
         </ul>
     </nav>

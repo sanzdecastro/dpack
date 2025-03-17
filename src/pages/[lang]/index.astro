@@ -13,7 +13,7 @@ import { getLangFromUrl } from '../../lib/i18n.js';
 const lang = getLangFromUrl(Astro.url);
 const slug = Astro.params.slug;
 const pages = await getPages(lang);
-const page = await getPage('sample-page', lang);
+const page = await getPage('home', lang);
 ---
 
 <BaseLayout>
