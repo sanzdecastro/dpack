@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* Opcional para incluir un config */
-@config "../../tailwind.config.js";
+
 
 @theme {
     --color-santo-100: yellow;

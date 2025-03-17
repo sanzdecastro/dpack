@@ -1,17 +1,21 @@
 ---
 
-//  import '../src/styles/global.css'
+import "../styles/global.css";
 
 import { slide } from 'astro:transitions';
+import { getPages, getPage } from '../lib/api.js';
 
 import { ClientRouter } from 'astro:transitions';
-import Header from '../components/header.astro';
+import Header from "../components/Header.vue";
 
-const { lang } = Astro.props;
+import { getLangFromUrl, languages } from '../lib/i18n.js';
+const lang = getLangFromUrl(Astro.url);
+const pages = await getPages(lang);
+const slug = Astro.params.slug;
 
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang={lang}  >
 	<head>
 		<meta charset="UTF-8" />
@@ -25,7 +29,7 @@ const { lang } = Astro.props;
 	<body >
 		
 		<div id="barba-wrapper" data-barba="wrapper">
-			<Header />
+			<Header lang={lang} languages={languages} pages={pages} client:load/>
 			<div class="barba-container" data-barba="container" data-barba-namespace="slide-up">
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
 				<div class="wrapper bg-santo-100">
@@ -64,6 +68,8 @@ const { lang } = Astro.props;
 				}
 				]
 			});
+
+			
 			
 		</script>
 	</body>

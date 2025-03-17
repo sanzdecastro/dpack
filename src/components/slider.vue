@@ -21,7 +21,8 @@ export default {
       
       .then(data => {
           console.log(data.acf)
-          this.repeaterItems = data.acf.slider;
+          this.repeaterItems = data.acf.flexible[0].slider;
+          console.log(this.repeaterItems)
           this.title = data.title.rendered;
       })
 
@@ -43,10 +44,13 @@ export default {
       <div class="box"></div>
 
       <ul v-if="repeaterItems.length">
-        <li v-for="(item, index) in repeaterItems" :key="index">
+        <li v-for="(slide, index) in repeaterItems" :key="index">
           <!-- Se muestran los subcampos; personaliza según tu configuración -->
-          <h2>{{ item.caption }}</h2>
-          <img :src="item.imagen.url">
+          <h2>{{ slide.caption }}</h2>
+         
+          <video v-if="(slide.video)" controls autoplay playsinline muted loop :src="slide.video"></video>
+          <img v-else :src="slide.imagen.url">
+          
         </li>
       </ul>
       <p v-else>Cargando contenido...</p>

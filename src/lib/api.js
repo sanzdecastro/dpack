@@ -30,18 +30,18 @@ export async function getPage(slug, lang) {
   }
 
   // Nueva función para cargar traducciones después de la transición
-export async function getTranslations(page) {
-  if (!page || !page.translations) return {};
+// export async function getTranslations(page) {
+//   if (!page || !page.translations) return {};
 
-  const translationPromises = Object.entries(page.translations).map(async ([key, id]) => {
-      const res = await fetch(`${apiUrl}/pages/${id}`);
-      const transData = await res.json();
-      return [key, transData.slug]; // Guardamos un array con [idioma, slug]
-  });
+//   const translationPromises = Object.entries(page.translations).map(async ([key, id]) => {
+//       const res = await fetch(`${apiUrl}/pages/${id}`);
+//       const transData = await res.json();
+//       return [key, transData.slug]; // Guardamos un array con [idioma, slug]
+//   });
 
-  const resolvedTranslations = await Promise.all(translationPromises);
-  return Object.fromEntries(resolvedTranslations);
-}
+//   const resolvedTranslations = await Promise.all(translationPromises);
+//   return Object.fromEntries(resolvedTranslations);
+// }
 
 export async function getPost(slug, lang) {
     const response = await fetch(`${apiUrl}/posts?slug=${slug}&lang=${lang}`);
