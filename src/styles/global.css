@@ -4,4 +4,46 @@
 
 @theme {
     --color-santo-100: yellow;
+    --font-display: "Richmond", "serif";
+    --font-sans: "Volte-Medium" , "sans-serif";
+    --font-bold: "Volte-Bold" , "sans-serif";
 }
+
+@theme {
+    --breakpoint-xl: 1440px;
+    --breakpoint-md: 720px;
+    --breakpoint-sm: 450px;
+}
+
+@theme {
+    --text-display-extra: calc((300/1440) * 100vw);
+    --text-display-extra--line-height: 105%;
+
+    --text-display: calc((100/1440) * 100vw);
+    --text-display--line-height: 100%;
+}
+
+@font-face {
+    font-family: 'Volte-Bold';
+    src: url('/fonts/Volte-Bold.woff') format('woff2'),
+         url('/fonts/Volte-Bold.woff2') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Volte-Medium';
+    src: url('/fonts/Volte-Medium.woff') format('woff2'),
+         url('/fonts/Volte-Medium.woff2') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Richmond';
+    src: url('/fonts/RichmondDisplay-UltraBlack.woff') format('woff2'),
+         url('/fonts/RichmondDisplay-UltraBlack.woff2') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+

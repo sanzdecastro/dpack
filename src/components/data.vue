@@ -23,7 +23,6 @@ export default {
   },
   data() {
     return {
-      repeaterItems: [],
       title: this.section.title,
       subtitle: this.section.subtitle,
       datas: this.section && this.section.data ? this.section.data : []
@@ -41,14 +40,18 @@ export default {
 </script>
 
 <template>
-  <h2>{{ title }}</h2>
-  <p>{{  subtitle }}</p>
-  <ul>
-    <li v-for="(data, index) in datas" :key="index">
-      <p>{{ data.number }}</p>
-      <p>{{ data.description }}</p>
-    </li>
-  </ul>
+  <div class="section-data flex">
+    <div class="">
+      <h2 class="font-display text-display">{{ title }}</h2>
+      <p>{{  subtitle }}</p>
+    </div>
+    <ul>
+      <li v-for="(data, index) in datas" :key="index" class="">
+        <p class="font-display text-display-extra">{{ data.number }}</p>
+        <p>{{ data.description }}</p>
+      </li>
+    </ul>
+  </div>
 </template>
   
 

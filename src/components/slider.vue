@@ -86,7 +86,7 @@ export default {
             </div>
            
             <div class="w-full h-full flex justify-center items-center">
-              <video v-if="(slide.video)" controls autoplay playsinline muted loop :src="slide.video"  class="object-cover w-full h-full"></video>
+              <video v-if="(slide.video)" autoplay playsinline muted loop :src="slide.video"  class="object-cover w-full h-full"></video>
               <img v-else :src="slide.imagen.url"  class="object-cover w-full h-full">
             </div>
            
