@@ -4,48 +4,46 @@
 
 import { apiUrl } from '../../lib/api.js';
 
-import { getPages, getPage } from '../../lib/api.js';
+import { getPages, getPage, getProjects, getProject } from '../../lib/api.js';
 import { getLangFromUrl } from '../../lib/i18n.js';
 
 const lang = getLangFromUrl(Astro.url);
-const slug = Astro.params.slug;
+const { customType, slug } = Astro.params;
+
+const defaultCustomType = lang === 'es' ? 'proyectos' : 'projects';
+
 const page = await getPage(slug, lang);
 const pages = await getPages(lang);
+const projects = await getProjects(lang);
+const project = await getProject(slug, lang);
 
 
 import BaseLayout from '../../layouts/Layout.astro';
 import Slider from '../../components/slider.vue';
 import Data from '../../components/data.vue';
 import Services from '../../components/services.vue';
+import ProjectThumbnail from '../../components/ProjectThumbnail.vue';
 
 
-const flexibleSections = page.acf?.flexible || [];
+const flexibleSections = page?.acf?.flexible || [];
+
+
 ---
 
 
 <BaseLayout >
  
   <div class="">
-    <!-- <h1>{page.title.rendered}</h1> -->
-
-    <!-- <ul>
-      {pages.map((page: any) => (
-        <li>
-          <a href={`/${lang}/${page.slug}`}>{page.title.rendered}</a>
-        </li>
-      ))}
-    </ul> -->
-      
-    <!-- <Slider apiUrl={apiUrl} pageId={page.id} client:load/> -->
-    <div>
-      {flexibleSections.map((section: any, index: any) => {
+   
+    <div class="flex flex-col">
+      {flexibleSections.map((section: any, index: number) => {
         if (section.acf_fc_layout === 'slider') {
           return (
             <Slider
               key={index}
               pageId={page.id}
               section={section}
-              client:load
+              client:only
             />
           );
         } else if (section.acf_fc_layout === 'data') {
@@ -54,7 +52,7 @@ const flexibleSections = page.acf?.flexible || [];
               key={index}
               pageId={page.id}
               section={section}
-              client:load
+              client:only
             />
           );
         } else if (section.acf_fc_layout === 'services') {
@@ -63,8 +61,31 @@ const flexibleSections = page.acf?.flexible || [];
               key={index}
               pageId={page.id}
               section={section}
-              client:load
+              client:only
             />
+          );
+        } else if (section.acf_fc_layout === 'projects') {
+          return (
+           
+              <ul>
+                {section.projects.map((project: any) => (
+                  <li>
+                    <a href={`${defaultCustomType}/${project.project.post_name}`}>
+                      {project.project.post_title}
+                      
+                      <ProjectThumbnail
+                        key={index}
+                        pageId={project.project.ID}
+                        thumbnail={project.image}
+                        full={project.full}
+                        client:only
+                      />
+                    </a>
+                    
+                  </li>
+                ))}
+              </ul> 
+
           );
         }
         return null;

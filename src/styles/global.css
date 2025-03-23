@@ -1,9 +1,61 @@
 @import "tailwindcss";
 
+@theme {
+    --color-red: #FF0054;
+    --color-red-50: #FF99BB;
+    --color-red-10: #FFF5F8;
+    --color-yellow: #F5F502;
+    --color-yellow-50: #FEFE9A;
+    --color-yellow-10: #FFFFE6;
+    --color-blue: #532EE2;
+    --color-blue-50: #B5A5F3;
+    --color-blue-10: #F8F6FE;
+    --color-green: #0FF7CA;
+    --color-green-50: #B5FDEF;
+    --color-green-10: #E6FEFA;
+    --color-coral: #FF5F5F;
+    --color-coral-50: #FF9999;
+    --color-coral-10: #FFF5F5;
+    --color-zinc: #09090B;
+    --color-zinc-800: #C7C7D1;
+    --color-zinc-200: #F1EBDA;
+    --color-zinc-100: #FBF9F4;
+    --color-zinc-50: #FAFAFA;
+
+
+    --color-primary: var(--color-zinc-200);
+    --color-foreground: var(--color-zinc);
+    --color-foreground-fix: var(--color-zinc-200);
+    --color-foreground-fix-2: var(--color-zinc);
+
+}
+    [theme = "Default"] {
+        --color-primary: var(--color-zinc);
+        --color-foreground: var(--color-zinc);
+        --color-foreground-fix: var(--color-zinc-200);
+        --color-foreground-fix-2: var(--color-zinc);
+    }
+    [theme = "Yellow"] {
+        --color-primary: var(--color-yellow);
+        --color-foreground: var(--color-red);
+        --color-foreground-fix: var(--color-red);
+        --color-foreground-fix-2: var(--color-red);
+    }
+    [theme = "Red"] {
+        --color-primary: var(--color-yellow);
+        --color-foreground: var(--color-red);
+        --color-foreground-fix: var(--color-red);
+        --color-foreground-fix-2: var(--color-red);
+    }
+    [theme = "Blue"] {
+        --color-primary: var(--color-blue);
+        --color-foreground: var(--color-green);
+        --color-foreground-fix: var(--color-green);
+        --color-foreground-fix-2: var(--color-green);
+    }
 
 
 @theme {
-    --color-santo-100: yellow;
     --font-display: "Richmond", "serif";
     --font-sans: "Volte-Medium" , "sans-serif";
     --font-bold: "Volte-Bold" , "sans-serif";
@@ -21,6 +73,13 @@
 
     --text-display: calc((100/1440) * 100vw);
     --text-display--line-height: 100%;
+
+    --text-lead: calc((24/1440) * 100vw);
+    --text-lead--line-height: 100%;
+}
+
+@theme {
+    --spacing-sm: calc((20/1440) * 100vw);
 }
 
 @font-face {

@@ -1,0 +1,26 @@
+---
+import { getProject } from '../../../lib/api.js';
+import { getLangFromUrl } from '../../../lib/i18n.js';
+
+const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const project = await getProject(slug, lang);
+
+// Depuración: revisa la estructura de project en la consola del servidor
+console.log("Project:", project);
+
+import BaseLayout from '../../../layouts/Layout.astro';
+
+---
+
+<BaseLayout>
+  {project ? (
+    // Si el objeto project tiene la propiedad project (anidada), usa post_title, si no, usa title.rendered
+    <h1>{project.title.rendered}</h1>
+    <h1>{project.id}</h1>
+    <p>{project.acf.cliente || "Cliente no disponible"}</p>
+  ) : (
+    <p>No se encontró el proyecto.</p>
+  )}
+  <!-- Resto del contenido del proyecto -->
+</BaseLayout>

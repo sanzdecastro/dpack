@@ -96,7 +96,7 @@ export default {
 <template>
   <header class="flex w-full flex-row justify-between p-5 fixed top-0 left-0">
     <div class="logo">
-        <a :href="`/${currentLang}/home`">
+        <a :href="`/${currentLang}`">
             <img src="../../public/logo.svg?url" alt="Logo">
         </a>
     </div>
@@ -109,7 +109,7 @@ export default {
         </ul>
         <ul class="flex">
             <li v-for="(label, key) in languages" :key="key">
-                <a class="font-bold" :href="`/${key}/home`" @click="changeLanguage(key)">{{ label }}</a>
+                <a class="font-bold" :href="`/${key}`" @click="changeLanguage(key)">{{ label }}</a>
             </li>
         </ul>
         <div id="menuButton" class="open p-2 bg-white rounded cursor-pointer font-bold">Menú</div>

@@ -7,6 +7,12 @@ export async function getPages(lang) {
     return await response.json();
 }
 
+export async function getProjects(lang) {
+    const response = await fetch(`${apiUrl}/projects?lang=${lang}`);
+    if (!response.ok) throw new Error("Error al obtener pages");
+    return await response.json();
+}
+
 
 export async function getPosts(lang) {
     const response = await fetch(`${apiUrl}/posts?lang=${lang}`);
@@ -28,6 +34,21 @@ export async function getPage(slug, lang) {
 
 
   }
+
+  export async function getProject(slug, lang) {
+    // Obtener la página en el idioma actual
+    const response = await fetch(`${apiUrl}/projects?slug=${slug}&lang=${lang}`);
+    const projects = await response.json();
+
+    if (!projects.length) return null;
+
+    const project = projects[0]; // La página encontrada ya tiene la información básica
+
+    // Devolver la página de inmediato sin traducciones
+    return { ...project, translations: {} };
+
+
+ }
 
   // Nueva función para cargar traducciones después de la transición
 // export async function getTranslations(page) {
