@@ -8,6 +8,7 @@ import { getPages, getPage } from '../lib/api.js';
 
 import { ClientRouter } from 'astro:transitions';
 import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 import { getLangFromUrl, languages } from '../lib/i18n.js';
 const lang = getLangFromUrl(Astro.url);
@@ -37,7 +38,9 @@ const slug = Astro.params.slug;
 					<slot/>
 				</div>
 				<!-- </div> -->	
+				<Footer>
 			</div>
+			
 		</div>
 		
 		<script>
@@ -110,6 +113,7 @@ const slug = Astro.params.slug;
 			
 		</script>
 	</body>
+	
 </html>
 
 <style>

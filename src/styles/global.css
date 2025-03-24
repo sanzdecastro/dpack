@@ -58,6 +58,7 @@
 @theme {
     --font-display: "Richmond", "serif";
     --font-sans: "Volte-Medium" , "sans-serif";
+    --font-medium: "Volte-Semibold" , "sans-serif";
     --font-bold: "Volte-Bold" , "sans-serif";
 }
 
@@ -74,12 +75,36 @@
     --text-display: calc((100/1440) * 100vw);
     --text-display--line-height: 100%;
 
+    --text-big: calc((64/1440) * 100vw);
+    --text-big--line-height: 100%;
+
     --text-lead: calc((24/1440) * 100vw);
     --text-lead--line-height: 100%;
+
+    --text-p: calc((20/1440) * 100vw);
+    --text-p--line-height: 100%;
+
+    --text-tag: calc((15/1440) * 100vw);
+    --text-tag--line-height: 100%;
+
+    --text-mini: calc((14/1440) * 100vw);
+    --text-mini--line-height: 100%;
 }
 
 @theme {
+    --spacing-button-y: calc((6/1440) * 100vw);
+    --spacing-button-x: calc((10/1440) * 100vw);
+
+    --spacing-tag-y: calc((10/1440) * 100vw);
+    --spacing-tag-x: calc((16/1440) * 100vw);
+
+    --spacing-bigtag-y: calc((10/1440) * 100vw);
+    --spacing-bigtag-x: calc((30/1440) * 100vw);
+
+    --spacing-md: calc((40/1440) * 100vw);
+    
     --spacing-sm: calc((20/1440) * 100vw);
+    --spacing-xxs: calc((8/1440) * 100vw);
 }
 
 @font-face {
@@ -97,6 +122,15 @@
     font-weight: 100;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Volte-Semibold';
+    src: url('/fonts/Volte-Semibold.woff') format('woff2'),
+         url('/fonts/Volte-Semibold.woff2') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: 'Richmond';

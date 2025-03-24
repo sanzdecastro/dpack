@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      theme: this.randomTheme(),
       slides: this.section && this.section.slider ? this.section.slider : []
     }
   },
@@ -57,17 +58,21 @@ export default {
     splitTitle(title) {
       // Separa el string por espacios
       return title.split(' ');
-    }
+    },
+    randomTheme() {
+      const themes = ['Blue', 'Red'];
+      return themes[Math.floor(Math.random() * themes.length)];
+    },
     
   }
 }
 </script>
 
-<template>
+<template >
 
 
       <!-- <div ref="box" class="box"></div> -->
-      <div class="relative w-[100vw] h-[100vh]">
+      <div :theme="theme" class="relative w-[100vw] h-[100vh]">
         <swiper v-if="slides.length"
           :slides-per-view="1"
           :space-between="0"
@@ -79,8 +84,8 @@ export default {
         >
           <swiper-slide v-for="(slide, index) in slides" :key="index">
             <!-- Se muestran los subcampos; personaliza según tu configuración -->
-            <div class="title-slide absolute bottom-0 left-0 flex p-5 gap-5">
-              <div class="p-5 bg-black rounded-2xl text-white" v-for="(word, wordIndex) in splitTitle(slide.title)" :key="wordIndex">
+            <div class="title-slide max-w-1/2 absolute bottom-0 left-0 flex p-5 gap-5 flex-wrap">
+              <div class="px-bigtag-x py-bigtag-y flex items-center text-big font-medium leading-15 bg-primary text-foreground rounded " v-for="(word, wordIndex) in splitTitle(slide.title)" :key="wordIndex">
                 {{ word }}
               </div>
             </div>

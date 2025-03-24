@@ -32,13 +32,15 @@ export default {
 </script>
 
 <template>
-
-  <ul>
-    <li v-for="(service, index) in services" :key="index">
-      <p>{{ service.service_title }}</p>
-      <p>{{ service.service_description }}</p>
-    </li>
-  </ul>
+  <div class="services-block p-sm">
+    <ul>
+      <li v-for="(service, index) in services" :key="index">
+        <p class="font-display text-big">{{ service.service_title }}</p>
+        <p>{{ service.service_description }}</p>
+      </li>
+    </ul>
+  </div>
+ 
 </template>
   
 

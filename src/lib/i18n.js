@@ -1,8 +1,8 @@
 export const defaultLang = 'es';
 
 export const languages = {
-  es: 'Español',
-  en: 'English'
+  es: 'ES',
+  en: 'EN'
 };
 
 export function getLangFromUrl(url) {

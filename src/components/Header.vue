@@ -94,26 +94,40 @@ export default {
 </script>
 
 <template>
-  <header class="flex w-full flex-row justify-between p-5 fixed top-0 left-0">
+  <header class="flex w-full flex-row justify-between p-sm fixed top-0 left-0 ">
     <div class="logo">
         <a :href="`/${currentLang}`">
             <img src="../../public/logo.svg?url" alt="Logo">
         </a>
     </div>
     
-    <nav class="flex items-center">
+    <nav class="flex items-center gap-2">
         <ul class="flex gap-2">
-            <li v-for="(page, index) in currentPages" :key="index">
-                <a class="font-bold p-2 bg-white rounded" :href="`/${currentLang}/${page.slug}`">{{ page.title.rendered }}</a>
+            <li v-for="(page, index) in currentPages" :key="index" class="flex">
+                <a class="font-bold py-button-y px-button-x backdrop-blur-sm  rounded" :href="`/${currentLang}/${page.slug}`">{{ page.title.rendered }}</a>
             </li>
         </ul>
-        <ul class="flex">
-            <li v-for="(label, key) in languages" :key="key">
-                <a class="font-bold" :href="`/${key}`" @click="changeLanguage(key)">{{ label }}</a>
+        <ul class="flex gap-2">
+            <li v-for="(label, key) in languages" :key="key" class="flex">
+                <a class="font-bold py-button-y px-button-x bg-white-10 backdrop-blur-sm rounded" :href="`/${key}`" @click="changeLanguage(key)">{{ label }}</a>
             </li>
         </ul>
-        <div id="menuButton" class="open p-2 bg-white rounded cursor-pointer font-bold">Menú</div>
+        <div id="menuButton" >
+            <li class="flex">
+                <a class="open py-button-y  px-button-x cursor-pointer font-bold rounded">Menú</a>
+            </li>
+        </div>
     </nav>
 
   </header>
 </template>
+
+<style>
+li {
+    a {
+        -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);  
+    }
+}
+</style>
