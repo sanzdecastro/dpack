@@ -31,7 +31,7 @@ const slug = Astro.params.slug;
 	<body >
 		<!-- <LenisScroll/> -->
 		<div id="barba-wrapper" data-barba="wrapper">
-			<Header lang={lang} languages={languages} pages={pages} client:load/>
+			<Header slug={slug} lang={lang} languages={languages} pages={pages} client:load/>
 			<div class="barba-container" data-barba="container" data-barba-namespace="slide-up">
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
 				<div class="wrapper">
@@ -76,13 +76,16 @@ const slug = Astro.params.slug;
 			initLenis();
 
 			barba.init({
+				cacheIgnore: true,
+				timeout: 10000,
+				preventRunning: false,
 				transitions: [
 				{
 					name: 'slide-up',
 					leave() {
 						
 						return gsap.to(".barba-container", {
-							// scale: .8,
+							scale: .8,
 							duration: 0.5,
 							autoAlpha: 0,
 							ease: 'power2.inOut'
@@ -98,7 +101,7 @@ const slug = Astro.params.slug;
 						
 						return gsap.from(".barba-container", {
 							// x: '100%',
-							// scale: 1.1,
+							scale: 1.1,
 							duration: 0.5,
 							autoAlpha: 0,
 							ease: 'power2.inOut'

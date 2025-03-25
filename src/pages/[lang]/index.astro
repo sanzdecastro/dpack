@@ -52,11 +52,10 @@ if (page?.acf?.flexible) {
   <div class="">
    
     <div class="flex flex-col">
-      {flexibleSections.map((section: any, index: number) => {
+      {flexibleSections.map((section: any) => {
         if (section.acf_fc_layout === 'slider') {
           return (
             <Slider
-              key={index}
               pageId={page.id}
               section={section}
               client:only
@@ -65,7 +64,6 @@ if (page?.acf?.flexible) {
         } else if (section.acf_fc_layout === 'data') {
           return (
             <Data
-              key={index}
               pageId={page.id}
               section={section}
               client:only
@@ -74,7 +72,6 @@ if (page?.acf?.flexible) {
         } else if (section.acf_fc_layout === 'services') {
           return (
             <Services
-              key={index}
               pageId={page.id}
               section={section}
               client:only

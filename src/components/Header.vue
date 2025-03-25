@@ -3,6 +3,9 @@ import { gsap } from 'gsap';
 export default {
     name: 'Header',
     props: {
+        slug: {
+            type: String,
+        },
         lang: {
             type: String,
         },
@@ -17,7 +20,7 @@ export default {
         return {
             currentLang: this.lang,
             currentPages: this.pages,
-            currentSlug: ""
+            currentSlug: this.slug,
         }
     },
     watch: {
@@ -31,6 +34,7 @@ export default {
         this.fetchPages(this.currentLang);
         this.setMenu();
         this.openItemsMenu();
+        console.log(this.currentSlug)
     },
    
     methods: {
@@ -45,16 +49,20 @@ export default {
         },
         // Actualiza el idioma según la URL
         updateLang() {
-            const newLang = window.location.pathname.split("/")[1] || "es";
+            const segments = window.location.pathname.split("/");
+            const newLang = segments[1] || "es";
+            const newSlug = segments[2] || "";
             if (newLang !== this.currentLang) {
                 this.currentLang = newLang;
+                this.currentSlug = newSlug;
                 this.fetchPages(newLang);
             }
         },
         // Cambia el idioma y actualiza todo sin recargar
         changeLanguage(newLang) {
+            // Usamos la prop currentSlug para mantener el slug actual
             localStorage.setItem("lang", newLang);
-            history.pushState(null, "", `/${newLang}/${this.slug || ""}`);
+            history.pushState(null, "", `/${newLang}/${this.currentSlug}`);
             this.updateLang(); 
         },
         setMenu() {
