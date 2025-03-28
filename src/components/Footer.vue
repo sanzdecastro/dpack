@@ -56,7 +56,7 @@ export default {
   </div>
 
   <div class="logo w-full">
-      <a :href="`/${currentLang}`" class="w-full">
+      <a :href="`/`" class="w-full">
           <img class="w-full" src="../../public/logo.svg?url" alt="Logo">
       </a>
   </div>

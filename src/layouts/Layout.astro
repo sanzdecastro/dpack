@@ -2,7 +2,7 @@
 // import LenisScroll from '../components/LenisScroll.astro';
 import "../styles/global.css";
 
-
+import { ViewTransitions } from "astro:transitions";
 import { slide } from 'astro:transitions';
 import { getPages, getPage } from '../lib/api.js';
 
@@ -25,7 +25,7 @@ const slug = Astro.params.slug;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
-		<!-- <ClientRouter /> -->
+		<ViewTransitions />
 	</head>
 
 	<body >
@@ -75,42 +75,42 @@ const slug = Astro.params.slug;
 
 			initLenis();
 
-			barba.init({
-				cacheIgnore: true,
-				timeout: 3000,
-				preventRunning: false,
-				transitions: [
-				{
-					name: 'slide-up',
-					leave() {
+			// barba.init({
+			// 	cacheIgnore: true,
+			// 	timeout: 10000,
+			// 	preventRunning: false,
+			// 	transitions: [
+			// 	{
+			// 		name: 'slide-up',
+			// 		leave() {
 						
-						return gsap.to(".barba-container", {
-							scale: .8,
-							duration: 0.5,
-							autoAlpha: 0,
-							ease: 'power2.inOut'
-						});
-					},
-					beforeEnter() {
-						window.scrollTo(0, 0);
-						ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-						ScrollTrigger.refresh();
-						initLenis();
-					},
-					enter() {
+			// 			return gsap.to(".barba-container", {
+			// 				scale: .8,
+			// 				duration: 0.5,
+			// 				autoAlpha: 0,
+			// 				ease: 'power2.inOut'
+			// 			});
+			// 		},
+			// 		beforeEnter() {
+			// 			window.scrollTo(0, 0);
+			// 			ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+			// 			ScrollTrigger.refresh();
+			// 			initLenis();
+			// 		},
+			// 		enter() {
 						
-						return gsap.from(".barba-container", {
-							// x: '100%',
-							scale: 1.1,
-							duration: 0.5,
-							autoAlpha: 0,
-							ease: 'power2.inOut'
-						});
+			// 			return gsap.from(".barba-container", {
+			// 				// x: '100%',
+			// 				scale: 1.1,
+			// 				duration: 0.5,
+			// 				autoAlpha: 0,
+			// 				ease: 'power2.inOut'
+			// 			});
 					
-					}
-				}
-				]
-			});
+			// 		}
+			// 	}
+			// 	]
+			// });
 
 			
 			
