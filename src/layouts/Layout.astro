@@ -37,9 +37,10 @@ const slug = Astro.params.slug;
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
 				<div class="wrapper">
 					<slot/>
+					<Footer></Footer>
 				</div>
 				<!-- </div> -->	
-				<Footer>
+				
 			</div>
 			
 		</div>
@@ -77,7 +78,8 @@ const slug = Astro.params.slug;
 			initLenis();
 
 			document.addEventListener("astro:before-preparation", (event) => {
-				gsap.to("body", {
+				console.log("before prep")
+				gsap.to(".wrapper", {
 					yPercent: 10,
 					scale: 0.8,
 					overflow: 'hidden',
@@ -86,10 +88,12 @@ const slug = Astro.params.slug;
 				})
 			});
 
+			document.addEventListener("astro:after-swap", () => {
+				console.log("after swap")
+			});
+
 			document.addEventListener("astro:page-load", () => {
-				gsap.to("body", {
-					autoAlpha: .6,
-				})
+				console.log("page loaded")
 			});
 
 			// barba.init({
