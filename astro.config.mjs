@@ -10,6 +10,9 @@ export default defineConfig({
   integrations: [vue()],
   output: 'server',
   adapter: vercel(),
+  prefetch: {
+    prefetchAll: true
+  },
   vite: {
     plugins: [tailwindcss()]
   },

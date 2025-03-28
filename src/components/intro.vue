@@ -11,11 +11,8 @@ export default {
       pageId: {
           type: Number,
       },
-      key: {
-        type: Number,
-      },
       section: {
-        type: String,
+        type: Object,
       }
   },
   data() {

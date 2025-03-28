@@ -3,6 +3,7 @@
 import "../styles/global.css";
 
 import { ViewTransitions } from "astro:transitions";
+import { fade } from "astro:transitions";
 import { slide } from 'astro:transitions';
 import { getPages, getPage } from '../lib/api.js';
 
@@ -28,10 +29,10 @@ const slug = Astro.params.slug;
 		<ViewTransitions />
 	</head>
 
-	<body >
+	<body>
 		<!-- <LenisScroll/> -->
-		<div id="barba-wrapper" data-barba="wrapper">
-			<Header slug={slug} lang={lang} languages={languages} pages={pages} client:load/>
+		<div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}>
+			<Header transition:persist slug={slug} lang={lang} languages={languages} pages={pages} client:load/>
 			<div class="barba-container" data-barba="container" data-barba-namespace="slide-up">
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
 				<div class="wrapper">
@@ -74,6 +75,22 @@ const slug = Astro.params.slug;
 			}
 
 			initLenis();
+
+			document.addEventListener("astro:before-preparation", (event) => {
+				gsap.to("body", {
+					yPercent: 10,
+					scale: 0.8,
+					overflow: 'hidden',
+					borderRadius: '50%',
+					duration: 1,
+				})
+			});
+
+			document.addEventListener("astro:page-load", () => {
+				gsap.to("body", {
+					autoAlpha: .6,
+				})
+			});
 
 			// barba.init({
 			// 	cacheIgnore: true,
@@ -121,7 +138,7 @@ const slug = Astro.params.slug;
 
 <style>
 	
-	 .barba-container {
+	 /* .barba-container {
 		
 		position: absolute;
 		width: 100%;
@@ -130,5 +147,5 @@ const slug = Astro.params.slug;
 		top: 0px;
 		left: 0px;
 		z-index: -1;
-	}
+	} */
 </style>

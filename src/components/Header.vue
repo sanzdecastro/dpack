@@ -102,7 +102,7 @@ export default {
 </script>
 
 <template>
-  <header class="flex w-full flex-row justify-between p-sm fixed top-0 left-0 ">
+  <header class="flex w-full flex-row justify-between p-sm fixed top-0 left-0 z-10">
     <div class="logo">
         <a :href="`/${currentLang}`">
             <img src="../../public/logo.svg?url" alt="Logo">
