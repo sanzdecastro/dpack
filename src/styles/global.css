@@ -30,7 +30,7 @@
 
 }
     [theme = "Default"] {
-        --color-primary: var(--color-zinc);
+        --color-primary: var(--color-zinc-200);
         --color-foreground: var(--color-zinc);
         --color-foreground-fix: var(--color-zinc-200);
         --color-foreground-fix-2: var(--color-zinc);
@@ -42,8 +42,8 @@
         --color-foreground-fix-2: var(--color-red);
     }
     [theme = "Red"] {
-        --color-primary: var(--color-yellow);
-        --color-foreground: var(--color-red);
+        --color-primary: var(--color-red);
+        --color-foreground: var(--color-yellow);
         --color-foreground-fix: var(--color-red);
         --color-foreground-fix-2: var(--color-red);
     }
@@ -52,6 +52,12 @@
         --color-foreground: var(--color-green);
         --color-foreground-fix: var(--color-green);
         --color-foreground-fix-2: var(--color-green);
+    }
+    [theme = "Coral"] {
+        --color-primary: var(--color-blue);
+        --color-foreground: var(--color-coral);
+        --color-foreground-fix: var(--color-coral);
+        --color-foreground-fix-2: var(--color-coral);
     }
 
 
@@ -69,8 +75,12 @@
 }
 
 @theme {
+    --text-display-ultra: calc((800/1440) * 100vw);
+
     --text-display-extra: calc((300/1440) * 100vw);
     --text-display-extra--line-height: 105%;
+
+    --text-display-value: calc((128/1440) * 100vw);
 
     --text-display: calc((100/1440) * 100vw);
     --text-display--line-height: 100%;

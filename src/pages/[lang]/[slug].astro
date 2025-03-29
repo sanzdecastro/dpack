@@ -24,6 +24,7 @@ import Data from '../../components/data.vue';
 import Services from '../../components/services.vue';
 import ProjectThumbnail from '../../components/ProjectThumbnail.vue';
 import Intro from '../../components/intro.vue';
+import Values from '../../components/values.vue';
 
 
 const flexibleSections = page?.acf?.flexible || [];
@@ -87,7 +88,15 @@ if (page?.acf?.flexible) {
               client:only
             />
           );
-        }else if (section.acf_fc_layout === 'projects') {
+        } else if (section.acf_fc_layout === 'values') {
+          return (
+            <Values
+              pageId={page.id}
+              section={section}
+              client:only
+            />
+          );
+        } else if (section.acf_fc_layout === 'projects') {
           return (
            
           <ul class="px-sm">
