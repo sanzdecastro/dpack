@@ -110,13 +110,15 @@ export default {
           <img
             v-else
             :src="slide.imagen.url"
+            :width="slide.imagen.sizes?.['large-width']"
+  :height="slide.imagen.sizes?.['large-height']"
             class="object-cover w-full h-full"
           />
         </div>
       </swiper-slide>
     </swiper>
     <swiper
-      class="thumbs !absolute bottom-0 w-1/8 h-[100vh] right-5 h-fit-content"
+      class="thumbs !absolute bottom-0 w-1/8 h-[100vh] right-5 h-fit-content "
       :modules="[Thumbs]"
       direction="vertical"
       :space-between="10"
@@ -133,7 +135,8 @@ export default {
         <h2 class="absolute">{{ slide.caption }}</h2>
 
         <img
-          :src="slide.thumbnail"
+          :src="slide.thumbnail" :width="slide.imagen.sizes?.['thumbnail-width']"
+  :height="slide.imagen.sizes?.['thumbnail-height']"
           class="aspect-square object-cover w-full h-full rounded-2xl"
         />
       </swiper-slide>
