@@ -57,7 +57,7 @@ export default {
 
           if(description.classList.contains('opened')) {
             description.classList.remove('opened'); 
-            description.classList.remove('bg-primary'); 
+            item.classList.remove('bg-primary'); 
             item.removeAttribute('theme');
             gsap.to(description, {
                 minHeight: '0',

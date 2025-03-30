@@ -12,10 +12,10 @@ const { customType, slug } = Astro.params;
 
 const defaultCustomType = lang === 'es' ? 'proyectos' : 'projects';
 
-const page = await getPage(slug, lang);
-const pages = await getPages(lang);
-const projects = await getProjects(lang);
-const project = await getProject(slug, lang);
+const [page] = await Promise.all([
+  getPage(slug, lang),
+]);
+
 
 
 import BaseLayout from '../../layouts/Layout.astro';
