@@ -114,7 +114,7 @@ export default {
           viewBox="0 0 118 30"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="fill-foreground"
+          class="fill-black"
         >
           <g clip-path="url(#clip0_582_11569)">
             <path
