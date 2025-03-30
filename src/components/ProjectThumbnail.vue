@@ -46,9 +46,9 @@ export default {
 
 <template>
 
-<div class="featured-project flex flex-col gap-xxs mb-md">
-  <img class="overflow-hidden rounded" v-if="projectData?.acf?.project_info?.thumbnail != false" :class="full ? 'w-full aspect-[695/502]' : 'w-1/2 aspect-[695/502]'" :src="projectData?.acf?.project_info?.thumbnail" />
-  <div v-else :class="full ? 'w-full video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-[1393/1005]' : 'w-1/2 video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-[1393/1005]'" >
+<div class="featured-project w-fit flex flex-col gap-xxs mb-md">
+  <img class="overflow-hidden rounded w-full aspect-[695/502]" v-if="projectData?.acf?.project_info?.thumbnail != false"  :src="projectData?.acf?.project_info?.thumbnail" />
+  <div v-else class="w-full video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-[1393/1005]'" >
     <video autoplay playsinline muted class="object-cover w-full h-full" :src="projectData?.acf?.project_info?.video" ></video>
   </div>
   <div v-if="projectData" class="flex flex-col gap-xxs"> 

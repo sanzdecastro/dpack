@@ -30,13 +30,14 @@ export default {
   mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
+        ScrollTrigger.refresh();
         this.pinElements();
         this.textAnimTransformadoras();
         this.textAnimEntusiastas();
         this.textAnimConsolidadas();
         this.textAnimIntuitivas();
         this.textAnimAccesibles();
-        ScrollTrigger.refresh();
+        
       }, 100);
     });
   },

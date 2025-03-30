@@ -63,7 +63,7 @@ export default {
       return title.split(" ");
     },
     randomTheme() {
-      const themes = ["Blue", "Red"];
+      const themes = ["Blue", "Red", "Yellow", "Coral"];
       return themes[Math.floor(Math.random() * themes.length)];
     },
   },

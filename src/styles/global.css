@@ -75,17 +75,17 @@
 }
 
 @theme {
-    --text-display-ultra: calc((800/1440) * 100vw);
+    --text-display-ultra: clamp( 200px, calc((800/1440) * 100vw), 800px);
 
-    --text-display-extra: calc((300/1440) * 100vw);
+    --text-display-extra: clamp( 100px, calc((300/1440) * 100vw), 300px);
     --text-display-extra--line-height: 105%;
 
-    --text-display-value: calc((128/1440) * 100vw);
+    --text-display-value: clamp(50px, calc((128/1440) * 100vw), 128px);
 
-    --text-display: calc((100/1440) * 100vw);
+    --text-display: clamp(30px, calc((100/1440) * 100vw), 100px);
     --text-display--line-height: 100%;
 
-    --text-big: calc((64/1440) * 100vw);
+    --text-big: clamp(35px,calc((64/1440) * 100vw), 64px);
     --text-big--line-height: 100%;
 
     --text-lead: calc((24/1440) * 100vw);
@@ -102,19 +102,24 @@
 }
 
 @theme {
+    --spacing-header: calc((76/960) * 100vh);
+
     --spacing-button-y: calc((6/1440) * 100vw);
     --spacing-button-x: calc((10/1440) * 100vw);
 
     --spacing-tag-y: calc((10/1440) * 100vw);
     --spacing-tag-x: calc((16/1440) * 100vw);
 
-    --spacing-bigtag-y: calc((10/1440) * 100vw);
-    --spacing-bigtag-x: calc((30/1440) * 100vw);
+    --spacing-bigtag-y: clamp(0px, calc((20/960) * 100vh), 20px);
+    --spacing-bigtag-x: clamp(10px, calc((30/1440) * 100vw), 30px);
 
+    --spacing-xl: calc((120/1440) * 100vw);
+    --spacing-lg: calc((100/1440) * 100vw);
     --spacing-md: calc((40/1440) * 100vw);
-    
     --spacing-sm: calc((20/1440) * 100vw);
     --spacing-xxs: calc((8/1440) * 100vw);
+
+    --spacing-max-w-text: calc((578/1440) * 100vw);
 }
 
 @font-face {

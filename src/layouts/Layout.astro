@@ -31,17 +31,16 @@ const slug = Astro.params.slug;
 
 	<body>
 		<!-- <LenisScroll/> -->
-		<div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}>
+		<!-- <div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}> -->
+		<div class="wrapper">
 			<Header transition:persist slug={slug} lang={lang} languages={languages} pages={pages} client:load/>
-			<div class="barba-container" data-barba="container" data-barba-namespace="slide-up">
+			
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
-				<div class="wrapper">
-					<slot/>
-					<Footer></Footer>
-				</div>
+			<slot/>
+					
 				<!-- </div> -->	
-				
-			</div>
+			<Footer></Footer>
+			
 			
 		</div>
 		
@@ -147,7 +146,7 @@ const slug = Astro.params.slug;
 
 	body {
 		@apply
-		w-[100vw]
+		w-[100%]
 		overflow-x-hidden;
 	}
 	
