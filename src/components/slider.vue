@@ -72,7 +72,7 @@ export default {
 
 <template>
   <!-- <div ref="box" class="box"></div> -->
-  <div :theme="theme" class="relative w-[100vw] h-[100dvh] aspect-[9/16]">
+  <div :theme="theme" class="relative w-[100vw] h-[100dvh] aspect-[9/16] md:aspect-[16/9]">
     <swiper
       v-if="slides.length"
       :slides-per-view="1"
