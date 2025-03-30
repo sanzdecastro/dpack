@@ -110,12 +110,12 @@ export default {
     </div>
     
     <nav class="flex flex-col-reverse md:flex-row items-end md:items-center gap-2">
-        <ul class="flex flex-col md:flex-row gap-2 items-end order-0 md:order-2">
+        <ul class="flex flex-col md:flex-row gap-2 items-end">
             <li v-for="(page, index) in currentPages" :key="index" class="flex">
                 <a class="font-bold py-button-y px-button-x backdrop-blur-sm  rounded" :href="`/${currentLang}/${page.slug}`">{{ page.title.rendered }}</a>
             </li>
         </ul>
-        <ul class="flex flex-col md:flex-row gap-2 order-0 ">
+        <ul class="flex flex-col md:flex-row gap-2 ">
             <li v-for="(label, key) in languages" :key="key" class="flex">
                 <a class="font-bold py-button-y px-button-x bg-white-10 backdrop-blur-sm rounded" :href="`/${key}`" @click="changeLanguage(key)">{{ label }}</a>
             </li>

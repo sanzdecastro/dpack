@@ -45,8 +45,8 @@ export default {
   },
   methods: {
     animationNumbers() {
-      // Seleccionamos los elementos .data-number dentro del contenedor usando ref
-      if (this.$refs.section) {
+      if(window.innerWidth > 768) {
+        if (this.$refs.section) {
         const numbers = this.$refs.section.querySelectorAll(".data-number");
       numbers.forEach((element) => {
         gsap.from(element, {
@@ -61,6 +61,9 @@ export default {
         });
       });
       }
+      }
+      // Seleccionamos los elementos .data-number dentro del contenedor usando ref
+      
       
     },
     randomTheme() {
