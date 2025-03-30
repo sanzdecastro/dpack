@@ -32,7 +32,10 @@ const slug = Astro.params.slug;
 	<body>
 		<!-- <LenisScroll/> -->
 		<!-- <div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}> -->
-		<div class="wrapper">
+		<div class="loading w-full h-[100dvh] bg-black absolute top-0 left-0">
+
+		</div>
+		<div class="wrapper opacity-0">
 			<Header transition:persist slug={slug} lang={lang} languages={languages} pages={pages} client:load/>
 			
 				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
@@ -89,11 +92,34 @@ const slug = Astro.params.slug;
 
 			document.addEventListener("astro:after-swap", () => {
 				console.log("after swap")
-			
+				window.scrollTo(0, 0);
 			});
 
 			document.addEventListener("astro:page-load", () => {
 				console.log("page loaded")
+				const loading = document.querySelector('.loading');
+				const wrapper = document.querySelector('.wrapper');
+
+				gsap.set(wrapper , {
+					autoAlpha: 0,
+				})
+
+				const tl = gsap.timeline();
+
+				tl.to(loading, {
+					duration: 0.5,
+				}).to(loading, {
+					autoAlpha: 0,
+					pointerEvents: 'none',
+					duration: 0.5,
+					ease: 'power2.inOut',
+				}).to(wrapper, {
+					autoAlpha: 1,
+					pointerEvents: 'none',
+					duration: 0.5,
+					ease: 'power2.inOut',
+				});
+
 			});
 
 			// barba.init({

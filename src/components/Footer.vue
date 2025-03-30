@@ -33,7 +33,8 @@ export default {
 
 <template>
 
-<footer  :theme="theme" class="bg-primary flex flex-col justify-between h-[100dvh] max-h-[1080px] text-foreground p-sm pt-header">
+<footer>
+<div class="bg-primary flex flex-col justify-between min-h-[100dvh]  text-foreground p-sm pt-header">
   <div class="menu-footer flex flex-col md:flex-row">
     <div class="w-1/4">
       <p class="mb-md text-sans uppercase text-foreground text-mini">Explore</p>
@@ -62,7 +63,7 @@ export default {
 
   <div class="logo w-full">
       <a :href="`/`" class="w-full">
-        <svg width="100%" height="auto" viewBox="0 0 118 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-foreground">
+        <svg width="100%" viewBox="0 0 118 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-foreground">
         <g clip-path="url(#clip0_582_11569)">
         <path d="M9.29841 1.02808H0V29.0181H9.29841C10.5302 29.0684 11.759 28.8626 12.9071 28.4138C14.0552 27.965 15.0976 27.2828 15.9684 26.4105C17.6591 24.6215 18.5506 21.9744 18.5506 18.7529V11.4913C18.5506 5.02193 15.0043 1.02808 9.29841 1.02808ZM12.0589 18.6737C12.0589 21.4727 10.8702 22.8325 8.42008 22.8325H6.60399V7.29282H8.42008C11.6825 7.29282 12.0589 9.69573 12.0589 11.4979V18.6737Z"/>
         <path d="M23.3649 29.0181L33.8124 1.0083H28.8066L18.3591 29.0181H23.3649Z"/>
@@ -80,8 +81,8 @@ export default {
 
       </a>
   </div>
+</div>
 </footer>
-  
 </template>
 
   

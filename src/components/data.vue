@@ -131,7 +131,7 @@ export default {
       ref="stickyBlock"
       class="sticky-block w-1/2 flex-1 h-[100dvh] flex flex-col justify-between p-sm"
     >
-      <h2 class="font-display text-display pt-header">{{ title }}</h2>
+      <h2 class="!font-display !text-display pt-header">{{ title }}</h2>
       <p class="text-lead font-bold">{{ subtitle }}</p>
     </div>
     <ul class="w-1/2 p-sm">
