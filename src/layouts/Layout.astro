@@ -4,179 +4,212 @@ import "../styles/global.css";
 
 import { ViewTransitions } from "astro:transitions";
 import { fade } from "astro:transitions";
-import { slide } from 'astro:transitions';
-import { getPages, getPage } from '../lib/api.js';
+import { slide } from "astro:transitions";
+import { getPages, getPage } from "../lib/api.js";
 
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 
-import { getLangFromUrl, languages } from '../lib/i18n.js';
+import { getLangFromUrl, languages } from "../lib/i18n.js";
 const lang = getLangFromUrl(Astro.url);
 const pages = await getPages(lang);
 const slug = Astro.params.slug;
-
 ---
 
-<!DOCTYPE html>
-<html lang={lang}  >
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-		<ViewTransitions />
-	</head>
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+    <ViewTransitions />
+  </head>
 
-	<body>
-		<!-- <LenisScroll/> -->
-		<!-- <div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}> -->
-		<div class="loading w-full h-[100dvh] bg-black absolute top-0 left-0">
+  <body>
+    <!-- <LenisScroll/> -->
+    <!-- <div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}> -->
+    <div class="loading w-full h-[100dvh] bg-black absolute top-0 left-0 flex text-white justify-center items-center">Cargando...</div>
 
-		</div>
-		<div class="wrapper opacity-0">
-			<Header transition:persist slug={slug} lang={lang} languages={languages} pages={pages} client:load/>
-			
-				<!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
-			<slot/>
-					
-				<!-- </div> -->	
-			<Footer></Footer>
-		</div>
-		
-		<script>
-			import { gsap } from 'gsap';
-			import ScrollTrigger from 'gsap/ScrollTrigger';
-			import barba from '@barba/core';
-			import Lenis from 'lenis';
+    </div>
+    <div class="wrapper opacity-0">
+      <Header
+        transition:persist
+        slug={slug}
+        lang={lang}
+        languages={languages}
+        pages={pages}
+        client:load
+      />
 
-			gsap.registerPlugin(ScrollTrigger);
-			
-			function initLenis(doc = document) {
-			  const lenis = new Lenis({
-			    duration: 1.2,
-			    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-			  });
+      <!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
+      <slot />
 
-			  lenis.on('scroll', ScrollTrigger.update);
+      <!-- </div> -->
+      <Footer />
+    </div>
 
-			  ScrollTrigger.refresh();
-			  ScrollTrigger.defaults({
-				scroller: doc,
-			});
+    <script>
+      import { gsap } from "gsap";
+      import ScrollTrigger from "gsap/ScrollTrigger";
+      import barba from "@barba/core";
+      import Lenis from "lenis";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      function initLenis(doc = document) {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+
+        lenis.on("scroll", ScrollTrigger.update);
+
+        ScrollTrigger.refresh();
+        ScrollTrigger.defaults({
+          scroller: doc,
+        });
+
+        function raf(time: any) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      }
+
+      initLenis();
 
 
+	  function outAnimation() {
+		const loading = document.querySelector(".loading");
+        const wrapper = document.querySelector(".wrapper");
+		const body = document.querySelector("body");
 
-			  function raf(time: any) {
-			    lenis.raf(time);
-			    requestAnimationFrame(raf);
-			  }
-			  requestAnimationFrame(raf);
-			}
+        const tl = gsap.timeline();
 
-			initLenis();
+        tl.to(body, {
+            width: "100vw",
+			height: "100vh",
+			overflow: "hidden",
+			duration: 0.5,
+			ease: "power2.inOut",
+          })
+          .to(wrapper, {
+            autoAlpha: 0,
+            pointerEvents: "none",
+            duration: 0.5,
+            ease: "power2.inOut",
+          }).to(loading, {
+            autoAlpha: 1,
+            pointerEvents: "none",
+            duration: 0.5,
+            ease: "power2.inOut",
+          });
+      }
 
-			document.addEventListener("astro:before-preparation", (event) => {
-				console.log("before prep")
-				
-			});
+      function enterAnimation() {
+		const loading = document.querySelector(".loading");
+        const wrapper = document.querySelector(".wrapper");
 
-			document.addEventListener("astro:before-swap", () => {
-				console.log("after swap")
-				window.scrollTo(0, 0);
-				ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-						ScrollTrigger.refresh();
-						initLenis();
-			});
+        gsap.set(wrapper, {
+          autoAlpha: 0,
+          pointerEvents: "none",
+        });
 
-			document.addEventListener("astro:after-swap", () => {
-				console.log("after swap")
-				window.scrollTo(0, 0);
-			});
+        const tl = gsap.timeline();
 
-			document.addEventListener("astro:page-load", () => {
-				console.log("page loaded")
-				const loading = document.querySelector('.loading');
-				const wrapper = document.querySelector('.wrapper');
+        tl.to(loading, {
+          duration: 0.5,
+        })
+          .to(loading, {
+            autoAlpha: 0,
+            pointerEvents: "none",
+            duration: 0.5,
+            ease: "power2.inOut",
+          })
+          .to(wrapper, {
+            autoAlpha: 1,
+            pointerEvents: "all",
+            duration: 0.5,
+            ease: "power2.inOut",
+          });
+      }
 
-				gsap.set(wrapper , {
-					autoAlpha: 0,
-					pointerEvents: 'none',
-				})
+      document.addEventListener("astro:before-preparation", (event) => {
+        console.log("before prep");
+		outAnimation()
+      });
 
-				const tl = gsap.timeline();
-
-				tl.to(loading, {
-					duration: 0.5,
-				}).to(loading, {
-					autoAlpha: 0,
-					pointerEvents: 'none',
-					duration: 0.5,
-					ease: 'power2.inOut',
-				}).to(wrapper, {
-					autoAlpha: 1,
-					pointerEvents: 'all',
-					duration: 0.5,
-					ease: 'power2.inOut',
-				});
-
-			});
-
-			// barba.init({
-			// 	cacheIgnore: true,
-			// 	timeout: 10000,
-			// 	preventRunning: false,
-			// 	transitions: [
-			// 	{
-			// 		name: 'slide-up',
-			// 		leave() {
-						
-			// 			return gsap.to(".barba-container", {
-			// 				scale: .8,
-			// 				duration: 0.5,
-			// 				autoAlpha: 0,
-			// 				ease: 'power2.inOut'
-			// 			});
-			// 		},
-			// 		beforeEnter() {
-			// 			window.scrollTo(0, 0);
-			// 			ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-			// 			ScrollTrigger.refresh();
-			// 			initLenis();
-			// 		},
-			// 		enter() {
-						
-			// 			return gsap.from(".barba-container", {
-			// 				// x: '100%',
-			// 				scale: 1.1,
-			// 				duration: 0.5,
-			// 				autoAlpha: 0,
-			// 				ease: 'power2.inOut'
-			// 			});
-					
-			// 		}
-			// 	}
-			// 	]
-			// });
-
-			
-			
-		</script>
-	</body>
+      document.addEventListener("astro:before-swap", () => {
+        console.log("after swap");
+        window.scrollTo(0, 0);
 	
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        ScrollTrigger.refresh();
+        initLenis();
+      });
+
+      document.addEventListener("astro:after-swap", () => {
+        console.log("after swap");
+        window.scrollTo(0, 0);
+      });
+
+      document.addEventListener("astro:page-load", () => {
+        console.log("page loaded");
+
+        enterAnimation();
+      });
+
+      // barba.init({
+      // 	cacheIgnore: true,
+      // 	timeout: 10000,
+      // 	preventRunning: false,
+      // 	transitions: [
+      // 	{
+      // 		name: 'slide-up',
+      // 		leave() {
+
+      // 			return gsap.to(".barba-container", {
+      // 				scale: .8,
+      // 				duration: 0.5,
+      // 				autoAlpha: 0,
+      // 				ease: 'power2.inOut'
+      // 			});
+      // 		},
+      // 		beforeEnter() {
+      // 			window.scrollTo(0, 0);
+      // 			ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // 			ScrollTrigger.refresh();
+      // 			initLenis();
+      // 		},
+      // 		enter() {
+
+      // 			return gsap.from(".barba-container", {
+      // 				// x: '100%',
+      // 				scale: 1.1,
+      // 				duration: 0.5,
+      // 				autoAlpha: 0,
+      // 				ease: 'power2.inOut'
+      // 			});
+
+      // 		}
+      // 	}
+      // 	]
+      // });
+    </script>
+  </body>
 </html>
 
 <style>
-
-	body {
-		@apply
-		w-[100vw]
+  body {
+    @apply w-[100vw]
 		w-full
 		overflow-x-hidden;
-	}
-	
-	 /* .barba-container {
+  }
+
+  /* .barba-container {
 		
 		position: absolute;
 		width: 100%;

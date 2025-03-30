@@ -1,6 +1,6 @@
 ---
-import { getProject } from '../../../lib/api.js';
-import { getLangFromUrl } from '../../../lib/i18n.js';
+import { getProject } from "../../../lib/api.js";
+import { getLangFromUrl } from "../../../lib/i18n.js";
 
 const { slug } = Astro.params;
 const lang = getLangFromUrl(Astro.url);
@@ -9,18 +9,25 @@ const project = await getProject(slug, lang);
 // Depuración: revisa la estructura de project en la consola del servidor
 console.log("Project:", project);
 
-import BaseLayout from '../../../layouts/Layout.astro';
-
+import BaseLayout from "../../../layouts/Layout.astro";
 ---
 
 <BaseLayout>
-  {project ? (
-    // Si el objeto project tiene la propiedad project (anidada), usa post_title, si no, usa title.rendered
-    <h1>{project.title.rendered}</h1>
-    <h1>{project.id}</h1>
-    <p>{project.acf.cliente || "Cliente no disponible"}</p>
-  ) : (
-    <p>No se encontró el proyecto.</p>
-  )}
-  <!-- Resto del contenido del proyecto -->
+  <div class="h-[50dvh] w-full overflow-hidden flex justify-center items-center mb-sm">
+    <img class="w-full object-cover object-center" src={project.acf.project_info.thumbnail} />
+  </div>
+  <div class="flex p-sm">
+    <div class="project-header w-1/2">
+      <div class="tags-line flex mb-sm">
+        <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-foreground text-primary rounded">{project.acf.project_info.client}</p>
+        <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-zinc-100 text-foreground border border-solid rounded-full">{project.acf.project_info.brand}</p>
+      </div>
+      <h1 class="text-display font-display">{project.title.rendered}</h1>
+    </div>
+
+    <div class="details w-1/2">
+      <p>{project.acf.project_info.lead}</p>
+      <p set:html={project.acf.project_info.paragraph}></p>
+    </div>
+  </div>
 </BaseLayout>
