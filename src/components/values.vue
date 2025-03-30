@@ -1,10 +1,13 @@
 <script>
 import { ref } from "vue";
 import { gsap } from "gsap";
+import { TextPlugin } from "gsap/TextPlugin";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
 
-import { Vue3Marquee } from "vue3-marquee";
+import { Marquee } from "@selemondev/vue3-marquee";
+import "@selemondev/vue3-marquee/dist/style.css";
 
 export default {
   name: "values",
@@ -17,7 +20,7 @@ export default {
     },
   },
   components: {
-    Vue3Marquee,
+    Marquee
   },
   data() {
     return {
@@ -28,6 +31,11 @@ export default {
     this.$nextTick(() => {
       setTimeout(() => {
         this.pinElements();
+        this.textAnimTransformadoras();
+        this.textAnimEntusiastas();
+        this.textAnimConsolidadas();
+        this.textAnimIntuitivas();
+        this.textAnimAccesibles();
         ScrollTrigger.refresh();
       }, 100);
     });
@@ -66,6 +74,105 @@ export default {
         }
       });
     },
+    textAnimTransformadoras() {
+      const transformadorasTL = gsap.timeline({repeat: -1, delay: 2})
+      const transformadorasText = document.querySelector(".transformadoras");
+      transformadorasTL.to(transformadorasText, {
+        duration: 1,
+        delay: 1,
+        delimiter: " ",
+        ease:'sine.inOut',
+        text: {
+          value: "sarodamrofsnart",
+        },
+      }).to(transformadorasText, {
+        duration: 1,
+        delay: 0,
+        delimiter: " ",
+        ease:'sine.inOut',
+        text: {
+          value: "transformadoras",
+        },
+      });
+    },
+    textAnimEntusiastas() {
+      const entusiastasTL = gsap.timeline({repeat: -1, delay: 2})
+      const entusiastasText = document.querySelector(".entusiastas");
+      entusiastasTL.to(entusiastasText, {
+        delay: 1,
+        duration: .5,
+        scale: 1.6,
+        ease:'sine.inOut',
+      }).to(entusiastasText, {
+        duration: .3,
+        yPercent: -20,
+        ease:'sine.inOut',
+      }).to(entusiastasText, {
+        duration: .2,
+        yPercent: 0,
+        ease:'sine.inOut',
+      }).to(entusiastasText, {
+        duration: .5,
+        yPercent: 0,
+        scale: .9,
+        ease:'sine.inOut',
+      }).to(entusiastasText, {
+        duration: 1,
+        yPercent: 0,
+        scale: 1,
+        ease:'sine.inOut',
+      });
+    },
+    textAnimConsolidadas() {
+      const consolidadasTL = gsap.timeline({repeat: -1, delay: 2})
+      const consolidadasText = document.querySelector(".consolidadas");
+      consolidadasTL.to(consolidadasText, {
+        duration: .5,
+        delay: 1,
+        scaleX: 1.9,
+        scaleY: .01,
+        ease:'sine.inOut',
+      }).to(consolidadasText, {
+        duration: .5,
+        scaleX: .9,
+        scaleY: 1,
+        ease:'sine.inOut',
+      }).to(consolidadasText, {
+        duration: .5,
+        scaleY: 1,
+        scaleX: 1,
+        ease:'sine.inOut',
+      })
+    },
+    textAnimIntuitivas() {
+      const intuitivasTL = gsap.timeline({repeat: -1, delay: 2})
+      const intuitivasText = document.querySelector(".intuitivas");
+      intuitivasTL.to(intuitivasText, {
+       overflow: "hidden",
+        delay: 1,
+        ease:'sine.inOut',
+      }).to(intuitivasText, {
+       overflow: "hidden",
+        height: 0,
+        ease:'sine.inOut',
+      }).to(intuitivasText, {
+       overflow: "hidden",
+        height: 'auto',
+        ease:'sine.inOut',
+      })
+    },
+    textAnimAccesibles() {
+      const accesiblesTL = gsap.timeline({repeat: -1, delay: 2})
+      const accesiblesText = document.querySelector(".accesibles");
+      accesiblesTL.to(accesiblesText, {
+        scale: .8,
+        delay: 1,
+        duration: .5,
+        ease:'sine.inOut',
+      }).to(accesiblesText, {
+        scale: 1,
+      })
+    }
   },
 };
 </script>
@@ -79,13 +186,15 @@ export default {
         :theme="value.theme"
         class="flex relative bg-primary text-foreground justify-center items-center h-[100dvh] w-[100vw]"
       >
-        <p class="text-display-value font-display">{{ value.value }}</p>
+        <p :class=value.animation  class="text-display-value font-display">{{ value.value }}</p>
         <div
           class="absolute w-full h-full flex justify-center items-center text-display-ultra font-display opacity-10"
         >
-          <Vue3Marquee :clone="true" :duration="15">
-            {{ value.value }}<span class="w-100"></span>
-          </Vue3Marquee>
+        <Marquee class="gap-[3rem] [--duration:10s] [--gap:3rem]" innerClassName="gap-[3rem]" :fade="true">
+
+            {{ value.value }}
+  
+          </Marquee>
         </div>
       </li>
     </ul>

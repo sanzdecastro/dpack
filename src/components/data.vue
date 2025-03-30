@@ -1,20 +1,14 @@
 <script>
-import { ref, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Thumbs } from "swiper/modules";
-import "swiper/css";
-
-// Registra el plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
-  name: "DataComponent", // Renombrado para evitar conflictos con palabras reservadas
+  name: "DataComponent", // Renombrado para evitar conflictos
   props: {
     pageId: Number,
     apiUrl: String,
-    section: Object, // Se espera un objeto con title, subtitle y data
+    section: Object, // Se espera un objeto con title, subtitle, data y slider_mode
   },
   data() {
     return {
@@ -22,48 +16,83 @@ export default {
       subtitle: this.section.subtitle,
       datas: this.section && this.section.data ? this.section.data : [],
       sliderMode: this.section.slider_mode,
-      theme: this.randomTheme(),
+      theme: null,
     };
   },
+  created() {
+    // Calcula el tema en created para evitar llamar a métodos desde data()
+    this.theme = this.randomTheme();
+  },
   mounted() {
-    // Esperamos a que el DOM se renderice y se apliquen los estilos
+    // Esperamos a que el DOM se renderice
     this.$nextTick(() => {
       setTimeout(() => {
         this.pinElement();
         this.animationNumbers();
+        this.sliderData();
         ScrollTrigger.refresh();
       }, 100);
     });
   },
   beforeUnmount() {
-    // Se destruyen todos los triggers para evitar conflictos al navegar
+    // Destruye todos los triggers para evitar conflictos al navegar
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     ScrollTrigger.refresh();
   },
   methods: {
     animationNumbers() {
-      // Seleccionamos los elementos .data-number dentro del contenedor usando ref
-      const numbers = this.$refs.section.querySelectorAll(".data-number");
-      numbers.forEach((element) => {
-        gsap.from(element, {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          textContent: 0,
-          duration: 4,
-          snap: { textContent: 1 },
+      if (this.$refs.section) {
+        const numbers = this.$refs.section.querySelectorAll(".data-number");
+        numbers.forEach((element) => {
+          gsap.from(element, {
+            scrollTrigger: {
+              trigger: element,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+            textContent: 0,
+            duration: 4,
+            snap: { textContent: 1 },
+          });
         });
-      });
+      }
     },
     randomTheme() {
       const themes = ["Blue", "Red", "Yellow"];
       return themes[Math.floor(Math.random() * themes.length)];
     },
+    sliderData() {
+      // Usamos el ref del contenedor slider para mayor precisión
+      const sliderContainer = this.$refs.sliderDatas;
+      if (sliderContainer) {
+        // Obtenemos todos los elementos li dentro del contenedor
+        const liElements = sliderContainer.querySelectorAll("li");
+        let sliderDataWidth = 0;
+        liElements.forEach((item) => {
+          sliderDataWidth += item.offsetWidth;
+          console.log("Elemento width:", item.offsetWidth);
+        });
+        console.log("Total sliderDataWidth:", sliderDataWidth);
+        console.log("Window innerWidth:", window.innerWidth);
+        
+        const amountToScroll = sliderDataWidth - window.innerWidth;
+        gsap.to(sliderContainer, {
+          x: -amountToScroll,
+          duration: 3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sliderContainer,
+            start: "bottom bottom",
+            end: "+=" + amountToScroll,
+            pin: true,
+            scrub: 1,
+          },
+        });
+      }
+    },
     pinElement() {
-      // Utilizamos refs para delimitar el contenedor y el elemento sticky
-      if (this.$refs.stickyBlock) {
+      // Verificamos que existan ambos elementos antes de animar
+      if (this.$refs.stickyBlock && this.$refs.section) {
         gsap.to(this.$refs.stickyBlock, {
           scrollTrigger: {
             trigger: this.$refs.section,
@@ -79,11 +108,11 @@ export default {
 </script>
 
 <template>
-  <!-- Se asigna ref="section" al contenedor y ref="stickyBlock" al elemento a fijar -->
+  <!-- Se asigna ref="section" al contenedor principal -->
   <div
     v-if="!sliderMode"
     ref="section"
-    :theme="theme"
+    :data-theme="theme"
     class="section-data flex relative bg-primary text-foreground"
   >
     <div
@@ -106,14 +135,15 @@ export default {
       </li>
     </ul>
   </div>
-  <div v-else class="" ref="section">
-    <ul class="p-sm flex">
+  <div v-else class="section">
+    <!-- El contenedor slider tiene un ref para poder manipularlo desde sliderData() -->
+    <ul class="p-sm flex slider-data" ref="sliderDatas">
       <li
         v-for="(data, index) in datas"
         :key="index"
-        class="flex flex-col items-end border-b-black border-b-2"
+        class="items-end border-b-black border-b-2"
       >
-        <p class="font-display text-display-extra data-number">
+        <p class="font-display text-display-extra">
           {{ data.number }}
         </p>
         <p class="text-lead font-bold">{{ data.description }}</p>
@@ -122,4 +152,6 @@ export default {
   </div>
 </template>
 
-<style></style>
+<style>
+/* Puedes agregar aquí estilos personalizados */
+</style>
