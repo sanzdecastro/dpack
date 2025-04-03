@@ -9,25 +9,76 @@ const project = await getProject(slug, lang);
 // Depuración: revisa la estructura de project en la consola del servidor
 console.log("Project:", project);
 
+const flexibleSectionsProjects = project?.acf?.flexible_project || [];
+
 import BaseLayout from "../../../layouts/Layout.astro";
+import BlockProject from '../../../components/blockProject.vue';
+import ThenNow from '../../../components/ThenNow.vue';
+import Timeline from '../../../components/Timeline.vue';
 ---
 
 <BaseLayout>
   <div class="h-[50dvh] w-full overflow-hidden flex justify-center items-center mb-sm">
     <img class="w-full object-cover object-center" src={project.acf.project_info.thumbnail} />
   </div>
-  <div class="flex p-sm">
-    <div class="project-header w-1/2">
-      <div class="tags-line flex mb-sm">
-        <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-foreground text-primary rounded">{project.acf.project_info.client}</p>
-        <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-zinc-100 text-foreground border border-solid rounded-full">{project.acf.project_info.brand}</p>
+  
+
+  <div class="flex flex-col">
+    <div class="flex p-sm">
+      <div class="project-header w-1/2">
+        <div class="tags-line flex mb-sm">
+          <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-foreground text-primary rounded">{project.acf.project_info.client}</p>
+          <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-zinc-100 text-foreground border border-solid rounded-full">{project.acf.project_info.brand}</p>
+        </div>
+        <h1 class="text-display font-display">{project.title.rendered}</h1>
       </div>
-      <h1 class="text-display font-display">{project.title.rendered}</h1>
+  
+      <div class="details w-1/2">
+        <p>{project.acf.project_info.lead}</p>
+        <p set:html={project.acf.project_info.paragraph}></p>
+        <p>Servicios</p>
+        <ul>
+          {project?._embedded?.["wp:term"]?.[1]?.map((tag: any) => (
+          <li>{tag.slug}</li>
+        ))}
+        </ul>
+        
+      </div>
     </div>
 
-    <div class="details w-1/2">
-      <p>{project.acf.project_info.lead}</p>
-      <p set:html={project.acf.project_info.paragraph}></p>
-    </div>
+    {flexibleSectionsProjects.map((section: any) => {
+      if (section.acf_fc_layout === 'block_project') {
+        return (
+          <BlockProject
+            client:only
+            projectId={project.id}
+            text={section.text}
+            images={section.images}
+          />
+        );
+        } else if (section.acf_fc_layout === 'thennow') {
+          return (
+          <ThenNow
+            client:only
+            projectId={project.id}
+            imageThen={section.then}
+            imageNow={section.now}
+          />
+          )
+         
+        } else if (section.acf_fc_layout === 'timeline') {
+          return (
+          <Timeline
+            client:idle
+            projectId={project.id}
+            hitos={section.hitos}
+          />
+          )
+         
+        }
+      })
+    }
+    
+
   </div>
 </BaseLayout>

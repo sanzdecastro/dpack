@@ -147,51 +147,15 @@ const slug = Astro.params.slug;
 
       document.addEventListener("astro:after-swap", () => {
         console.log("after swap");
+        ScrollTrigger.refresh();
         window.scrollTo(0, 0);
       });
 
       document.addEventListener("astro:page-load", () => {
         console.log("page loaded");
-
+        ScrollTrigger.refresh();
         enterAnimation();
       });
-
-      // barba.init({
-      // 	cacheIgnore: true,
-      // 	timeout: 10000,
-      // 	preventRunning: false,
-      // 	transitions: [
-      // 	{
-      // 		name: 'slide-up',
-      // 		leave() {
-
-      // 			return gsap.to(".barba-container", {
-      // 				scale: .8,
-      // 				duration: 0.5,
-      // 				autoAlpha: 0,
-      // 				ease: 'power2.inOut'
-      // 			});
-      // 		},
-      // 		beforeEnter() {
-      // 			window.scrollTo(0, 0);
-      // 			ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      // 			ScrollTrigger.refresh();
-      // 			initLenis();
-      // 		},
-      // 		enter() {
-
-      // 			return gsap.from(".barba-container", {
-      // 				// x: '100%',
-      // 				scale: 1.1,
-      // 				duration: 0.5,
-      // 				autoAlpha: 0,
-      // 				ease: 'power2.inOut'
-      // 			});
-
-      // 		}
-      // 	}
-      // 	]
-      // });
     </script>
   </body>
 </html>

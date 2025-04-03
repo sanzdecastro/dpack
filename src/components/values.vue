@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
 import { Marquee } from "@selemondev/vue3-marquee";
-// import "@selemondev/vue3-marquee/dist/style.css";
+import "@selemondev/vue3-marquee/dist/style.css";
 
 export default {
   name: "values",

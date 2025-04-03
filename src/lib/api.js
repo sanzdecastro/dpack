@@ -37,7 +37,7 @@ export async function getPage(slug, lang) {
 
   export async function getProject(slug, lang) {
     // Obtener la página en el idioma actual
-    const response = await fetch(`${apiUrl}/projects?slug=${slug}&lang=${lang}`);
+    const response = await fetch(`${apiUrl}/projects?slug=${slug}&lang=${lang}&_embed`);
     const projects = await response.json();
 
     if (!projects.length) return null;
