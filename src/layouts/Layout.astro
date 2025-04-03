@@ -91,16 +91,16 @@ const slug = Astro.params.slug;
         const tl = gsap.timeline();
 
         tl.to(wrapper, {
+            filter: "blur(50px)",
+            pointerEvents: "none",
+            duration: 1,
+            ease: "power2.inOut",
+          }).to(wrapper, {
             autoAlpha: 0,
-            pointerEvents: "none",
-            duration: .8,
+            duration: 0.5,
+            backgroundColor: "black",
             ease: "power2.inOut",
-          }).to(loading, {
-            autoAlpha: 1,
-            pointerEvents: "none",
-            duration: 0,
-            ease: "power2.inOut",
-          });
+          })
       }
 
       function enterAnimation() {

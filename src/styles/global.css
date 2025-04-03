@@ -88,6 +88,9 @@
     --text-big: clamp(35px,calc((64/1440) * 100vw), 64px);
     --text-big--line-height: 100%;
 
+    --text-title: clamp(40px,calc((48/1440) * 100vw), 48px);
+    --text-title--line-height: 100%;
+
     --text-lead: calc((24/1440) * 100vw);
     --text-lead--line-height: 100%;
 
@@ -117,6 +120,7 @@
     --spacing-lg: calc((100/1440) * 100vw);
     --spacing-md: calc((40/1440) * 100vw);
     --spacing-sm: calc((20/1440) * 100vw);
+    --spacing-xs: calc((12/1440) * 100vw);
     --spacing-xxs: calc((8/1440) * 100vw);
 
     --spacing-max-w-text: calc((578/1440) * 100vw);

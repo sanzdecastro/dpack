@@ -34,9 +34,9 @@ import Timeline from '../../../components/Timeline.vue';
       </div>
   
       <div class="details w-1/2">
-        <p>{project.acf.project_info.lead}</p>
-        <p set:html={project.acf.project_info.paragraph}></p>
-        <p>Servicios</p>
+        <p class="text-lead font-bold mb-sm">{project.acf.project_info.lead}</p>
+        <p  set:html={project.acf.project_info.paragraph}></p>
+        <p class="mt-sm">Servicios</p>
         <ul>
           {project?._embedded?.["wp:term"]?.[1]?.map((tag: any) => (
           <li>{tag.slug}</li>
