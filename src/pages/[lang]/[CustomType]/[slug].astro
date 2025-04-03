@@ -69,7 +69,7 @@ import Timeline from '../../../components/Timeline.vue';
         } else if (section.acf_fc_layout === 'timeline') {
           return (
           <Timeline
-            client:idle
+            client:only
             projectId={project.id}
             hitos={section.hitos}
           />
