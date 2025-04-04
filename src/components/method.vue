@@ -76,9 +76,9 @@ export default {
     <h2 class="text-p font-bold p-sm">{{ method.title }}</h2>
     <ul ref="section" class="section-method">
       <li 
-        v-for="(step, index) in method.step" :key="index"  class="flex h-[100vh]">
+        v-for="(step, index) in method.step" :key="index"  class="flex flex-col md:flex-row h-[100vh]">
 
-        <div class="step-left w-1/2">
+        <div class="step-left w-full h-1/2 md:h-full md:w-1/2">
           <swiper
             :slides-per-view="1"
             :space-between="0"
@@ -92,7 +92,7 @@ export default {
             </swiper-slide>
           </swiper>
         </div>
-        <div class="bg-white step-right w-1/2 flex flex-col items-start justify-center p-md">
+        <div class="bg-white h-full step-right w-full md:w-1/2 flex flex-col items-start justify-center p-md">
           <h3 class="text-lead font-bold"> {{ step.title_step }} </h3>
           <p class="text-lead pt-sm">{{ step.test_step }}</p>
         </div>

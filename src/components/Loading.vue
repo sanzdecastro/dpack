@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-    <div :theme="theme" ref="loadingContainer" class="loading z-10 w-full p-sm h-[0dvh] bg-primary fill-foreground fixed top-0 left-0 flex text-white justify-center items-center ">
+    <div :theme="theme" ref="loadingContainer" class="loading scale-130 md:scale-100 z-10 w-full p-sm h-[0dvh] bg-primary fill-foreground fixed top-0 left-0 flex text-white justify-center items-center ">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="0 0 1513 4881" xml:space="preserve">
  

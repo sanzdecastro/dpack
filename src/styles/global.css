@@ -82,7 +82,7 @@
 
     --text-display-value: clamp(50px, calc((128/1440) * 100vw), 128px);
 
-    --text-display: clamp(30px, calc((100/1440) * 100vw), 100px);
+    --text-display: clamp(40px, calc((100/1440) * 100vw), 100px);
     --text-display--line-height: 100%;
 
     --text-big: clamp(35px,calc((64/1440) * 100vw), 64px);
@@ -91,27 +91,27 @@
     --text-title: clamp(40px,calc((48/1440) * 100vw), 48px);
     --text-title--line-height: 100%;
 
-    --text-lead: calc((24/1440) * 100vw);
+    --text-lead: clamp(16px, calc((24/1440) * 100vw), 24px);
     --text-lead--line-height: 120%;
 
-    --text-p: calc((20/1440) * 100vw);
+    --text-p: clamp(14px, calc((20/1440) * 100vw), 20px);
     --text-p--line-height: 120%;
 
-    --text-tag: calc((15/1440) * 100vw);
+    --text-tag: clamp(12px, calc((15/1440) * 100vw), 15px);
     --text-tag--line-height: 120%;
 
-    --text-mini: calc((14/1440) * 100vw);
+    --text-mini: clamp(10px, calc((14/1440) * 100vw), 14px);
     --text-mini--line-height: 120%;
 }
 
 @theme {
     --spacing-header: calc((76/960) * 100vh);
 
-    --spacing-button-y: calc((6/1440) * 100vw);
-    --spacing-button-x: calc((10/1440) * 100vw);
+    --spacing-button-y: clamp(6px, calc((6/1440) * 100vw), 10px);
+    --spacing-button-x: clamp(10px, calc((10/1440) * 100vw), 10px);
 
-    --spacing-tag-y: calc((6/1440) * 100vw);
-    --spacing-tag-x: calc((16/1440) * 100vw);
+    --spacing-tag-y: clamp( 3px ,calc((6/1440) * 100vw), 6px);
+    --spacing-tag-x: clamp( 14px, calc((16/1440) * 100vw), 18px);
 
     --spacing-bigtag-y: clamp(0px, calc((20/960) * 100vh), 20px);
     --spacing-bigtag-x: clamp(10px, calc((30/1440) * 100vw), 30px);
@@ -119,13 +119,15 @@
     --spacing-xl: calc((120/1440) * 100vw);
     --spacing-lg: calc((100/1440) * 100vw);
     --spacing-md: calc((40/1440) * 100vw);
-    --spacing-sm: calc((20/1440) * 100vw);
+    --spacing-sm: clamp(20px, calc((20/1440) * 100vw), 20px);
     --spacing-xs: calc((12/1440) * 100vw);
     --spacing-xxs: calc((8/1440) * 100vw);
 
     --spacing-max-w-text: calc((578/1440) * 100vw);
 
     --radius-dpack: calc((6/1440) * 100vw);
+
+    
 }
 
 @font-face {
