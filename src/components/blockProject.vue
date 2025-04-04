@@ -47,11 +47,11 @@ export default {
     </div>
 
   <div v-for="(image, index) in images.block_image" class="image-block pb-sm pr-sm" :class="image.size">
-    <div v-if="image.video === false" class="image-wrapper flex justify-center items-center w-full rounded-2xl overflow-hidden" :class="image.aspect_ratio">
+    <div v-if="image.video === false" class="image-wrapper flex justify-center items-center w-full rounded-dpack overflow-hidden" :class="image.aspect_ratio">
         <img :alt="image.image.alt" :src="image.image.url" class="w-full h-full object-cover" >
     </div>
     
-    <div v-else class="video-wrapper  flex justify-center items-center w-full h-full rounded-2xl overflow-hidden" :class="image.size, image.aspect_ratio">
+    <div v-else class="video-wrapper  flex justify-center items-center w-full h-full rounded-dpack overflow-hidden" :class="image.size, image.aspect_ratio">
         <video autoplay playsinline loop muted class="w-full h-full object-cover" :src="image.video.url"></video>
     </div>
   </div>

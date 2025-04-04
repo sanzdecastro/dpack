@@ -53,8 +53,8 @@ export default {
   </div>
   <div v-if="projectData" class="flex flex-col gap-xxs"> 
     <div class="tags-line flex ">
-      <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-foreground text-primary rounded">{{ projectData?.acf?.project_info?.client || 'No disponible' }}</p>
-      <p class="text-mini leading-0 flex items-center font-sans px-tag-x py-tag-y bg-zinc-100 text-foreground border border-solid rounded-full">{{ projectData?.acf?.project_info?.brand || 'No disponible' }}</p>
+      <p class="text-mini  flex items-end font-sans px-tag-x py-tag-y bg-foreground text-primary rounded-dpack">{{ projectData?.acf?.project_info?.client || 'No disponible' }}</p>
+      <p class="text-mini  flex items-end font-sans px-tag-x py-tag-y bg-zinc-100 text-foreground border border-solid rounded-full">{{ projectData?.acf?.project_info?.brand || 'No disponible' }}</p>
     </div>
     <h2 class="text-p font-bold">{{ projectData.title.rendered }}</h2>
     <div class="categories-tags ">

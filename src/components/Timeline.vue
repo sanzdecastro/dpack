@@ -20,11 +20,10 @@ export default {
   mounted() {
     
    
-      setTimeout(() => {
+     
         this.timeline();            
         ScrollTrigger.refresh();
-        this.timeline();
-      }, 1000);
+      
       
     
   },
@@ -39,6 +38,7 @@ export default {
           console.log(hito.offsetWidth);
         });
 
+      
         console.log(timelineWidth);
         if (!timeline) return;
         // let sliderDataWidth = sliderData.offsetWidth;
@@ -55,7 +55,6 @@ export default {
             start: "bottom bottom",
             end: "+=" + amountToScroll,
             pin: true,
-            pinSpacer: false,
             scrub: 1,
           },
         });
@@ -66,21 +65,21 @@ export default {
 </script>
 
 <template>
-  <div class="timeline flex flex-row w-[max-content]" ref="timeline">
-    <div v-for="(hito, index) in hitos" class="hito h-[50vh] flex flex-row">
-      <div class="flex flex-row justify-between h-full">
-        <div class="flex flex-col justify-between min-w-1/2">
+  <div class="timeline flex flex-row pb-sm h-fit" ref="timeline">
+    <div v-for="(hito, index) in hitos" class="hito w-auto flex flex-row h-fit">
+      <div class="flex flex-row gap-md justify-between min-w-1/2 h-fit">
+        <div class="flex flex-col justify-between w-full min-w-[500px] ml-xl">
           <div></div>
-          <h3 class="font-display text-center text-display-value">{{ hito.title }}</h3>
-          <div>
-            {{ hito.subtitle }}
-            {{ hito.description }}
+          <h3 class="font-display w-full text-display-value">{{ hito.title }}</h3>
+          <div class="flex flex-col pb-sm">
+            <p class="font-bold text-p">{{ hito.subtitle }}</p>
+            <p class="text-p">{{ hito.description }}</p>
           </div>
         </div>
 
-        <div class="flex items-center">
-          <div v-for="(image, index) in hito.images" class="h-full w-[max-content]">
-            <img :src="image.image.url" :alt="image.image.alt" class="h-full w-[max-content]"/>
+        <div class="flex items-center gap-md h-fit">
+          <div v-for="(image, index) in hito.images" class="aspect-square w-[800px]">
+            <img :src="image.image.url" :alt="image.image.alt" class="w-full"/>
           </div>
         </div>
       </div>

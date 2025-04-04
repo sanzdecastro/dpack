@@ -35,7 +35,7 @@ export default {
 <template>
   <div class="intro-block p-sm h-[100vh] pt-header flex flex-col justify-between">
     <div class="intro-top  !border-black !border-b-2 flex flex-col gap-y-sm">
-      <span class="text-mini rounded !border-1 !border-black w-fit leading-0 flex items-center font-sans px-tag-x py-tag-y">{{ title }}</span>
+      <span class="text-mini w-fit flex items-end font-sans px-tag-x py-tag-y bg-white border border-solid text-foreground rounded-dpack">{{ title }}</span>
       <h1 class="!font-display !text-display pb-sm" v-html="intro.title"></h1>
     </div>
     <p class="text-lead font-bold max-w-max-w-text" v-html="intro.paragraph"></p>

@@ -101,7 +101,7 @@
     --text-tag--line-height: 120%;
 
     --text-mini: calc((14/1440) * 100vw);
-    --text-mini--line-height: 100%;
+    --text-mini--line-height: 120%;
 }
 
 @theme {
@@ -110,7 +110,7 @@
     --spacing-button-y: calc((6/1440) * 100vw);
     --spacing-button-x: calc((10/1440) * 100vw);
 
-    --spacing-tag-y: calc((10/1440) * 100vw);
+    --spacing-tag-y: calc((6/1440) * 100vw);
     --spacing-tag-x: calc((16/1440) * 100vw);
 
     --spacing-bigtag-y: clamp(0px, calc((20/960) * 100vh), 20px);
@@ -124,6 +124,8 @@
     --spacing-xxs: calc((8/1440) * 100vw);
 
     --spacing-max-w-text: calc((578/1440) * 100vw);
+
+    --radius-dpack: calc((6/1440) * 100vw);
 }
 
 @font-face {
