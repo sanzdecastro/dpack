@@ -35,7 +35,7 @@ export default {
 </script>
 
 <template>
-  <div class="featured-project w-full flex flex-col gap-xxs mb-md">
+  <div class="featured-project w-full flex flex-col gap-xs md:gap-xxs mb-sm md:mb-md">
     <img
       class="overflow-hidden rounded w-full aspect-[695/502]"
       v-if="projectData?.acf?.project_info?.thumbnail != false"
@@ -54,7 +54,7 @@ export default {
       ></video>
     </div>
     <div v-if="projectData" class="flex flex-col gap-xxs">
-      <div class="tags-line flex">
+      <div class="tags-line flex mb-xxs md:mb-0">
         <p
           class="text-mini flex items-end font-sans px-tag-x py-tag-y bg-foreground text-primary rounded-dpack"
         >

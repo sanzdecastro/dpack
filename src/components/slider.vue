@@ -51,11 +51,10 @@ export default {
     console.log(this.section.slider);
     if (this.section.slider) {
       gsap.from(this.$refs.box, {
-      duration: 1,
-      x: -100,
-    });
+        duration: 1,
+        x: -100,
+      });
     }
-   
   },
   methods: {
     splitTitle(title) {
@@ -72,7 +71,10 @@ export default {
 
 <template>
   <!-- <div ref="box" class="box"></div> -->
-  <div :theme="theme" class="relative w-[100vw] h-[100dvh] aspect-[9/16] md:aspect-[16/9]">
+  <div
+    :theme="theme"
+    class="relative w-[100vw] h-[100dvh] aspect-[9/16] md:aspect-[16/9]"
+  >
     <swiper
       v-if="slides.length"
       :slides-per-view="1"
@@ -86,10 +88,10 @@ export default {
       <swiper-slide v-for="(slide, index) in slides" :key="index">
         <!-- Se muestran los subcampos; personaliza según tu configuración -->
         <div
-          class="title-slide max-w-1/2 absolute bottom-0 left-0 flex p-5 gap-5 flex-wrap"
+          class="title-slide w-full md:max-w-1/2 absolute bottom-0 left-0 flex p-sm gap-xs flex-wrap"
         >
           <div
-            class="px-bigtag-x py-bigtag-y flex items-center text-big font-medium leading-15 bg-primary text-foreground rounded"
+            class="px-bigtag-x py-bigtag-y flex items-center text-big font-medium bg-primary text-foreground rounded"
             v-for="(word, wordIndex) in splitTitle(slide.title)"
             :key="wordIndex"
           >
@@ -111,14 +113,14 @@ export default {
             v-else
             :src="slide.imagen.url"
             :width="slide.imagen.sizes?.['large-width']"
-  :height="slide.imagen.sizes?.['large-height']"
+            :height="slide.imagen.sizes?.['large-height']"
             class="object-cover w-full h-full"
           />
         </div>
       </swiper-slide>
     </swiper>
     <swiper
-      class="thumbs !absolute bottom-0 w-1/8 h-[100vh] right-5 h-fit-content "
+      class="thumbs  !absolute bottom-0 w-1/4 md:w-1/9 h-[100vh] right-5 h-fit-content"
       :modules="[Thumbs]"
       direction="vertical"
       :space-between="10"
@@ -127,7 +129,7 @@ export default {
       :slides-per-view="'auto'"
     >
       <swiper-slide
-        class="aspect-square overflow-hidden cursor-pointer relative !h-fit"
+        class="aspect-square  overflow-hidden cursor-pointer relative !h-fit"
         v-for="(slide, index) in slides"
         :key="index"
       >
@@ -135,8 +137,9 @@ export default {
         <h2 class="absolute">{{ slide.caption }}</h2>
 
         <img
-          :src="slide.thumbnail" :width="slide.imagen.sizes?.['thumbnail-width']"
-  :height="slide.imagen.sizes?.['thumbnail-height']"
+          :src="slide.thumbnail"
+          :width="slide.imagen.sizes?.['thumbnail-width']"
+          :height="slide.imagen.sizes?.['thumbnail-height']"
           class="aspect-square object-cover w-full h-full rounded-2xl"
         />
       </swiper-slide>
@@ -147,5 +150,16 @@ export default {
 </template>
 
 <style>
-
+.swiper-vertical {
+  @apply
+  hidden;
+  @media (min-width: 768px) {
+    @apply
+    block;
+  }
+  .swiper-wrapper {
+    @apply
+    justify-end;
+  }
+}
 </style>

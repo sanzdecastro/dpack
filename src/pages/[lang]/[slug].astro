@@ -116,14 +116,14 @@ if (page?.acf?.flexible) {
         }else if (section.acf_fc_layout === 'projects') {
           return (
           <h2 class="p-sm pt-header font-bold text-p">{section.title}</h2>
-          <ul class="px-sm grid grid-cols-2 gap-x-sm">
+          <ul class="px-sm grid grid-cols-1 md:grid-cols-2 gap-x-sm">
               {section.projects.map((item: any, idx: number) => {
                 // Buscamos el proyecto enriquecido correspondiente a este item
                 const enriched = enrichedProjects.find(
                   (p: any) => p.project.ID === item.project.ID
                 );
                 return (
-                  <li class= {item.full ? 'col-span-2' : 'col-span-1'}>
+                <li class= {item.full ? 'cols-span-1 md:col-span-2' : 'col-span-1'}>
                     <a href={`/${lang}/${defaultCustomType}/${item.project.post_name}`}>
                      
                       <ProjectThumbnail
@@ -138,9 +138,7 @@ if (page?.acf?.flexible) {
                 );
               })}
             </ul>
-            <div class="flex pt-lg justify-end p-sm">
-              <a href={section.link.url} class="font-bold bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary">{section.link.title}</a>
-            </div>
+
           );
         }
         return null;

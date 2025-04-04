@@ -166,7 +166,7 @@ export default {
     class="bg-primary text-foreground flex pt-lg justify-end p-sm"
   >
     <a
-      class="w-full md:w-fit font-bold bg-white text-primary rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
+      class="w-full md:w-fit font-bold bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
       :href="section.link.url"
       >{{ section.link.title }}</a
     >

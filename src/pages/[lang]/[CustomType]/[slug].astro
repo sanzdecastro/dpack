@@ -20,10 +20,10 @@ import Timeline from "../../../components/Timeline.vue";
 <BaseLayout>
   <div class="project" theme={project.acf.project_info.theme}>
     <div
-      class="h-[50dvh] w-full overflow-hidden flex justify-center items-center mb-sm"
+      class="h-[60dvh] md:h-[50dvh] w-full overflow-hidden flex justify-center items-center mb-lg md:mb-sm"
     >
       <img
-        class="w-full object-cover object-center"
+        class="w-full h-full object-cover object-center"
         src={project.acf.project_info.thumbnail}
       />
     </div>
@@ -46,12 +46,12 @@ import Timeline from "../../../components/Timeline.vue";
           <h1 class="text-display font-display">{project.title.rendered}</h1>
         </div>
 
-        <div class="details w-full md:w-1/2 pr-xl">
-          <p class="text-lead font-bold mb-sm">
+        <div class="details w-full md:w-1/2 pr-lg md:pr-xl mb-lg">
+          <div class="text-lead font-bold mb-sm">
             {project.acf.project_info.lead}
-          </p>
-          <p set:html={project.acf.project_info.paragraph} />
-          <p class="font-medium mt-sm">Servicios</p>
+          </div>
+          <p class="description" set:html={project.acf.project_info.paragraph} />
+          <div class="font-medium mt-sm">Servicios</div>
           <ul>
             {
               project?._embedded?.["wp:term"]?.[1]?.map((tag: any) => (
