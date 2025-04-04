@@ -20,9 +20,11 @@ export default {
   mounted() {
     
    
-      
+      setTimeout(() => {
+        this.timeline();            
         ScrollTrigger.refresh();
         this.timeline();
+      }, 1000);
       
     
   },
@@ -64,21 +66,21 @@ export default {
 </script>
 
 <template>
-  <div class="timeline flex flex-row" ref="timeline">
-    <div v-for="(hito, index) in hitos" class="hito flex flex-row">
-      <div class="flex flex-row justify-between min-w-[100vw]">
-        <div class="flex flex-col justify-between">
+  <div class="timeline flex flex-row w-[max-content]" ref="timeline">
+    <div v-for="(hito, index) in hitos" class="hito h-[50vh] flex flex-row">
+      <div class="flex flex-row justify-between h-full">
+        <div class="flex flex-col justify-between min-w-1/2">
           <div></div>
-          {{ hito.title }}
+          <h3 class="font-display text-center text-display-value">{{ hito.title }}</h3>
           <div>
             {{ hito.subtitle }}
             {{ hito.description }}
           </div>
         </div>
 
-        <div class="flex">
-          <div v-for="(image, index) in hito.images">
-            <img :src="image.image.url" :alt="image.image.alt" width="300px" height="300px"/>
+        <div class="flex items-center">
+          <div v-for="(image, index) in hito.images" class="h-full w-[max-content]">
+            <img :src="image.image.url" :alt="image.image.alt" class="h-full w-[max-content]"/>
           </div>
         </div>
       </div>

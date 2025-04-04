@@ -92,13 +92,13 @@
     --text-title--line-height: 100%;
 
     --text-lead: calc((24/1440) * 100vw);
-    --text-lead--line-height: 100%;
+    --text-lead--line-height: 120%;
 
     --text-p: calc((20/1440) * 100vw);
-    --text-p--line-height: 100%;
+    --text-p--line-height: 120%;
 
     --text-tag: calc((15/1440) * 100vw);
-    --text-tag--line-height: 100%;
+    --text-tag--line-height: 120%;
 
     --text-mini: calc((14/1440) * 100vw);
     --text-mini--line-height: 100%;
@@ -160,3 +160,9 @@
 }
 
 
+.details {
+    p {
+      @apply
+      pb-xs;
+    }
+  }

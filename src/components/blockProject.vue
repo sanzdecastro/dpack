@@ -37,13 +37,13 @@ export default {
 <template>
 
 <div class="flex flex-wrap px-sm ">
-    <div class="text-block flex flex-col justify-between pb-sm" :class="text.size, text.aligment">
-        <div class="header-block">
-            <span class="font-bold text-p mb-xxs block">{{ text.pretitle }}</span>
+    <div class="text-block flex flex-col justify-between pb-sm " :class="text.size, text.aligment">
+        <div class="header-block md:max-w-1/3">
+            <span class="font-bold text-mini mb-xxs block">{{ text.pretitle }}</span>
             <h2 class="font-display text-title">{{ text.title }}</h2>
         </div>
       
-        <p class="text-tag mt-lg">{{ text.description }}</p>
+        <p class="text-tag mt-lg md:max-w-1/3">{{ text.description }}</p>
     </div>
 
   <div v-for="(image, index) in images.block_image" class="image-block pb-sm pr-sm" :class="image.size">
