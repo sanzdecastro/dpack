@@ -106,6 +106,7 @@ export default {
             playsinline
             muted
             loop
+            :poster="slide.imagen.url"
             :src="slide.video"
             class="object-cover w-full h-full"
           ></video>
@@ -129,12 +130,12 @@ export default {
       :slides-per-view="'auto'"
     >
       <swiper-slide
-        class="aspect-square  overflow-hidden cursor-pointer relative !h-fit"
+        class="aspect-square cursor-pointer relative !h-fit"
         v-for="(slide, index) in slides"
         :key="index"
       >
         <!-- Se muestran los subcampos; personaliza según tu configuración -->
-        <h2 class="absolute">{{ slide.caption }}</h2>
+        <h2 class="absolute top-xxs left-xxs text-mini w-fit items-end  flex  font-sans px-tag-x py-tag-y bg-white border border-solid text-foreground-fix rounded-full" >{{ slide.caption }}</h2>
 
         <img
           :src="slide.thumbnail"

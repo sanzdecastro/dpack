@@ -6,6 +6,8 @@ const { slug } = Astro.params;
 const lang = getLangFromUrl(Astro.url);
 const project = await getProject(slug, lang);
 
+
+
 // Depuración: revisa la estructura de project en la consola del servidor
 console.log("Project:", project);
 
@@ -15,6 +17,25 @@ import BaseLayout from "../../../layouts/Layout.astro";
 import BlockProject from "../../../components/blockProject.vue";
 import ThenNow from "../../../components/ThenNow.vue";
 import Timeline from "../../../components/Timeline.vue";
+import ProjectThumbnail from '../../../components/ProjectThumbnail.vue';
+
+const defaultCustomType = lang === 'es' ? 'proyectos' : 'projects';
+
+let enrichedProjects = [];
+if (project?.acf?.flexible_project) {
+  const projectsSection = project.acf.flexible_project.find(
+    (section: any) => section.acf_fc_layout === 'projects'
+  );
+  if (projectsSection && projectsSection.projects) {
+    enrichedProjects = await Promise.all(
+      projectsSection.projects.map(async (item:any) => {
+        // Usamos el slug del proyecto del item para obtener datos adicionales
+        const additionalData = await getProject(item.project.post_name, lang);
+        return { ...item, additionalData };
+      })
+    );
+  }
+}
 ---
 
 <BaseLayout>
@@ -90,7 +111,35 @@ import Timeline from "../../../components/Timeline.vue";
                 hitos={section.hitos}
               />
             );
-          }
+          } else if (section.acf_fc_layout === 'projects') {
+          return (
+          <h2 class="p-sm pt-header font-bold text-p text-black">{section.title}</h2>
+          <ul class="px-sm grid grid-cols-1 md:grid-cols-2 gap-x-sm pb-lg">
+              {section.projects.map((item: any, idx: number) => {
+                // Buscamos el proyecto enriquecido correspondiente a este item
+                const enriched = enrichedProjects.find(
+                  (p: any) => p.project.ID === item.project.ID
+                );
+                return (
+                <li class= {item.full ? 'cols-span-1 md:col-span-2' : 'col-span-1'}>
+                    <a href={`/${lang}/${defaultCustomType}/${item.project.post_name}`}>
+                     
+                      <ProjectThumbnail
+                        client:only
+                        pageId={item.project.ID}
+                        thumbnail={item.image}
+                        full={item.full}
+                        projectData={enriched ? enriched.additionalData : null}
+                      />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+
+          );
+        }
+          return null;
         })
       }
     </div>

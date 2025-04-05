@@ -132,12 +132,12 @@ export default {
       <p class="text-lead font-bold">{{ subtitle }}</p>
     </div>
     <ul
-      class="w-full md:w-1/2 p-sm flex flex-row gap-xl md:gap-sm md:flex-col overflow-x-scroll md:overflow-auto"
+      class="w-full md:w-1/2 p-sm flex flex-row gap-xl md:gap-sm md:flex-col overflow-x-scroll md:overflow-auto md:pt-xl"
     >
       <li
         v-for="(data, index) in datas"
         :key="index"
-        class="flex flex-col md:items-end md:border-b-foreground md:border-b-2"
+        class="flex flex-col md:items-end md:border-b-foreground md:border-b-2 pb-sm"
       >
         <p class="font-display text-display-extra data-number">
           {{ data.number }}
@@ -166,7 +166,7 @@ export default {
     class="bg-primary text-foreground flex pt-lg justify-end p-sm"
   >
     <a
-      class="w-full md:w-fit font-bold bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
+      class="w-full md:w-fit font-bold text-p bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
       :href="section.link.url"
       >{{ section.link.title }}</a
     >

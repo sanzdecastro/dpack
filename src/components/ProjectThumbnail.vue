@@ -56,19 +56,20 @@ export default {
     <div v-if="projectData" class="flex flex-col gap-xxs">
       <div class="tags-line flex mb-xxs md:mb-0">
         <p
-          class="text-mini flex items-end font-sans px-tag-x py-tag-y bg-foreground text-primary rounded-dpack"
+          class="text-mini flex items-end font-sans px-tag-x py-tag-y bg-black text-white rounded-dpack"
         >
           {{ projectData?.acf?.project_info?.client || "No disponible" }}
         </p>
         <p
-          class="text-mini flex items-end font-sans px-tag-x py-tag-y bg-zinc-100 text-foreground border border-solid rounded-full"
+          class="text-mini flex items-end font-sans px-tag-x py-tag-y bg-zinc-100 text-black border border-solid rounded-full"
         >
           {{ projectData?.acf?.project_info?.brand || "No disponible" }}
         </p>
       </div>
-      <h2 class="text-p font-bold">{{ projectData.title.rendered }}</h2>
-      <div class="categories-tags">
-        <p class="text-mini">Packaging</p>
+      <h2 class="text-p font-bold text-black">{{ projectData.title.rendered }}</h2>
+
+      <div class="categories-tags flex gap-xs" >
+        <p v-for="(tag, index) in projectData?._embedded?.['wp:term']?.[1]" class="text-mini text-black">{{ tag.name }}</p>
       </div>
     </div>
   </div>

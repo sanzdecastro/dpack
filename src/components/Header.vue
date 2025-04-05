@@ -70,19 +70,18 @@ export default {
     setMenu() {
       gsap.set("header nav ul", {
         autoAlpha: 0,
-        xPercent: -20,
       });
     },
     openMenu() {
       gsap.to("header nav ul", {
         autoAlpha: 1,
-        xPercent: 0,
+        stagger: 0.1,
       });
     },
     closeMenu() {
       gsap.to("header nav ul", {
         autoAlpha: 0,
-        xPercent: -20,
+        stagger: 0.1,
       });
     },
     openItemsMenu() {
@@ -156,7 +155,7 @@ export default {
       <ul class="flex flex-col md:flex-row gap-2 items-end">
         <li v-for="(page, index) in currentPages" :key="index" class="flex">
           <a
-            class="font-bold py-button-y px-button-x backdrop-blur-sm overflow-hidden rounded-dpack"
+            class="font-medium text-p py-button-y px-button-x backdrop-blur-sm overflow-hidden rounded-dpack"
             :href="`/${currentLang}/${page.slug}`"
           >
             <span>{{ page.title.rendered }}</span>
@@ -166,7 +165,7 @@ export default {
       <ul class="flex flex-col md:flex-row gap-2">
         <li v-for="(label, key) in languages" :key="key" class="flex">
           <a
-            class="font-bold py-button-y px-button-x bg-white-10 backdrop-blur-sm rounded-dpack"
+            class="font-medium text-p py-button-y px-button-x bg-white-10 backdrop-blur-sm rounded-dpack"
             :href="`/${key}`"
             @click="changeLanguage(key)"
             >{{ label }}</a
@@ -176,8 +175,12 @@ export default {
       <div id="menuButton" class="">
         <li class="flex">
           <a
-            class="open py-button-y px-button-x cursor-pointer font-bold rounded-dpack"
+            class="open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
             >Menú</a
+          >
+          <a
+            class="open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
+            >Close</a
           >
         </li>
       </div>
