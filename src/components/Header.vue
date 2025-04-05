@@ -73,19 +73,45 @@ export default {
       });
     },
     openMenu() {
+      const openButton = menuButton.querySelector(".open");
+      const closeButton = menuButton.querySelector(".close-button");
+
       gsap.to("header nav ul", {
         autoAlpha: 1,
         stagger: 0.1,
       });
+
+      gsap.to(openButton, {
+        xPercent: -100,
+        duration: 0.6,
+      });
+      gsap.to(closeButton, {
+        xPercent: -100,
+        duration: 0.6,
+      });
     },
     closeMenu() {
+      const openButton = menuButton.querySelector(".open");
+      const closeButton = menuButton.querySelector(".close-button");
+
       gsap.to("header nav ul", {
         autoAlpha: 0,
         stagger: 0.1,
       });
+
+      gsap.to(openButton, {
+        xPercent: 0,
+        duration: 0.2,
+      });
+      gsap.to(closeButton, {
+        xPercent: 0,
+        duration: 0.2,
+      });
     },
     openItemsMenu() {
       const menuButton = document.querySelector("#menuButton");
+
+
       menuButton.addEventListener("click", () => {
         // Alterna la clase 'active' en el botón
         menuButton.classList.toggle("active");
@@ -172,14 +198,14 @@ export default {
           >
         </li>
       </ul>
-      <div id="menuButton" class="">
-        <li class="flex">
+      <div id="menuButton" class="overflow-hidden">
+        <li class="flex relative">
           <a
-            class="open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
+            class="open py-button-y px-button-x cursor-pointer font-medium text-p align-baseline rounded-dpack"
             >Menú</a
           >
           <a
-            class="open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
+            class="close-button absolute top-0 left-full bg-black text-white open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
             >Close</a
           >
         </li>
@@ -190,7 +216,7 @@ export default {
 
 <style scoped>
 li {
-  a {
+  a:not(.close-button) {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.5);

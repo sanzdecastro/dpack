@@ -147,11 +147,11 @@ export default {
     </ul>
   </div>
   <div v-else class="section" theme="Default">
-    <ul class="p-sm flex slider-data" ref="sliderDatas">
+    <ul class="flex slider-data" ref="sliderDatas">
       <li
         v-for="(data, index) in datas"
         :key="index"
-        class="bg-primary mt-xl px-lg py-xl flex flex-col justify-center items-end border-b-black border-b-2"
+        class="bg-primary mt-xl px-lg py-xl flex flex-col justify-center items-start border-b-black border-b-2"
       >
         <p class="font-display text-display-value leading-30 text-foreground">
           {{ data.number }}
