@@ -30,11 +30,15 @@ export default {
   },
   mounted() {
     // Esperamos a que el DOM se renderice y se apliquen los estilos
-
-    ScrollTrigger.refresh();
-    this.pinElement();
-    this.animationNumbers();
-    this.sliderData();
+    this.$nextTick(() => {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+        this.pinElement();
+        this.animationNumbers();
+        this.sliderData();         
+      }, 300);
+    });
+    
   },
   beforeUnmount() {
     // Se destruyen todos los triggers para evitar conflictos al navegar
@@ -67,7 +71,7 @@ export default {
       return themes[Math.floor(Math.random() * themes.length)];
     },
     sliderData() {
-      if (window.innerWidth > 768) {
+    
         if (this.$refs.sliderDatas) {
           const sliderData = document.querySelectorAll(".slider-data li");
           let sliderDataWidth = 0;
@@ -97,7 +101,7 @@ export default {
             },
           });
         }
-      }
+      
     },
     pinElement() {
       // Utilizamos refs para delimitar el contenedor y el elemento sticky

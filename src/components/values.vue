@@ -47,32 +47,34 @@ export default {
   },
   methods: {
     pinElements() {
-      const footer = document.querySelector("footer");
-      gsap.utils.toArray(".section-values li").forEach((container, i) => {
-        let prev = container.previousElementSibling;
+      if (this.$refs.sectionValues) {
+        const footer = document.querySelector("footer");
+        gsap.utils.toArray(".section-values li").forEach((container, i) => {
+          let prev = container.previousElementSibling;
 
-        ScrollTrigger.create({
-          trigger: container,
-          start: "bottom bottom",
-          endTrigger: footer,
-          end: "top bottom",
-          pin: true,
-          pinSpacing: false,
-        });
-
-        if (prev) {
-          gsap.to(prev, {
-            opacity: 0,
-            scrollTrigger: {
-              trigger: container,
-
-              start: "top 90%",
-              scrub: 1,
-              toggleActions: "play none reverse reset",
-            },
+          ScrollTrigger.create({
+            trigger: container,
+            start: "bottom bottom",
+            endTrigger: footer,
+            end: "top bottom",
+            pin: true,
+            pinSpacing: false,
           });
-        }
-      });
+
+          if (prev) {
+            gsap.to(prev, {
+              opacity: 0,
+              scrollTrigger: {
+                trigger: container,
+
+                start: "top 90%",
+                scrub: 1,
+                toggleActions: "play none reverse reset",
+              },
+            });
+          }
+        });
+      }
     },
     textAnimTransformadoras() {
       const transformadorasTL = gsap.timeline({ repeat: -1, delay: 2 });
@@ -194,7 +196,7 @@ export default {
 
 <template>
   <div class="values-block">
-    <ul ref="section" class="section-values">
+    <ul ref="sectionValues" class="section-values">
       <li
         v-for="(value, index) in values.values"
         :key="index"
@@ -219,6 +221,3 @@ export default {
     </ul>
   </div>
 </template>
-
-
-
