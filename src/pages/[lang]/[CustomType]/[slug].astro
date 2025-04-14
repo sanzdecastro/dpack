@@ -39,7 +39,7 @@ if (project?.acf?.flexible_project) {
 ---
 
 <BaseLayout>
-  <div class="project" theme={project.acf.project_info.theme}>
+  <div class="project " theme={project.acf.project_info.theme}>
     <div
       class="h-[60dvh] md:h-[50dvh] w-full overflow-hidden flex justify-center items-center mb-lg md:mb-sm"
     >
@@ -49,25 +49,28 @@ if (project?.acf?.flexible_project) {
       />
     </div>
 
-    <div class="tags-line flex px-sm mt-md">
+    <div class="tags-line flex px-sm mt-md md:max-w-[1540px] mx-auto">
       <p
-        class="text-mini items-end flex font-sans px-tag-x py-tag-y bg-primary text-foreground-fix rounded-dpack"
+        class="text-mini items-end flex font-sans px-tag-x py-tag-y bg-primary text-foreground rounded-dpack"
       >
         {project.acf.project_info.client}
       </p>
-      <p
-        class="text-mini items-end flex font-sans px-tag-x py-tag-y bg-zinc-100 text-primary border border-solid rounded-full"
-      >
-        {project.acf.project_info.brand}
-      </p>
+       
+      {project.acf.project_info.brand && (
+        <p class="text-mini items-end flex font-sans px-tag-x py-tag-y bg-zinc-100 text-primary border border-solid rounded-full">
+          {project.acf.project_info.brand}
+        </p>
+      )}
+      
+     
     </div>
-    <div class="flex flex-col text-primary">
+    <div class="flex flex-col text-primary md:max-w-[1540px] mx-auto">
       <div class="flex flex-col md:flex-row m-sm gap-sm py-md mb-lg border-y-2 border-primary">
         <div class="project-header w-full md:w-1/2 pr-xl">
           <h1 class="text-display font-display">{project.title.rendered}</h1>
         </div>
 
-        <div class="details w-full md:w-1/2 pr-lg md:pr-xl mb-lg">
+        <div class="details w-full md:w-1/2 pr-lg md:pr-xl ">
           <div class="text-lead font-bold mb-sm">
             {project.acf.project_info.lead}
           </div>
@@ -89,6 +92,7 @@ if (project?.acf?.flexible_project) {
             return (
               <BlockProject
                 client:only
+                section = {section}
                 projectId={project.id}
                 text={section.text}
                 images={section.images}
@@ -144,4 +148,6 @@ if (project?.acf?.flexible_project) {
       }
     </div>
   </div>
+
 </BaseLayout>
+

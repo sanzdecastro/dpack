@@ -133,7 +133,7 @@ export default {
       class="sticky-block w-full md:w-1/2 flex-1 !h-fit md:!h-[100dvh] flex flex-col justify-between p-sm"
     >
       <h2 class="!font-display !text-display pt-header pb-sm">{{ title }}</h2>
-      <p class="text-lead font-bold">{{ subtitle }}</p>
+      <p class="text-lead font-bold max-w-[500px]">{{ subtitle }}</p>
     </div>
     <ul
       class="w-full md:w-1/2 p-sm flex flex-row gap-xl md:gap-sm md:flex-col overflow-x-scroll md:overflow-auto md:pt-xl"
@@ -170,7 +170,7 @@ export default {
     class="bg-primary text-foreground flex pt-lg justify-end p-sm"
   >
     <a
-      class="w-full md:w-fit font-bold text-p bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
+      class="w-full md:w-fit font-bold  bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
       :href="section.link.url"
       >{{ section.link.title }}</a
     >

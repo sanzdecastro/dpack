@@ -43,7 +43,7 @@ export default {
 
 <template>
 
-<div class="then-now">
+<div class="then-now px-sm">
     <div class="image-compare">
       <img :src="imageThen.url" alt="" />
       <img :src="imageNow.url" alt="" />

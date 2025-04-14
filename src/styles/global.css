@@ -27,6 +27,7 @@
     --color-foreground: var(--color-zinc);
     --color-foreground-fix: var(--color-zinc-200);
     --color-foreground-fix-2: var(--color-zinc);
+    --color-foreground-50: var(--color-zinc-800);
 
 }
     [theme = "Default"] {
@@ -34,30 +35,42 @@
         --color-foreground: var(--color-zinc);
         --color-foreground-fix: var(--color-zinc-200);
         --color-foreground-fix-2: var(--color-zinc);
+        --color-foreground-50: var(--color-zinc-200);
     }
     [theme = "Yellow"] {
         --color-primary: var(--color-yellow);
         --color-foreground: var(--color-red);
         --color-foreground-fix: var(--color-red);
         --color-foreground-fix-2: var(--color-red);
+        --color-foreground-50: var(--color-yellow-50);
     }
     [theme = "Red"] {
         --color-primary: var(--color-red);
         --color-foreground: var(--color-yellow);
         --color-foreground-fix: var(--color-red);
         --color-foreground-fix-2: var(--color-red);
+        --color-foreground-50: var(--color-red-50);
     }
     [theme = "Blue"] {
         --color-primary: var(--color-blue);
         --color-foreground: var(--color-green);
-        --color-foreground-fix: var(--color-green);
+        --color-foreground-fix: var(--color-blue);
         --color-foreground-fix-2: var(--color-green);
+        --color-foreground-50: var(--color-blue-50);
     }
     [theme = "Coral"] {
         --color-primary: var(--color-blue);
         --color-foreground: var(--color-coral);
         --color-foreground-fix: var(--color-coral);
         --color-foreground-fix-2: var(--color-coral);
+        --color-foreground-50: var(--color-coral-50);
+    }
+
+    .project[theme = "Default"] {
+        --color-primary: var(--color-zinc);
+        --color-foreground: var(--color-zinc-200);
+        --color-foreground-fix: var(--color-zinc-200);
+        --color-foreground-fix-2: var(--color-zinc);
     }
 
 
@@ -174,3 +187,5 @@
       pb-xs;
     }
   }
+
+

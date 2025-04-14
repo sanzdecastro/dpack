@@ -130,7 +130,7 @@ export default {
 
 <template>
   <header
-    class="flex w-full flex-row justify-between p-sm fixed top-0 left-0 z-10"
+    class="flex w-full flex-row justify-between p-sm fixed top-0 left-0 z-10 "
   >
     <div class="logo">
       <a :href="`/${currentLang}`">
@@ -188,7 +188,7 @@ export default {
           </a>
         </li>
       </ul>
-      <ul class="flex flex-col md:flex-row gap-2">
+      <!-- <ul class="flex flex-col md:flex-row gap-2">
         <li v-for="(label, key) in languages" :key="key" class="flex">
           <a
             class="font-medium text-p py-button-y px-button-x bg-white-10 backdrop-blur-sm rounded-dpack"
@@ -197,7 +197,7 @@ export default {
             >{{ label }}</a
           >
         </li>
-      </ul>
+      </ul> -->
       <div id="menuButton" class="overflow-hidden">
         <li class="flex relative">
           <a

@@ -135,7 +135,7 @@ export default {
         :key="index"
       >
         <!-- Se muestran los subcampos; personaliza según tu configuración -->
-        <h2 class="absolute top-xxs left-xxs text-mini w-fit items-end  flex  font-sans px-tag-x py-tag-y bg-white border border-solid text-foreground-fix rounded-full" >{{ slide.caption }}</h2>
+        <h2 class="absolute top-xxs left-xxs text-mini w-fit items-end  flex  font-sans px-tag-x  py-tag-y bg-white border border-solid text-foreground-fix rounded-full" >{{ slide.caption }}</h2>
 
         <img
           :src="slide.thumbnail"

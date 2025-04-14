@@ -79,7 +79,7 @@ export default {
       <div class="flex flex-row gap-md justify-between min-w-1/2 h-full">
         <div class="flex flex-col justify-between w-full min-w-[800px] ml-xl">
           <div></div>
-          <h3 class="font-display w-full text-display-value">{{ hito.title }}</h3>
+          <h3 class="font-display w-full text-display-value text-foreground-50">{{ hito.title }}</h3>
           <div class="flex flex-col pb-sm">
             <p class="font-bold text-p">{{ hito.subtitle }}</p>
             <p class="text-p">{{ hito.description }}</p>

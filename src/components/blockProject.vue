@@ -19,30 +19,40 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      
+    };
   },
-  mounted() {},
+  mounted() {
+
+  },
   methods: {},
 };
 </script>
 
 <template>
-  <div class="flex flex-col md:flex-wrap md:flex-row px-sm">
-    <div
+  <div class="flex flex-col  md:flex-wrap md:flex-row " :class="[ section.no_padding_bottom ? 'mb-0' : 'mb-lg', section.no_paddings ? 'px-0' : 'px-sm', section.inverted ? 'md:flex-row-reverse' : '' ]">
+
+    <div v-if="section.block_text_check"
       class="text-block flex flex-col justify-between pb-sm"
-      :class="(text.size, text.aligment)"
+      :class="[ text.size, text.aligment, text.aligment === 'items-center' ? 'md:max-w-2/4 md:mx-auto' : 'md:pr-lg' ]"
     >
-      <div class="header-block md:max-w-1/3 mb-xl md:mb-xxs">
+
+      <div class="header-block  " :class="[text.text_size, text.aligment === 'items-center' ? 'mb-sm' : 'mb-xl']">
         <span class="font-bold text-mini mb-md md:mb-xxs block">{{
           text.pretitle
         }}</span>
-        <h2 class="font-display text-title">{{ text.title }}</h2>
+        <h2 class="font-display text-title" v-html=" text.title"></h2>
       </div>
 
-      <p class="text-p mt-lg md:max-w-1/3">{{ text.description }}</p>
+      <div>
+        <h3 class="text-lead font-bold mb-sm" :class="text.text_size" v-html="text.title_2"></h3>
+        <p class="text-p" :class="text.text_size" v-html="text.description"></p>
+      </div>
+      
     </div>
 
-    <div
+    <div v-if="section.block_image_check"
       v-for="(image, index) in images.block_image"
       class="image-block pb-sm md:pr-sm w-full"
       :class="image.size"
@@ -63,7 +73,7 @@ export default {
       <div
         v-else
         class="video-wrapper flex justify-center items-center w-full h-full rounded-dpack overflow-hidden"
-        :class="(image.size, image.aspect_ratio)"
+        :class="[ image.aspect_ratio ]"
       >
         <video
           autoplay

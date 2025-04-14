@@ -34,7 +34,7 @@ export default {
 <template>
 
 <footer>
-<div :theme="theme" class="bg-primary flex flex-col justify-between min-h-[100dvh]  text-foreground p-sm pt-header">
+<div :theme="theme" class="bg-primary flex flex-col justify-between min-h-[100dvh]  text-foreground p-sm">
   <div class="menu-footer flex flex-col md:flex-row">
     <div class="w-1/4">
       <p class="mb-md text-sans uppercase text-foreground text-mini">Explore</p>

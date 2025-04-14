@@ -23,9 +23,9 @@ const slug = Astro.params.slug;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>D/PACK</title>
     <ViewTransitions />
   </head>
 
@@ -34,14 +34,14 @@ const slug = Astro.params.slug;
     <!-- <div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}> -->
     <Loading client:load class="w-[100vw] h-[0vh] fixed overflow-hidden !p-0" />
     <div
-      class="text-white animate-pulse -z-10 message-load w-[100vw] h-[100vh] fixed overflow-hidden top-0 left-0 flex justify-center items-center bg-black"
+      class="text-white p-sm -z-10 message-load w-[100vw] h-[100vh] fixed overflow-hidden top-0 left-0 flex justify-center items-start bg-foreground-50"
     >
       <svg
-        width="118px"
+        width="100%"
         viewBox="0 0 118 30"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class="fill-white"
+        class="fill-black animate-pulse "
       >
         <g clip-path="url(#clip0_582_11569)">
           <path
@@ -50,6 +50,7 @@ const slug = Astro.params.slug;
           <path
             d="M23.3649 29.0181L33.8124 1.0083H28.8066L18.3591 29.0181H23.3649Z"
           ></path>
+          <div>
           <path
             d="M45.125 1.02808H35.9454V29.0181H42.5494V22.8986H45.1382C50.9035 22.8986 54.3838 19.0631 54.3838 12.6334V11.4583C54.3243 5.02193 50.8044 1.02808 45.125 1.02808ZM47.8656 12.5541C47.8656 15.3531 46.6637 16.713 44.1872 16.713H42.5362V7.29282H44.1872C45.0986 7.29282 47.8656 7.29282 47.8656 11.4979V12.5541Z"
           ></path>
@@ -62,6 +63,7 @@ const slug = Astro.params.slug;
           <path
             d="M117.531 1.02148H110.082L102.903 12.7456L102.897 1.02148H96.4248V29.0181H102.897V20.9709L104.891 17.8155L110.478 29.0181H118L110.055 13.2077L117.531 1.02148Z"
           ></path>
+          </div>
         </g>
         <defs>
           <clipPath id="clip0_582_11569">
@@ -77,6 +79,7 @@ const slug = Astro.params.slug;
 
     <div class="wrapper">
       <Header
+      class="-translate-y-full"
         transition:persist
         slug={slug}
         lang={lang}
@@ -90,7 +93,7 @@ const slug = Astro.params.slug;
         <slot />
 
         <!-- </div> -->
-        <Footer />
+        <Footer class=" z-12 relative"/>
       </div>
     </div>
 
@@ -147,6 +150,7 @@ const slug = Astro.params.slug;
       function enterAnimation() {
         const loading = document.querySelector(".loading");
         const wrapper = document.querySelector(".main");
+        const header = document.querySelector("header");
 
         gsap.set(wrapper, {
           pointerEvents: "none",
@@ -157,6 +161,10 @@ const slug = Astro.params.slug;
           height: "0vh",
           top: "auto",
           bottom: "0px",
+        });
+
+        gsap.set(header, {
+         yPercent: 0,
         });
 
         const tl = gsap.timeline();
@@ -184,6 +192,9 @@ const slug = Astro.params.slug;
           .to(wrapper, {
             pointerEvents: "all",
             duration: 0,
+            ease: "power2.inOut",
+          }).to(header, {
+            yPercent: 100,
             ease: "power2.inOut",
           });
       }
