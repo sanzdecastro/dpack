@@ -72,7 +72,7 @@ export default {
 
       <div
         v-else
-        class="video-wrapper flex justify-center items-center w-full h-full rounded-dpack overflow-hidden"
+        class="video-wrapper flex justify-center items-center w-full h-full rounded-dpack overflow-hidden bg-gray-400"
         :class="[ image.aspect_ratio ]"
       >
         <video
