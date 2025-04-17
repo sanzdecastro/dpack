@@ -16,6 +16,8 @@ import { getLangFromUrl, languages } from "../lib/i18n.js";
 const lang = getLangFromUrl(Astro.url);
 const pages = await getPages(lang);
 const slug = Astro.params.slug;
+
+
 ---
 
 <!doctype html>
@@ -32,16 +34,16 @@ const slug = Astro.params.slug;
   <body class="bg-black">
     <!-- <LenisScroll/> -->
     <!-- <div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}> -->
-    <Loading client:load class="w-[100vw] h-[0vh] fixed overflow-hidden !p-0" />
+    <Loading client:load  class="w-[100vw] h-[100vh] fixed overflow-hidden !p-0" />
     <div
-      class="text-white p-sm -z-10 message-load w-[100vw] h-[100vh] fixed overflow-hidden top-0 left-0 flex justify-center items-start bg-foreground-50"
+      class="text-white z-20 message-load w-[100vw] h-[100vh] fixed overflow-hidden bottom-0 left-0 flex justify-center items-start bg-black"
     >
       <svg
         width="100%"
         viewBox="0 0 118 30"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class="fill-black animate-pulse "
+        class="fill-white p-sm"
       >
         <g clip-path="url(#clip0_582_11569)">
           <path
@@ -130,38 +132,45 @@ const slug = Astro.params.slug;
       function outAnimation() {
         const loading = document.querySelector(".loading");
         const wrapper = document.querySelector(".main");
-        const body = document.querySelector("body");
+        const header = document.querySelector("header");
+        const messageLoad = document.querySelector(".message-load")
 
         const tl = gsap.timeline();
 
         gsap.set(loading, {
           height: "0vh",
-          top: "0px",
-          bottom: "auto",
+          bottom: "0px",
+          top: "auto",
         });
 
-        tl.to(loading, {
+        tl.to(header, {
+          yPercent: -100,
+          duration: 1,
+          ease: "power4.inOut",
+        }).to(loading, {
           height: "100vh",
           duration: 1,
+          ease: "power2.in",
+        },'<').to(
+          messageLoad,
+            {
+              height: "100vh",
+              ease: "power2.inOut",
+            }).to(wrapper, {
+          autoAlpha: 0,
           ease: "power2.inOut",
-        });
+        })
       }
 
       function enterAnimation() {
         const loading = document.querySelector(".loading");
         const wrapper = document.querySelector(".main");
         const header = document.querySelector("header");
+        const messageLoad = document.querySelector(".message-load")
 
-        gsap.set(wrapper, {
-          pointerEvents: "none",
-          autoAlpha: 0,
-        });
+        
 
-        gsap.set(loading, {
-          height: "0vh",
-          top: "auto",
-          bottom: "0px",
-        });
+        
 
         gsap.set(header, {
          yPercent: 0,
@@ -169,37 +178,33 @@ const slug = Astro.params.slug;
 
         const tl = gsap.timeline();
 
-        tl.to(loading, {
-          height: "100vh",
-          duration: 0,
-          ease: "power2.inOut",
-        })
-          .to(loading, {
-            height: "0vh",
-            duration: 1,
-            ease: "power2.inOut",
-          })
+        tl
+        
           .to(
             wrapper,
             {
-              pointerEvents: "all",
               autoAlpha: 1,
-              duration: 0.4,
+              pointerEvents: "all",
+            })
+            .to(loading, {
+          height: "0vh",
+          duration: 1,
+          ease: "power2.inOut",
+        })
+            .to(
+          messageLoad,
+            {
+              duration: 1,
+              height: "0vh",
               ease: "power2.inOut",
-            },
-            "<"
-          )
-          .to(wrapper, {
-            pointerEvents: "all",
-            duration: 0,
-            ease: "power2.inOut",
-          }).to(header, {
+            })
+          .to(header, {
             yPercent: 100,
             ease: "power2.inOut",
-          });
+          },'<');
       }
 
-      document.addEventListener("astro:before-preparation", (event) => {
+      document.addEventListener("astro:before-preparation", () => {
         console.log("before prep");
         outAnimation();
       });
