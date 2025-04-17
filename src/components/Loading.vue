@@ -75,27 +75,28 @@ export default {
 <template>
   <div
     ref="loadingContainer"
-    class="loading scale-130 md:scale-100 z-25 w-full p-sm h-[0dvh] bg-white fixed top-0 left-0 flex flex-col"
+    class="loading scale-130 md:scale-100 z-25 w-full p-sm h-[0dvh] bg-white fixed top-0 left-0 flex flex-col items-start"
   > 
   
     <div
-      class="red w-full absolute top-0 left-0 h-[100vh] bg-red rounded-md"
+      class="red w-full absolute top-0 left-0 h-[100dvh] bg-red rounded-md"
     ></div>
     <div
-      class="yellow w-full absolute top-0 left-0 h-[100vh] bg-yellow rounded-md"
+      class="yellow w-full absolute top-0 left-0 h-[100dvh] bg-yellow rounded-md"
     ></div>
     <div
-      class="blue w-full absolute top-0 left-0 h-[100vh] bg-blue rounded-md"
+      class="blue w-full absolute top-0 left-0 h-[100dvh] bg-blue rounded-md"
     ></div>
     <div
-      class="coral w-full absolute top-0 left-0 h-[100vh] bg-coral rounded-md"
+      class="coral w-full absolute top-0 left-0 h-[100dvh] bg-coral rounded-md"
     ></div>
-    <svg
+    <div class="w-[100vw] h-[100dvh] fixed -z-10 top-0 left-0 p-sm flex items-start">
+      <svg
         width="100%"
         viewBox="0 0 118 30"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class="fill-black p-sm"
+        class="fill-black"
       >
         <g clip-path="url(#clip0_582_11569)">
           <path
@@ -104,20 +105,9 @@ export default {
           <path
             d="M23.3649 29.0181L33.8124 1.0083H28.8066L18.3591 29.0181H23.3649Z"
           ></path>
-          <div>
-          <path
-            d="M45.125 1.02808H35.9454V29.0181H42.5494V22.8986H45.1382C50.9035 22.8986 54.3838 19.0631 54.3838 12.6334V11.4583C54.3243 5.02193 50.8044 1.02808 45.125 1.02808ZM47.8656 12.5541C47.8656 15.3531 46.6637 16.713 44.1872 16.713H42.5362V7.29282H44.1872C45.0986 7.29282 47.8656 7.29282 47.8656 11.4979V12.5541Z"
-          ></path>
-          <path
-            d="M60.5652 1.02808L53.3008 29.0181H59.8585L60.902 24.4367L60.9548 24.1924H67.3342L67.3871 24.4367L68.4305 29.0181H74.9949L67.8163 1.02808H60.5652ZM65.67 18.6208H62.1699L62.2426 18.2446L63.8672 10.1776L64.1841 8.5933L64.4813 10.1842L65.9804 18.2512L66.0465 18.6208H65.67Z"
-          ></path>
-          <path
-            d="M84.6036 0.506592C79.1289 0.506592 75.3052 4.42783 75.3052 10.0456V19.9477C75.3052 25.5854 79.1289 29.5264 84.6036 29.5264C90.0783 29.5264 93.8492 25.5655 93.8492 19.9477V18.6275H87.2452V20.2184C87.2452 22.9646 85.7263 23.2881 84.6036 23.2881C83.4809 23.2881 81.896 22.9646 81.896 20.2184V9.79478C81.896 7.81436 82.8073 6.76473 84.6036 6.76473C86.3999 6.76473 87.2452 7.75495 87.2452 9.79478V11.0226H93.8492V10.039C93.8558 4.42123 90.0519 0.506592 84.6036 0.506592Z"
-          ></path>
-          <path
-            d="M117.531 1.02148H110.082L102.903 12.7456L102.897 1.02148H96.4248V29.0181H102.897V20.9709L104.891 17.8155L110.478 29.0181H118L110.055 13.2077L117.531 1.02148Z"
-          ></path>
-          </div>
+          
+          
+          
         </g>
         <defs>
           <clipPath id="clip0_582_11569">
@@ -129,5 +119,7 @@ export default {
           </clipPath>
         </defs>
       </svg>
+    </div>
+    
   </div>
 </template>

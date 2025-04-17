@@ -34,9 +34,9 @@ const slug = Astro.params.slug;
   <body class="bg-black">
     <!-- <LenisScroll/> -->
     <!-- <div id="barba-wrapper" data-barba="wrapper" transition:animate={fade({ duration: '1s' })}> -->
-    <Loading client:load  class="w-[100vw] h-[100vh] fixed overflow-hidden !p-0" />
+    <Loading client:load  class="w-[100vw] h-[100dvh] fixed overflow-hidden !p-0" />
     <div
-      class="text-white z-20 message-load w-[100vw] h-[100vh] fixed overflow-hidden bottom-0 left-0 flex justify-center items-start bg-black"
+      class="text-white z-20 message-load w-[100vw] h-[100dvh] fixed overflow-hidden bottom-0 left-0 flex justify-center items-start bg-black"
     >
       <svg
         width="100%"
@@ -148,13 +148,13 @@ const slug = Astro.params.slug;
           duration: 1,
           ease: "power4.inOut",
         }).to(loading, {
-          height: "100vh",
+          height: "100dvh",
           duration: 1,
           ease: "power2.in",
         },'<').to(
           messageLoad,
             {
-              height: "100vh",
+              height: "100dvh",
               ease: "power2.inOut",
             }).to(wrapper, {
           autoAlpha: 0,
