@@ -8,8 +8,8 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue()],
-  output: 'server',
-  adapter: vercel(),
+  output: 'static',
+  // adapter: vercel(),
   prefetch: {
     prefetchAll: true
   },
