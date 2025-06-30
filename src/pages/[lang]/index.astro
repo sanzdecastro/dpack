@@ -48,18 +48,18 @@ if (page?.acf?.flexible) {
       {
         flexibleSections.map((section: any) => {
           if (section.acf_fc_layout === "slider") {
-            return <Slider pageId={page.id} section={section} cient:load />;
+            return <Slider pageId={page.id} section={section} client:only />;
           } else if (section.acf_fc_layout === "data") {
-            return <Data pageId={page.id} section={section} cient:load />;
+            return <Data pageId={page.id} section={section} client:only />;
           } else if (section.acf_fc_layout === "services") {
-            return <Services pageId={page.id} section={section} cient:load />;
+            return <Services pageId={page.id} section={section} client:only />;
           } else if (section.acf_fc_layout === "intro") {
             return (
               <Intro
                 pageTitle={page.title.rendered}
                 pageId={page.id}
                 section={section}
-                cient:load
+                client:only
               />
             );
           } else if (section.acf_fc_layout === "intro_proyectos") {
@@ -68,18 +68,18 @@ if (page?.acf?.flexible) {
                 pageTitle={page.title.rendered}
                 pageId={page.id}
                 section={section}
-                cient:load
+                client:only
               />
             );
           } else if (section.acf_fc_layout === "values") {
-            return <Values pageId={page.id} section={section} cient:load />;
+            return <Values pageId={page.id} section={section} client:only />;
           } else if (section.acf_fc_layout === "method") {
             return (
               <Method
                 lang={lang}
                 pageId={page.id}
                 section={section}
-                cient:load
+                client:only
               />
             );
           } else if (section.acf_fc_layout === "projects") {
@@ -108,7 +108,7 @@ if (page?.acf?.flexible) {
                         href={`/${lang}/${defaultCustomType}/${item.project.post_name}`}
                       >
                         <ProjectThumbnail
-                          cient:load
+                          client:only
                           pageId={item.project.ID}
                           thumbnail={item.image}
                           full={item.full}
