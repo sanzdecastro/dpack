@@ -66,7 +66,7 @@ export default {
           {{ projectData?.acf?.project_info?.brand || "No disponible" }}
         </p>
       </div>
-      <h2 class="text-p font-bold text-black">{{ projectData.title.rendered }}</h2>
+      <h2 class="text-p font-bold text-black">{{ projectData?.title?.rendered }}</h2>
 
       <div class="categories-tags flex gap-xs" >
         <p v-for="(tag, index) in projectData?._embedded?.['wp:term']?.[1]" class="text-mini text-black">{{ tag.name }}</p>

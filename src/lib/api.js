@@ -50,6 +50,14 @@ export async function getPage(slug, lang) {
 
  }
 
+export async function getMultipleProjects(slugs, lang) {
+  const requests = slugs.map((slug) =>
+    fetch(`${apiUrl}/${lang}/project/${slug}`).then((res) => res.json())
+  );
+  return await Promise.all(requests);
+}
+
+
   // Nueva función para cargar traducciones después de la transición
 // export async function getTranslations(page) {
 //   if (!page || !page.translations) return {};
