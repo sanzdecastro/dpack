@@ -9,7 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [vue()],
   output: 'server',
-  // adapter: vercel(),
+  adapter: vercel(),
   prefetch: {
     prefetchAll: true
   },
