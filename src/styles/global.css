@@ -90,7 +90,7 @@
 @theme {
     --text-display-ultra: clamp( 200px, calc((800/1440) * 100vw), 800px);
 
-    --text-display-extra: clamp( 100px, calc((300/1440) * 100vw), 300px);
+    --text-display-extra: clamp( 100px, calc((220/1440) * 100vw), 220px);
     --text-display-extra--line-height: 105%;
 
     --text-display-value: clamp(50px, calc((128/1440) * 100vw), 128px);

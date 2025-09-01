@@ -37,7 +37,7 @@ export default {
         this.textAnimConsolidadas();
         this.textAnimIntuitivas();
         this.textAnimAccesibles();
-      }, 100);
+      }, 500);
     });
   },
   beforeUnmount() {
@@ -58,8 +58,11 @@ export default {
             endTrigger: footer,
             end: "top bottom",
             pin: true,
+            markers: true,
             pinSpacing: false,
           });
+
+      
 
           if (prev) {
             gsap.to(prev, {

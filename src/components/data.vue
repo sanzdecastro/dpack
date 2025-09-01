@@ -95,8 +95,9 @@ export default {
             scrollTrigger: {
               trigger: ".slider-data",
               start: "bottom bottom",
-              end: "+=" + amountToScroll,
+              end: amountToScroll,
               pin: true,
+              // markers: true,
               scrub: 1,
             },
           });
