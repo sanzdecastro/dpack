@@ -36,6 +36,9 @@
         --color-foreground-fix: var(--color-zinc-200);
         --color-foreground-fix-2: var(--color-zinc);
         --color-foreground-50: var(--color-zinc-200);
+        path {
+            fill: var(--color-zinc);
+        }
     }
     [theme = "Yellow"] {
         --color-primary: var(--color-yellow);
@@ -43,6 +46,9 @@
         --color-foreground-fix: var(--color-red);
         --color-foreground-fix-2: var(--color-red);
         --color-foreground-50: var(--color-yellow-50);
+        path {
+            fill: var(--color-red);
+        }
     }
     [theme = "Red"] {
         --color-primary: var(--color-red);
@@ -50,6 +56,9 @@
         --color-foreground-fix: var(--color-red);
         --color-foreground-fix-2: var(--color-red);
         --color-foreground-50: var(--color-red-50);
+        path {
+            fill: var(--color-yellow);
+        }
     }
     [theme = "Blue"] {
         --color-primary: var(--color-blue);
@@ -57,6 +66,10 @@
         --color-foreground-fix: var(--color-blue);
         --color-foreground-fix-2: var(--color-green);
         --color-foreground-50: var(--color-blue-50);
+        path {
+            fill: var(--color-green);
+        }
+        
     }
     [theme = "Coral"] {
         --color-primary: var(--color-blue);
@@ -64,6 +77,9 @@
         --color-foreground-fix: var(--color-coral);
         --color-foreground-fix-2: var(--color-coral);
         --color-foreground-50: var(--color-coral-50);
+         path {
+            fill: var(--color-coral);
+        }
     }
 
     .project[theme = "Default"] {
