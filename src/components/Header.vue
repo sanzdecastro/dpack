@@ -181,7 +181,7 @@ export default {
       <ul class="flex flex-col md:flex-row gap-2 items-end">
         <li v-for="(page, index) in currentPages" :key="index" class="flex">
           <a
-            class="font-medium text-p py-button-y px-button-x backdrop-blur-sm overflow-hidden rounded-dpack"
+            class="font-medium flex items-center leading-none text-p py-button-y px-button-x backdrop-blur-sm overflow-hidden rounded-dpack"
             :href="`/${currentLang}/${page.slug}`"
           >
             <span>{{ page.title.rendered }}</span>
@@ -201,12 +201,12 @@ export default {
       <div id="menuButton" class="overflow-hidden">
         <li class="flex relative">
           <a
-            class="open py-button-y px-button-x cursor-pointer font-medium text-p align-baseline rounded-dpack"
-            >Menú</a
+            class="open flex items-center leading-none py-button-y px-button-x cursor-pointer font-medium text-p align-baseline rounded-dpack"
+            ><span>Menú</span></a
           >
           <a
-            class="close-button absolute top-0 left-full bg-black text-white open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
-            >Close</a
+            class="close-button flex items-center leading-none absolute top-0 left-full bg-black text-white open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
+            ><span>Close</span></a
           >
         </li>
       </div>

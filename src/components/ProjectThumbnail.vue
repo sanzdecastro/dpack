@@ -36,11 +36,12 @@ export default {
 
 <template>
   <div class="featured-project w-full flex flex-col gap-xs md:gap-xxs mb-sm md:mb-md" >
-    <img
-      class="overflow-hidden rounded w-full aspect-[695/502]"
-      v-if="projectData?.acf?.project_info?.thumbnail != false"
-      :src="projectData?.acf?.project_info?.thumbnail"
-    />
+    <div
+      class="overflow-hidden rounded-dpack w-full aspect-[695/502] flex justify-center items-center"
+      v-if="projectData?.acf?.project_info?.thumbnail != false">
+      
+      <img :src="projectData?.acf?.project_info?.thumbnail" class="max-w-[initial] w-auto h-full"></img>
+    </div>
     <div
       v-else
       class="w-full video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-[1393/1005]'"
@@ -56,14 +57,14 @@ export default {
     <div v-if="projectData" class="flex flex-col gap-xxs">
       <div class="tags-line flex mb-xxs md:mb-0">
         <p
-          class="text-mini flex items-end font-sans px-tag-x py-tag-y bg-black text-white rounded-dpack"
+          class="text-mini text-trim flex items-center font-sans px-tag-x py-tag-y bg-black text-white rounded-dpack"
         >
-          {{ projectData?.acf?.project_info?.client || "No disponible" }}
+          <span class="leading-none">{{ projectData?.acf?.project_info?.client || "No disponible" }}</span>
         </p>
-        <p
+        <p v-if="projectData?.acf?.project_info?.brand"
           class="text-mini flex items-end font-sans px-tag-x py-tag-y bg-zinc-100 text-black border border-solid rounded-full"
         >
-          {{ projectData?.acf?.project_info?.brand || "No disponible" }}
+           <span class="leading-none">{{ projectData?.acf?.project_info?.brand || "No disponible" }}</span>
         </p>
       </div>
       <h2 class="text-p font-bold text-black">{{ projectData.title.rendered }}</h2>

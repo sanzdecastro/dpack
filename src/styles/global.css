@@ -139,7 +139,7 @@
 @theme {
     --spacing-header: clamp(100px ,calc((76/1440) * 100vh), 76px);
 
-    --spacing-button-y: clamp(6px, calc((6/1440) * 100vw), 10px);
+    --spacing-button-y: clamp(8px, calc((8/1440) * 100vw), 10px);
     --spacing-button-x: clamp(10px, calc((10/1440) * 100vw), 10px);
 
     --spacing-tag-y: clamp( 3px ,calc((6/1440) * 100vw), 6px);
@@ -205,3 +205,9 @@
   }
 
 
+.text-trim {
+    span {
+        text-box: trim-both text text;
+    }
+    
+}

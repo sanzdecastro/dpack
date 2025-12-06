@@ -173,7 +173,7 @@ export default {
     <a
       class="w-full md:w-fit font-bold  bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
       :href="section.link.url"
-      >{{ section.link.title }}</a
+      ><span class="leading-none">{{ section.link.title }}</span></a
     >
   </div>
 </template>

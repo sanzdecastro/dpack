@@ -30,11 +30,14 @@ export default {
   <div
     class="intro-block p-sm h-[100vh] pt-header flex flex-col justify-between"
   >
-    <div class="intro-top !border-black !border-b-2 flex flex-col gap-y-sm">
-      <span
-        class="text-mini w-fit flex items-end font-sans px-tag-x py-tag-y bg-white border border-solid text-foreground rounded-dpack"
-        >{{ title }}</span
-      >
+    <div class="intro-top  !border-black !border-b-2 flex flex-col gap-y-sm">
+      <div class="w-fit px-tag-x py-tag-y bg-white flex items-end border border-solid text-foreground rounded-dpack">
+        <span
+            class="text-mini text-trim leading-none font-sans  "
+            >{{ title }}</span
+          >
+      </div>
+      
       <h1 class="!font-display !text-display pb-sm" v-html="intro.title"></h1>
     </div>
     <p
