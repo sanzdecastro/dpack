@@ -35,7 +35,7 @@
         --color-primary: var(--color-zinc-200);
         --color-foreground: var(--color-zinc);
         --color-foreground-fix: var(--color-zinc-200);
-        --color-foreground-fix-2: var(--color-zinc);
+        --color-foreground-fix-2: var(--color-white);
         --color-foreground-50: var(--color-zinc-200);
         path {
             fill: var(--color-zinc);
@@ -55,7 +55,7 @@
         --color-primary: var(--color-red);
         --color-foreground: var(--color-yellow);
         --color-foreground-fix: var(--color-red);
-        --color-foreground-fix-2: var(--color-red);
+        --color-foreground-fix-2: var(--color-white);
         --color-foreground-50: var(--color-red-50);
         path {
             fill: var(--color-yellow);
@@ -65,7 +65,7 @@
         --color-primary: var(--color-blue);
         --color-foreground: var(--color-green);
         --color-foreground-fix: var(--color-blue);
-        --color-foreground-fix-2: var(--color-green);
+        --color-foreground-fix-2: var(--color-white);
         --color-foreground-50: var(--color-blue-50);
         path {
             fill: var(--color-green);
@@ -73,10 +73,10 @@
         
     }
     [theme = "Coral"] {
-        --color-primary: var(--color-blue);
+        --color-primary: var(--color-coral);
         --color-foreground: var(--color-coral);
         --color-foreground-fix: var(--color-coral);
-        --color-foreground-fix-2: var(--color-coral);
+        --color-foreground-fix-2: var(--color-white);
         --color-foreground-50: var(--color-coral-50);
          path {
             fill: var(--color-coral);
