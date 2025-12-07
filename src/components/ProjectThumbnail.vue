@@ -40,7 +40,8 @@ export default {
       class="overflow-hidden rounded-dpack w-full aspect-[695/502] flex justify-center items-center"
       v-if="projectData?.acf?.project_info?.thumbnail != false">
       
-      <img :src="projectData?.acf?.project_info?.thumbnail" class="max-w-[initial] w-auto h-full"></img>
+      <img v-if="!projectData?.acf?.project_info?.thumbnail_video_externo_check" :src="projectData?.acf?.project_info?.thumbnail" class="max-w-[initial] w-auto h-full"></img>
+      <video v-else class="w-auto h-full object-cover" :poster="projectData?.acf?.project_info?.thumbnail" autoplay playsinline muted loop :src="projectData?.acf?.project_info?.thumbnail_video_externo?.url"></video>
     </div>
     <div
       v-else

@@ -43,10 +43,23 @@ if (project?.acf?.flexible_project) {
     <div
       class="h-[60dvh] md:h-[50dvh] w-full overflow-hidden flex justify-center items-center mb-lg md:mb-sm"
     >
-      <img
-        class="w-full h-full object-cover object-center"
-        src={project?.acf?.project_info?.thumbnail_interno}
-      />
+      {project?.acf?.project_info?.thumbnail_interno && !project?.acf?.project_info?.thumbnail_video_check && (
+        <img
+          class="w-full h-full object-cover object-center"
+          src={project?.acf?.project_info?.thumbnail_interno}
+        />
+      )}
+      {project?.acf?.project_info?.thumbnail_video_check && (
+        <video
+          autoplay
+          loop
+          muted
+          playsinline
+          poster={project?.acf?.project_info?.thumbnail_interno}
+          class="w-full h-full object-cover object-center"
+          src={project?.acf?.project_info?.thumbnail_video.url}
+        />
+      )}
     </div>
 
     <div class="tags-line flex px-sm mt-md ">
