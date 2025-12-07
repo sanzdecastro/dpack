@@ -50,7 +50,7 @@ const slug = Astro.params.slug;
       />
       <LoadingOld client:load ></LoadingOld>
       <!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
-      <div class="main bg-white">
+      <div class="main bg-default-10">
         <slot />
 
         <!-- </div> -->
@@ -185,7 +185,10 @@ const slug = Astro.params.slug;
         console.log("page loaded");
         window.scrollTo(0, 0);
 
-      
+      setTimeout(() => {
+          initOpacityMovement();
+          initThumbnailAnim();
+        }, 600)
         
        
       });

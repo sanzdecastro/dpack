@@ -45,7 +45,7 @@ if (project?.acf?.flexible_project) {
     >
       <img
         class="w-full h-full object-cover object-center"
-        src={project?.acf?.project_info?.thumbnail}
+        src={project?.acf?.project_info?.thumbnail_interno}
       />
     </div>
 
@@ -71,9 +71,11 @@ if (project?.acf?.flexible_project) {
         </div>
 
         <div class="details w-full md:w-1/2 pr-lg md:pr-xl md:max-w-[700px]">
-          <div class="text-lead font-bold mb-sm">
-            {project?.acf?.project_info?.lead}
-          </div>
+          {project?.acf?.project_info?.lead && (
+            <div class="text-lead font-bold mb-sm">
+              {project.acf.project_info.lead}
+            </div>
+          )}
           <p class="description" set:html={project?.acf?.project_info?.paragraph} />
           <div class="font-medium mt-sm">Servicios</div>
           <ul>

@@ -31,11 +31,11 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col  md:flex-wrap md:flex-row " :class="[ section.no_padding_bottom ? 'mb-0' : 'mb-lg', section.no_paddings ? 'px-0' : 'px-sm', section.inverted ? 'md:flex-row-reverse' : '' ]">
+  <div class="flex flex-col  md:flex-wrap md:flex-row " :class="[ section.no_padding_bottom ? 'mb-0' : 'mb-lg', section.no_paddings ? 'px-0 no-paddings' : 'pl-sm', section.inverted ? 'md:flex-row-reverse' : '' ]">
 
     <div v-if="section.block_text_check"
       class="text-block flex flex-col justify-between pb-sm "
-      :class="[ text.size, text.aligment, text.aligment === 'items-center' ? 'md:max-w-2/4 md:mx-auto' : 'md:pr-lg' ]"
+      :class="[ text.size, text.aligment, text.aligment === 'items-center' ? 'md:max-w-3/4 md:mx-auto' : 'md:pr-lg' ]"
     >
 
       <div class="header-block  " :class="[text.text_size, text.aligment === 'items-center' ? 'mb-sm' : 'mb-xl']">
@@ -46,8 +46,8 @@ export default {
       </div>
 
       <div>
-        <h3 class="text-lead font-bold mb-sm md:max-w-[600px]" v-html="text.title_2"></h3>
-        <p class="text-p md:max-w-[600px]" v-html="text.description"></p>
+        <h3 class="text-lead font-bold mb-sm md:max-w-[1000px]" v-html="text.title_2"></h3>
+        <p class="text-p md:max-w-[1000px]" v-html="text.description"></p>
       </div>
       
     </div>

@@ -21,6 +21,7 @@
     --color-zinc-200: #F1EBDA;
     --color-zinc-100: #FBF9F4;
     --color-zinc-50: #FAFAFA;
+    --color-default-10: #FBF9F4;
 
 
     --color-primary: var(--color-zinc-200);
@@ -87,6 +88,31 @@
         --color-foreground: var(--color-zinc-200);
         --color-foreground-fix: var(--color-zinc-200);
         --color-foreground-fix-2: var(--color-zinc);
+    }
+
+    .project[theme = "Blue"] {
+        @apply
+        bg-blue-10;
+    }
+
+    .project[theme = "Red"] {
+        @apply
+        bg-red-10;
+    }
+
+    .project[theme = "Yellow"] {
+        @apply
+        bg-yellow-10;
+    }
+
+    .project[theme = "Coral"] {
+        @apply
+        bg-coral-10;
+    }
+
+    .project[theme = "Default"] {
+        @apply
+        bg-default-10;
     }
 
 
@@ -216,4 +242,16 @@
 .animation-opacity {
     @apply
     opacity-0;
+}
+
+.no-paddings {
+    .image-block {
+        @apply
+        px-0;
+
+        & > div {
+            @apply
+            rounded-none;
+        }
+    }
 }

@@ -43,8 +43,8 @@ export default {
 
 <template>
 
-<div class="then-now px-sm">
-    <div class="image-compare">
+<div class="then-now px-sm mb-lg">
+    <div class="image-compare rounded-dpack">
       <img :src="imageThen.url" alt="" />
       <img :src="imageNow.url" alt="" />
     </div>
