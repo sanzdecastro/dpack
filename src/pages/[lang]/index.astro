@@ -98,7 +98,7 @@ if (page?.acf?.flexible) {
                   return (
                     <li
                       class={
-                        item.full ? "cols-span-1 md:col-span-2" : "col-span-1"
+                        item.full ? "cols-span-1 md:col-span-2 animation-opacity" : "col-span-1 animation-thumbnail"
                       }
                       category={
                         enriched.additionalData.categories?.join(" ") || "Todos"
@@ -122,8 +122,10 @@ if (page?.acf?.flexible) {
                 })}
               </ul>
               <>
-                <div class="flex pt-lg justify-end p-sm">
-                  <a href={section.link.url} class="cursor-pointer font-bold bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary">{section.link.title}</a>
+                <div class="flex pb-lg justify-end p-sm">
+                  <a href={section.link.url} class="cursor-pointer font-bold bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary">
+                    <span class="text-trim leading-none">{section.link.title}</span>
+                  </a>
                 </div>
               
               </>
@@ -134,4 +136,5 @@ if (page?.acf?.flexible) {
       }
     </div>
   </div>
+
 </BaseLayout>

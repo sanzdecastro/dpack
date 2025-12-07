@@ -54,7 +54,7 @@ export default {
         :src="projectData?.acf?.project_info?.video"
       ></video>
     </div>
-    <div v-if="projectData" class="flex flex-col gap-xxs">
+    <div v-if="projectData" class="flex flex-col gap-1">
       <div class="tags-line flex mb-xxs md:mb-0">
         <p
           class="text-mini text-trim flex items-center font-sans px-tag-x py-tag-y bg-black text-white rounded-dpack"

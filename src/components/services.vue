@@ -90,13 +90,15 @@ export default {
   <div class="services-block ">
     <h2 class="text-p font-bold p-sm">{{ section.title }}</h2>
     <ul>
-      <li v-for="(service, index) in services" :key="index" class="p-sm service border-t-2 border-black ">
+      <li v-for="(service, index) in services" :key="index" class="animation-opacity p-sm service border-t-2 border-black ">
         <h3 class="font-display text-big cursor-pointer">{{ service.service_title }}</h3>
         <p class="text-lead h-0 overflow-hidden flex items-end">{{ service.service_description }}</p>
       </li>
     </ul>
-    <div class="flex pt-lg justify-end p-sm">
-      <a class="font-bold bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary" :href=section.link.url>{{ section.link.title }}</a>
+    <div class="flex pb-lg justify-end p-sm">
+      <a class="font-bold bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary" :href=section.link.url>
+        <span class="leading-none">{{ section.link.title }}</span>
+      </a>
     </div>
     
   </div>

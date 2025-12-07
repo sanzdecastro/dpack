@@ -206,8 +206,14 @@
 
 
 .text-trim {
+    
     span {
         text-box: trim-both text text;
     }
     
+}
+
+.animation-opacity {
+    @apply
+    opacity-0;
 }

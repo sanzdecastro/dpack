@@ -5,6 +5,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Thumbs } from "swiper/modules";
 import "swiper/css";
+import { initOpacityMovement } from "../scripts/opacityMovement";
 
 // Registra el plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -35,7 +36,8 @@ export default {
         ScrollTrigger.refresh();
         this.pinElement();
         this.animationNumbers();
-        this.sliderData();         
+        this.sliderData();     
+        initOpacityMovement();    
       }, 300);
     });
     
@@ -59,7 +61,7 @@ export default {
               },
               textContent: 0,
               duration: 4,
-              snap: { textContent: 1 },
+              snap: { textContent: 10 },
             });
           });
         }
@@ -127,7 +129,7 @@ export default {
     v-if="!sliderMode"
     ref="section"
     :theme="theme"
-    class="section-data flex flex-col md:flex-row relative bg-primary text-foreground min-h-[100dvh] md:h-auto justify-between"
+    class="section-data  flex flex-col md:flex-row relative bg-primary text-foreground min-h-[100dvh] md:h-auto justify-between"
   >
     <div
       ref="stickyBlock"
@@ -137,17 +139,17 @@ export default {
       <p class="text-lead font-bold max-w-[500px]">{{ subtitle }}</p>
     </div>
     <ul
-      class="w-full md:w-1/2 p-sm flex flex-row gap-xl md:gap-sm md:flex-col overflow-x-scroll md:overflow-auto md:pt-xl"
+      class="w-full md:w-1/2 p-sm flex flex-row gap-xl md:gap-sm md:flex-col overflow-x-scroll md:overflow-hidden md:pt-xl"
     >
       <li
         v-for="(data, index) in datas"
         :key="index"
-        class="flex flex-col md:items-end md:border-b-foreground md:border-b-2 pb-sm"
+        class="animation-opacity flex flex-col md:items-end md:border-b-foreground md:border-b-2 pb-sm"
       >
-        <p class="font-display text-display-extra data-number">
-          {{ data.number }}
+        <p class="font-display text-trim text-display-extra data-number leading-none">
+          <span class="leading-none">{{ data.number }}</span>
         </p>
-        <p class="text-lead font-bold">{{ data.description }}</p>
+        <p class="text-lead font-bold leading-none">{{ data.description }}</p>
       </li>
     </ul>
   </div>
@@ -168,10 +170,10 @@ export default {
   <div
     v-if="!sliderMode"
     :theme="theme"
-    class="bg-primary text-foreground flex pt-lg justify-end p-sm"
+    class="bg-primary text-foreground flex pb-lg justify-end p-sm"
   >
     <a
-      class="w-full md:w-fit font-bold  bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
+      class="w-full animation-opacity  md:w-fit font-bold  bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
       :href="section.link.url"
       ><span class="leading-none">{{ section.link.title }}</span></a
     >

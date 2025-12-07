@@ -63,6 +63,9 @@ const slug = Astro.params.slug;
       import ScrollTrigger from "gsap/ScrollTrigger";
       import barba from "@barba/core";
       import Lenis from "lenis";
+      import { initOpacityMovement } from "../scripts/opacityMovement";
+      import { initThumbnailAnim } from "../scripts/thumbnailAnimation";
+      
 
       gsap.registerPlugin(ScrollTrigger);
 
@@ -156,6 +159,7 @@ const slug = Astro.params.slug;
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         ScrollTrigger.refresh();
         initLenis();
+
       });
 
       document.addEventListener("astro:after-swap", () => {
@@ -169,11 +173,20 @@ const slug = Astro.params.slug;
             ease: "power2.inOut",
             duration: .8,
           });
+
+        setTimeout(() => {
+          initOpacityMovement();
+          initThumbnailAnim();
+        }, 600)
+          
       });
 
       document.addEventListener("astro:page-load", () => {
         console.log("page loaded");
+        window.scrollTo(0, 0);
 
+      
+        
        
       });
     </script>
