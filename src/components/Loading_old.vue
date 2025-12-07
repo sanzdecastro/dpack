@@ -11,7 +11,22 @@ export default {
     };
   },
   mounted() {
-    this.animateLoading();
+    const firstLoad = !sessionStorage.getItem("loader_shown");
+
+    if (firstLoad) {
+      // Marcamos que ya se ha mostrado
+      sessionStorage.setItem("loader_shown", "true");
+      // Lanzamos la animación completa
+      this.animateLoading();
+    } else {
+      // No es la primera vez → ocultar loader al instante
+      const loading = document.querySelector(".loading");
+
+      gsap.set(loading, {
+        autoAlpha: 0,
+        pointerEvents: "none",
+      })
+    }
   },
 
   methods: {
@@ -19,7 +34,19 @@ export default {
       const themes = ['Blue', 'Red', 'Coral', "Default"];
       return themes[Math.floor(Math.random() * themes.length)];
     },
-    animateLoading() {
+    animateEnd() {
+        const loading = document.querySelector(".loading");
+
+        gsap.to(loading, {
+          autoAlpha: 0,
+          pointerEvents: "none",
+        })
+    },
+    animateLoading(iter = 0) {
+
+      const maxRepeats = 3;
+
+
         const loading = document.querySelector(".loading");
         const d = loading.querySelector("#d");
         const p = loading.querySelector("#p");
@@ -27,31 +54,53 @@ export default {
         const c = loading.querySelector("#c");
         const k = loading.querySelector("#k");
 
-        const tl = gsap.timeline({repeat: -1});
+        const tl = gsap.timeline({
+          onComplete: () => {
+            const next = iter + 1;
 
-        tl.to(d , {
-            duration: 2,
-            yPercent: 23.6,
-        }).to(p , {
-            duration: 2,
-            yPercent: -23.6,
-        },'<').to(a , {
-            duration: 2,
-            yPercent: 23.6,
-        },'<').to(c , {
-            duration: 2,
-            yPercent: -23.6,
-        },'<').to(k , {
-            duration: 2,
-            yPercent: 23.6,
-        },'<')
-    }
-  },
-};
+            if (next < maxRepeats) {
+              // 🔁 vuelve a lanzar la misma animación
+              // ahora partiendo de la posición final anterior
+              this.animateLoading(next);
+            } else {
+              // ✅ cuando llega a 5 ciclos, ejecuta el final
+              this.animateEnd();
+            }
+          },
+        });
+
+        tl.to(d, {
+          duration: .8,
+          yPercent: "+=4.2", 
+          ease: "expo.out",
+        },"<")
+          .to(p, {
+            duration: .8,
+            yPercent: "-=4.2", 
+            ease: "expo.out",
+          },"<")
+          .to(a, {
+            duration: .8,
+            yPercent: "+=4.2",
+            ease: "expo.out",
+          },"<")
+          .to(c, {
+            duration: .8,
+            yPercent: "-=4.2",
+            ease: "expo.out",
+          },"<")
+          .to(k, {
+            duration: .8,
+            yPercent: "+=4.2",
+            ease: "expo.out",
+          },"<");
+          }
+        },
+      };
 </script>
 
 <template>
-    <div :theme="theme" ref="loadingContainer" class="loading scale-130 md:scale-100 z-15 w-full p-sm h-[0dvh] bg-primary fill-foreground fixed top-0 left-0 flex text-white justify-center items-center ">
+    <div :theme="theme" ref="loadingContainer" class="loading overflow-hidden p-0 scale-130 md:scale-100 z-15 w-full h-[100dvh] bg-primary fill-foreground fixed top-0 left-0 flex text-white justify-center items-center ">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="0 0 1513 4881" xml:space="preserve">
  

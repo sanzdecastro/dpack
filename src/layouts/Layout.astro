@@ -11,6 +11,7 @@ import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Loading from "../components/Loading.vue";
+import LoadingOld from "../components/Loading_old.vue";
 
 import { getLangFromUrl, languages } from "../lib/i18n.js";
 const lang = getLangFromUrl(Astro.url);
@@ -38,6 +39,7 @@ const slug = Astro.params.slug;
    
 
     <div class="wrapper">
+      
       <Header
         transition:persist
         slug={slug}
@@ -46,7 +48,7 @@ const slug = Astro.params.slug;
         pages={pages}
         client:load
       />
-
+      <LoadingOld client:load ></LoadingOld>
       <!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
       <div class="main bg-white">
         <slot />
@@ -121,11 +123,6 @@ const slug = Astro.params.slug;
       //   const loading = document.querySelector(".loading");
       //   const wrapper = document.querySelector(".main");
       //   const header = document.querySelector("header");
-      //   const messageLoad = document.querySelector(".message-load")
-
-        
-
-        
 
       //   gsap.set(header, {
       //    yPercent: 0,
@@ -133,30 +130,12 @@ const slug = Astro.params.slug;
 
       //   const tl = gsap.timeline();
 
-      //   tl
-        
-      //     .to(
-      //       wrapper,
-      //       {
-      //         pointerEvents: "all",
-      //       })
-      //       .to(loading, {
+      //   tl.to(loading, {
       //     height: "0vh",
-      //     duration: 1,
-      //     ease: "power2.inOut",
       //   })
-      //       .to(
-      //     messageLoad,
-      //       {
-      //         duration: 1,
-      //         height: "0vh",
-      //         ease: "power2.inOut",
-      //       })
-      //     .to(header, {
-      //       yPercent: 100,
-      //       ease: "power2.inOut",
-      //     },'<');
+           
       // }
+      
 
       document.addEventListener("astro:before-preparation", () => {
         console.log("before prep");
@@ -165,6 +144,7 @@ const slug = Astro.params.slug;
          gsap.to(header, {
             yPercent: -100,
             ease: "power2.inOut",
+            duration: .8,
           });
       });
 
@@ -187,13 +167,14 @@ const slug = Astro.params.slug;
         gsap.to(header, {
             yPercent: 0,
             ease: "power2.inOut",
+            duration: .8,
           });
       });
 
       document.addEventListener("astro:page-load", () => {
         console.log("page loaded");
 
-        // enterAnimation();
+       
       });
     </script>
   </body>

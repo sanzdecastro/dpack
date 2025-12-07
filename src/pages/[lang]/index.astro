@@ -121,6 +121,12 @@ if (page?.acf?.flexible) {
                   );
                 })}
               </ul>
+              <>
+                <div class="flex pt-lg justify-end p-sm">
+                  <a href={section.link.url} class="cursor-pointer font-bold bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary">{section.link.title}</a>
+                </div>
+              
+              </>
             );
           }
           return null;

@@ -90,8 +90,8 @@ export default {
         <div
           class="title-slide w-full md:max-w-1/2 absolute bottom-0 left-0 flex p-sm gap-xs flex-wrap"
         >
-          <div
-            class="px-bigtag-x py-bigtag-y flex items-center text-big font-medium bg-primary text-foreground rounded"
+          <div v-if="slide.title"
+            class="px-bigtag-x py-bigtag-y leading-none text-trim flex items-center text-big font-medium bg-primary text-foreground rounded"
             v-for="(word, wordIndex) in splitTitle(slide.title)"
             :key="wordIndex"
           >
@@ -135,9 +135,9 @@ export default {
         :key="index"
       >
         <!-- Se muestran los subcampos; personaliza según tu configuración -->
-        <h2 class="absolute top-xxs left-xxs text-mini w-fit items-end  flex  font-sans px-tag-x  py-tag-y bg-white border border-solid text-foreground-fix rounded-full" >{{ slide.caption }}</h2>
+        <h2 v-if="slide.caption" class="text-trim leading-none absolute top-xxs left-xxs text-mini w-fit items-end  flex  font-sans px-tag-x  py-tag-y bg-white border border-solid text-foreground-fix rounded-full" >{{ slide.caption }}</h2>
 
-        <img
+        <img v-if="slide.thumbnail"
           :src="slide.thumbnail"
           :width="slide.imagen.sizes?.['thumbnail-width']"
           :height="slide.imagen.sizes?.['thumbnail-height']"
