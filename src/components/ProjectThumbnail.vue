@@ -37,10 +37,11 @@ export default {
 <template>
   <div class="featured-project w-full flex flex-col gap-xs md:gap-xxs mb-sm md:mb-md" >
     <div
-      class="overflow-hidden rounded-dpack w-full aspect-[695/502] flex justify-center items-center"
+      class="overflow-hidden rounded-dpack w-full  flex justify-center items-center"
+      :class="full ? 'aspect-video' : 'aspect-[695/502]'"
       v-if="projectData?.acf?.project_info?.thumbnail != false">
       
-      <img v-if="!projectData?.acf?.project_info?.thumbnail_video_externo_check" :src="projectData?.acf?.project_info?.thumbnail" class="max-w-[initial] w-auto h-full"></img>
+      <img v-if="!projectData?.acf?.project_info?.thumbnail_video_externo_check" :src="projectData?.acf?.project_info?.thumbnail" class="w-full h-full object-cover"></img>
       <video v-else class="w-auto h-full object-cover" :poster="projectData?.acf?.project_info?.thumbnail" autoplay playsinline muted loop :src="projectData?.acf?.project_info?.thumbnail_video_externo?.url"></video>
     </div>
     <div

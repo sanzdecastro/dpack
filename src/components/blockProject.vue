@@ -34,7 +34,7 @@ export default {
   <div class="flex flex-col  md:flex-wrap md:flex-row " :class="[ section.no_padding_bottom ? 'mb-0' : 'mb-lg', section.no_paddings ? 'px-0 no-paddings' : 'pl-sm', section.inverted ? 'md:flex-row-reverse' : '' ]">
 
     <div v-if="section.block_text_check"
-      class="text-block flex flex-col justify-between pb-sm "
+      class="animation-opacity text-block flex flex-col justify-between pb-sm "
       :class="[ text.size, text.aligment, text.aligment === 'items-center' ? 'md:max-w-3/4 md:mx-auto' : 'md:pr-lg' ]"
     >
 
@@ -60,7 +60,7 @@ export default {
       <div
         v-if="image.video === false"
         :class="image.aspect_ratio"
-        class="image-wrapper flex justify-center items-center w-full rounded-dpack overflow-hidden"
+        class="animation-opacity image-wrapper flex justify-center items-center w-full rounded-dpack overflow-hidden"
         
       >
         <img
@@ -72,7 +72,7 @@ export default {
 
       <div
         v-else
-        class="video-wrapper flex justify-center items-center w-full h-full rounded-dpack overflow-hidden bg-gray-400"
+        class="animation-opacity video-wrapper flex justify-center items-center w-full h-full rounded-dpack overflow-hidden bg-gray-400"
         :class="[ image.aspect_ratio ]"
       >
         <video
