@@ -31,10 +31,7 @@
       filterItems(category) {
         
         const items = document.querySelectorAll('.grid > li');
-        setTimeout(() => {
-          ScrollTrigger.refresh();
-          initThumbnailAnim();
-        }, 500)
+
         
         items.forEach((item) => {
           const categoriesStr = item.getAttribute('category') || '';
