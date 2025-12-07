@@ -1,7 +1,7 @@
 <script>
 import { gsap } from "gsap";
 export default {
-  name: "Loading",
+  name: "LoadingOld",
   props: {
     
   },

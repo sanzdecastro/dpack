@@ -35,7 +35,7 @@ const slug = Astro.params.slug;
   <body class="bg-black">
 
 
-    <!-- <Loading client:load  transition:persist class="w-[100vw] h-[100dvh] fixed overflow-hidden !p-0" /> -->
+    
    
 
     <div class="wrapper">
@@ -56,6 +56,7 @@ const slug = Astro.params.slug;
         <!-- </div> -->
         <Footer class=" z-12 relative"/>
       </div>
+      <Loading client:load  class="loading-back w-[100vw] h-[0dvh] fixed overflow-hidden !p-0" />
     </div>
 
     <script>
@@ -138,17 +139,37 @@ const slug = Astro.params.slug;
       //   })
            
       // }
+
+      function pageAnim() {
+        const main = document.querySelector(".main");
+
+        gsap.to(main, {
+          autoAlpha: 0,
+        })
+      }
       
 
       document.addEventListener("astro:before-preparation", () => {
         console.log("before prep");
         const header = document.querySelector("header");
+        const main = document.querySelector(".main");
+        const loadingBack = document.querySelector(".loading-back");
 
          gsap.to(header, {
             yPercent: -100,
             ease: "power2.inOut",
             duration: .8,
           });
+
+          gsap.to(main, {
+          autoAlpha: 0,
+          duration: .8,
+        })
+
+        gsap.to(loadingBack, {
+          height: "100dvh",
+          duration: .8,
+        })
       });
 
       document.addEventListener("astro:before-swap", () => {
@@ -165,6 +186,8 @@ const slug = Astro.params.slug;
       document.addEventListener("astro:after-swap", () => {
         console.log("after swap");
          const header = document.querySelector("header");
+         const main = document.querySelector(".main");
+         const loadingBack = document.querySelector(".loading-back");
 
         window.scrollTo(0, 0);
         ScrollTrigger.refresh();
@@ -173,6 +196,16 @@ const slug = Astro.params.slug;
             ease: "power2.inOut",
             duration: .8,
           });
+
+          gsap.to(main, {
+          autoAlpha: 1,
+          duration: .8,
+        })
+
+        gsap.to(loadingBack, {
+          height: "0dvh",
+          duration: .8,
+        })
 
         setTimeout(() => {
           initOpacityMovement();

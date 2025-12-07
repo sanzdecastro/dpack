@@ -7,12 +7,12 @@ export default {
     return {};
   },
   mounted() {
-    this.animateLoading();
+    this.animateLoadingBack();
   },
 
   methods: {
-    animateLoading() {
-      const loading = document.querySelector(".loading");
+    animateLoadingBack() {
+      const loading = document.querySelector(".loadingBackCont");
       const red = loading.querySelectorAll(".red");
       const yellow = loading.querySelectorAll(".yellow");
       const blue = loading.querySelectorAll(".blue");
@@ -75,7 +75,7 @@ export default {
 <template>
   <div
     ref="loadingContainer"
-    class="loading scale-130 md:scale-100 z-25 w-full p-sm h-[0dvh] bg-black fixed top-0 left-0 flex flex-col items-start"
+    class="loadingBackCont scale-130 md:scale-100 z-25 w-full p-sm h-[0dvh] bg-black fixed top-0 left-0 flex flex-col items-start"
   > 
   
     <div
