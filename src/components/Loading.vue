@@ -75,7 +75,7 @@ export default {
 <template>
   <div
     ref="loadingContainer"
-    class="loadingBackCont scale-130 md:scale-100 z-25 w-full p-sm h-[0dvh] bg-black fixed bottom-0 left-0 flex flex-col items-start"
+    class="loadingBackCont scale-130 md:scale-100 z-25 w-full p-sm h-[0dvh] bg-default-10 fixed bottom-0 left-0 flex flex-col items-start"
   > 
   
     <div
