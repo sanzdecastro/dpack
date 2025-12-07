@@ -12,9 +12,7 @@
   </template>
   
   <script>
-    import gsap from 'gsap';
-    import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-    import { initThumbnailAnim } from '../scripts/thumbnailAnimation';
+
   export default {
     name: 'FilterButtons',
     data() {
