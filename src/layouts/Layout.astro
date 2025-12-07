@@ -49,6 +49,7 @@ const slug = Astro.params.slug;
         client:load
       />
       <LoadingOld client:load ></LoadingOld>
+      <Loading client:load  class="loading-back w-[100vw] h-[0dvh] fixed overflow-hidden !p-0" />
       <!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
       <div class="main bg-default-10">
         <slot />
@@ -56,7 +57,7 @@ const slug = Astro.params.slug;
         <!-- </div> -->
         <Footer class=" z-12 relative"/>
       </div>
-      <Loading client:load  class="loading-back w-[100vw] h-[0dvh] fixed overflow-hidden !p-0" />
+      
     </div>
 
     <script>
@@ -140,15 +141,6 @@ const slug = Astro.params.slug;
            
       // }
 
-      function pageAnim() {
-        const main = document.querySelector(".main");
-
-        gsap.to(main, {
-          autoAlpha: 0,
-        })
-      }
-      
-
       document.addEventListener("astro:before-preparation", () => {
         console.log("before prep");
         const header = document.querySelector("header");
@@ -202,9 +194,14 @@ const slug = Astro.params.slug;
           duration: .8,
         })
 
+        gsap.set(loadingBack, {
+          height: "100dvh",
+          duration: 1.8,
+        })
+
         gsap.to(loadingBack, {
           height: "0dvh",
-          duration: .8,
+          duration: 1.8,
         })
 
         setTimeout(() => {
