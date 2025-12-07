@@ -12,6 +12,9 @@
   </template>
   
   <script>
+    import gsap from 'gsap';
+    import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+    import { initThumbnailAnim } from '../scripts/thumbnailAnimation';
   export default {
     name: 'FilterButtons',
     data() {
@@ -26,7 +29,13 @@
     },
     methods: {
       filterItems(category) {
+        
         const items = document.querySelectorAll('.grid > li');
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+          initThumbnailAnim();
+        }, 500)
+        
         items.forEach((item) => {
           const categoriesStr = item.getAttribute('category') || '';
           const categories = categoriesStr.split(' ');
@@ -35,7 +44,10 @@
           } else {
             item.style.order = '1';
           }
+
         });
+        
+       
       },
     },
   };
