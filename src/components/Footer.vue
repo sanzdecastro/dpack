@@ -1,25 +1,34 @@
 <script>
-import { ref } from 'vue';
-import { gsap } from 'gsap';
-import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+let gsapInstance = null;
+let ScrollTriggerInstance = null;
 
 export default {
   name: 'Footer',
-  props: {
-      
-  },
+  props: {},
   data() {
     return {
-     
       theme: this.randomTheme(),
-    }
+    };
   },
- mounted() {
+  async mounted() {
+    // Nos aseguramos de que solo corra en el cliente
+    if (typeof window === 'undefined') return;
 
-  this.animFooter();
-  this.animCols();
+    // Import dinámico de GSAP y ScrollTrigger (solo en navegador)
+    const gsapModule = await import('gsap');
+    const ScrollTriggerModule = await import('gsap/ScrollTrigger');
 
+    const gsap = gsapModule.gsap || gsapModule.default || gsapModule;
+    const ScrollTrigger = ScrollTriggerModule.default;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Guardamos instancias para usarlas en los métodos
+    gsapInstance = gsap;
+    ScrollTriggerInstance = ScrollTrigger;
+
+    this.animFooter();
+    this.animCols();
   },
   methods: {
     randomTheme() {
@@ -27,46 +36,55 @@ export default {
       return themes[Math.floor(Math.random() * themes.length)];
     },
     animCols() {
-      const colsE = document.querySelectorAll(".col-info ul li");
+      if (!gsapInstance) return;
 
-      gsap.set(colsE, {
+      // Mejor usar this.$el para limitar el scope al componente
+      const colsE = this.$el.querySelectorAll('.col-info ul li');
+
+      if (!colsE.length) return;
+
+      gsapInstance.set(colsE, {
         autoAlpha: 0,
-      })
+      });
 
-      gsap.to(colsE, {
+      gsapInstance.to(colsE, {
         autoAlpha: 1,
-        stagger: .08,
+        stagger: 0.08,
         scrollTrigger: {
-          trigger: colsE,
-          start: "top center",
-          toggleActions: "play none none reverse",
-        }
-      })
-      
+          // NO pasar el NodeList entero, mejor el contenedor o el primer li
+          trigger: colsE[0].parentElement || colsE[0],
+          start: 'top center',
+          toggleActions: 'play none none reverse',
+        },
+      });
     },
     animFooter() {
+      if (!gsapInstance) return;
+
       const logo = this.$refs.logoFooter;
-      const letters = logo.querySelectorAll("path");
+      if (!logo) return;
 
-      gsap.set(letters , {
+      const letters = logo.querySelectorAll('path');
+      if (!letters.length) return;
+
+      gsapInstance.set(letters, {
         yPercent: 50,
-        transformBox: "fill-box",  
-         transformOrigin: "50% 50%",
-      })
+        transformBox: 'fill-box',
+        transformOrigin: '50% 50%',
+      });
 
-      gsap.to(letters, {
+      gsapInstance.to(letters, {
         yPercent: 0,
-        stagger: .02,
+        stagger: 0.02,
         scrollTrigger: {
           trigger: logo,
-          start: "top bottom",
-          toggleActions: "play none none reverse",
-        }
-      })
-    }
-    
-  }
-}
+          start: 'top bottom',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    },
+  },
+};
 </script>
 
 <template>

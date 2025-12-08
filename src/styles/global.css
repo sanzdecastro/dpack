@@ -31,7 +31,7 @@
     --color-foreground-50: var(--color-zinc-800);
 
 }
-    [data-theme = "Default"] {
+    [theme = "Default"] {
         --color-primary: var(--color-zinc-200);
         --color-foreground: var(--color-zinc);
         --color-foreground-fix: var(--color-zinc-200);
@@ -41,7 +41,7 @@
             fill: var(--color-zinc);
         }
     }
-    [data-theme = "Yellow"] {
+    [theme = "Yellow"] {
         --color-primary: var(--color-yellow);
         --color-foreground: var(--color-red);
         --color-foreground-fix: var(--color-red);
@@ -51,7 +51,7 @@
             fill: var(--color-red);
         }
     }
-    [data-theme = "Red"] {
+    [theme = "Red"] {
         --color-primary: var(--color-red);
         --color-foreground: var(--color-yellow);
         --color-foreground-fix: var(--color-red);
@@ -61,7 +61,7 @@
             fill: var(--color-yellow);
         }
     }
-    [data-theme = "Blue"] {
+    [theme = "Blue"] {
         --color-primary: var(--color-blue);
         --color-foreground: var(--color-green);
         --color-foreground-fix: var(--color-blue);
@@ -72,7 +72,7 @@
         }
         
     }
-    [data-theme = "Coral"] {
+    [theme = "Coral"] {
         --color-primary: var(--color-blue);
         --color-foreground: var(--color-coral);
         --color-foreground-fix: var(--color-coral);
@@ -83,34 +83,34 @@
         }
     }
 
-    .project[data-theme = "Default"] {
+    .project[theme = "Default"] {
         --color-primary: var(--color-zinc);
         --color-foreground: var(--color-zinc-200);
         --color-foreground-fix: var(--color-zinc-200);
         --color-foreground-fix-2: var(--color-zinc);
     }
 
-    .project[data-theme = "Blue"] {
+    .project[theme = "Blue"] {
         @apply
         bg-blue-10;
     }
 
-    .project[data-theme = "Red"] {
+    .project[theme = "Red"] {
         @apply
         bg-red-10;
     }
 
-    .project[data-theme = "Yellow"] {
+    .project[theme = "Yellow"] {
         @apply
         bg-yellow-10;
     }
 
-    .project[data-theme = "Coral"] {
+    .project[theme = "Coral"] {
         @apply
         bg-coral-10;
     }
 
-    .project[data-theme = "Default"] {
+    .project[theme = "Default"] {
         @apply
         bg-default-10;
     }
