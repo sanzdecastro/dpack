@@ -1,7 +1,8 @@
 <script>
 import { ref } from 'vue';
 import { gsap } from 'gsap';
-
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   name: 'Footer',
@@ -16,16 +17,53 @@ export default {
   },
  mounted() {
 
+  this.animFooter();
+  this.animCols();
 
-
-
-    
   },
   methods: {
     randomTheme() {
       const themes = ['Blue', 'Red'];
       return themes[Math.floor(Math.random() * themes.length)];
     },
+    animCols() {
+      const colsE = document.querySelectorAll(".col-info ul li");
+
+      gsap.set(colsE, {
+        autoAlpha: 0,
+      })
+
+      gsap.to(colsE, {
+        autoAlpha: 1,
+        stagger: .08,
+        scrollTrigger: {
+          trigger: colsE,
+          start: "top center",
+          toggleActions: "play none none reverse",
+        }
+      })
+      
+    },
+    animFooter() {
+      const logo = this.$refs.logoFooter;
+      const letters = logo.querySelectorAll("path");
+
+      gsap.set(letters , {
+        yPercent: 50,
+        transformBox: "fill-box",  
+         transformOrigin: "50% 50%",
+      })
+
+      gsap.to(letters, {
+        yPercent: 0,
+        stagger: .02,
+        scrollTrigger: {
+          trigger: logo,
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+        }
+      })
+    }
     
   }
 }
@@ -34,24 +72,24 @@ export default {
 <template>
 
 <footer>
-<div :theme="theme" class="bg-primary flex flex-col justify-between min-h-[100dvh]  text-foreground p-sm">
+<div :theme="theme" class="bg-primary flex flex-col justify-between min-h-[100dvh]  text-foreground p-sm pb-0">
   <div class="menu-footer flex flex-col md:flex-row">
-    <div class="w-1/4">
+    <div class="col-info w-1/4"  >
       <p class="mb-md text-sans uppercase text-foreground text-mini">Explore</p>
       <ul>
-        <li class="text-big font-display text-foreground">Proyectos</li>
-        <li class="text-big font-display text-foreground">Servicios</li>
-        <li class="text-big font-display text-foreground">About</li>
+        <li class="text-big font-display text-foreground"><a href="/es/proyectos">Proyectos</a></li>
+        <li class="text-big font-display text-foreground"><a href="/es/servicios">Servicios</a></li>
+        <li class="text-big font-display text-foreground"><a href="/es/about-es">About</a></li>
       </ul>
     </div>
-    <div class="w-1/4">
+    <div class="col-info w-1/4">
       <p class="mb-md text-sans uppercase text-foreground text-mini">Social</p>
       <ul>
         <li class="text-big font-display text-foreground">Instagram</li>
         <li class="text-big font-display text-foreground">LinkedIn</li>
       </ul>
     </div>
-    <div class="w-2/4">
+    <div class="col-info w-2/4">
       <p class="mb-md text-sans uppercase text-foreground text-mini">Contact</p>
       <ul>
         <li class="text-big font-display text-foreground">hola@dpack.es</li>
@@ -61,7 +99,7 @@ export default {
     </div>
   </div>
 
-  <div class="logo w-full">
+  <div ref="logoFooter" class="logo w-full">
       <a :href="`/`" class="w-full">
         <svg width="100%" viewBox="0 0 118 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-foreground">
         <g clip-path="url(#clip0_582_11569)">
