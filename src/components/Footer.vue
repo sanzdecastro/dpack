@@ -45,7 +45,7 @@ export default {
       
     },
     animFooter() {
-      const logo = this.$refs.logoFooter;
+      const logo = document.querySelector("footer .logo");
       const letters = logo.querySelectorAll("path");
 
       gsap.set(letters , {
@@ -99,7 +99,7 @@ export default {
     </div>
   </div>
 
-  <div ref="logoFooter" class="logo w-full">
+  <div  class="logo w-full">
       <a :href="`/`" class="w-full">
         <svg width="100%" viewBox="0 0 118 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-foreground">
         <g clip-path="url(#clip0_582_11569)">
