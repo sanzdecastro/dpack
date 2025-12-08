@@ -130,7 +130,7 @@ export default {
         });
     },
     textAnimIntuitivas() {
-      const intuitivasTL = gsap.timeline({ repeat: -1, delay: 0, repeatDelay: 3, yoyo:true, });
+      const intuitivasTL = gsap.timeline({ repeat: -1, delay: 0, repeatDelay: 3 });
       const intuitivasText = document.querySelector(".intuitivas");
       const intuitivasVocales = intuitivasText.querySelectorAll(".vocal");
 
@@ -161,7 +161,6 @@ export default {
          x: "10px",
           transformOrigin: "50% 50%",
       })
-
 
        gsap.set(movePre, {
          x: "-10px",
@@ -234,7 +233,6 @@ export default {
           <path class="movepre" d="M121.077 91.408C106.613 91.408 93.4292 78.864 93.4292 58.256C93.4292 40.976 106.357 26.896 127.733 26.896C144.501 26.896 151.797 32.784 151.797 41.744C151.797 48.4 146.421 53.264 138.101 53.264C131.317 53.264 126.069 49.808 126.069 43.792C126.069 38.672 129.269 35.472 132.725 33.296C131.701 32.784 130.421 32.4 129.013 32.4C122.485 32.4 121.461 40.592 121.461 53.904C121.461 68.88 125.429 78.352 136.949 78.352C142.197 78.352 147.317 77.328 151.797 75.152V80.912C142.837 87.184 137.589 91.408 121.077 91.408Z" fill="#09090B"/>
           <path class="movepre" d="M0.848145 85.008C6.35214 84.112 9.04015 79.376 11.0881 74.128L39.8881 2.57599H55.8881L87.2481 83.6L93.9042 85.008V90H45.1361V85.008L54.8641 83.856L48.3361 66.064H24.1441L17.2321 84.368L27.0881 85.008V90H0.848145V85.008ZM45.9041 59.28L36.6881 33.296L26.5761 59.28H45.9041Z" fill="#09090B"/>
         </svg>
-      
       </div>
 
       <div :class="value.animation" class="overflow-hidden"  v-if="value.value === 'consolidadas'">
@@ -291,8 +289,6 @@ export default {
   .values-block {
 
   }
-
-
 
 @keyframes marquee-left{0%{transform:translate(0)}to{transform:translate(calc(-100% - var(--gap)))}}.animate-marquee-left{animation:marquee-left var(--duration, 40s) linear infinite}@keyframes marquee-up{0%{transform:translateY(0)}to{transform:translateY(calc(-100% - var(--gap)))}}.animate-marquee-up{animation:marquee-up var(--duration, 40s) linear infinite}.justify-around{justify-content:space-around}.gap-\[1rem\]{gap:1rem}.overflow-hidden{overflow:hidden}@keyframes enter{0%{opacity:var(--tw-enter-opacity, 1);transform:translate3d(var(--tw-enter-translate-x, 0),var(--tw-enter-translate-y, 0),0) scale3d(var(--tw-enter-scale, 1),var(--tw-enter-scale, 1),var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0))}}@keyframes exit{to{opacity:var(--tw-exit-opacity, 1);transform:translate3d(var(--tw-exit-translate-x, 0),var(--tw-exit-translate-y, 0),0) scale3d(var(--tw-exit-scale, 1),var(--tw-exit-scale, 1),var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0))}}.direction-reverse{animation-direction:reverse}.\[--gap\:1rem\]{--gap: 1rem}.group:hover .group-hover\:\[animation-play-state\:paused\]{animation-play-state:paused}
 
