@@ -93,6 +93,7 @@
         --color-foreground: var(--color-zinc-200);
         --color-foreground-fix: var(--color-zinc-200);
         --color-foreground-fix-2: var(--color-zinc);
+        --color-foreground-fix-3: var(--color-white);
     }
 
     .project[theme = "Blue"] {
