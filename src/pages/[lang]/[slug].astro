@@ -135,7 +135,7 @@ console.log('enrichedProjects' , enrichedProjects)
                   (p: any) => p.project.ID === item.project.ID
                 );
                 return (
-                <li class= {item.full ? 'cols-span-1 md:col-span-2 animation-opacity' : 'col-span-1 animation-thumbnail'} category={enriched.additionalData.categories?.join(' ') || 'Todos'}>
+                <li class= {item.full ? 'cols-span-1 md:col-span-2 animation-opacity' : 'col-span-1 animation-thumbnail'} data-category={enriched.additionalData.categories?.join(' ') || 'Todos'}>
                     <a href={`/${lang}/${defaultCustomType}/${item.project.post_name}`}>
                      
                       <ProjectThumbnail
@@ -159,14 +159,6 @@ console.log('enrichedProjects' , enrichedProjects)
 
    
   </div>
-
-  <script>
-     import { initOpacityMovement } from "../../scripts/opacityMovement";
-    import { initThumbnailAnim } from "../../scripts/thumbnailAnimation";
-
-    initThumbnailAnim();
-    initOpacityMovement();
-  </script>
 
     
 </BaseLayout>
