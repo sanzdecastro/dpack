@@ -101,7 +101,7 @@ console.log('enrichedProjects' , enrichedProjects)
               section={section}
               client:only
             />
-            {/* <FilterButtons client:load /> */}
+            <FilterButtons client:only />
             </>
           );
         }else if (section.acf_fc_layout === 'values') {
