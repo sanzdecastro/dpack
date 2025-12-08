@@ -61,7 +61,7 @@ export default {
               },
               textContent: 0,
               duration: 4,
-              snap: { textContent: 10 },
+              snap: { textContent: 2 },
             });
           });
         }
@@ -146,10 +146,10 @@ export default {
         :key="index"
         class="animation-opacity flex flex-col md:items-end md:border-b-foreground md:border-b-2 pb-sm"
       >
-        <p class="font-display text-trim text-display-extra data-number leading-none">
-          <span class="leading-none">{{ data.number }}</span>
+        <p class="font-display text-trim text-display-extra items-center flex leading-none">
+          <span class="data-number leading-[100%] inline-flex">{{ data.number }}</span><div class="inline-flex leading-[100%] data-symbol">{{ data.symbol }}</div>
         </p>
-        <p class="text-lead font-bold leading-none">{{ data.description }}</p>
+        <p class="text-lead -mt-3 font-bold leading-none">{{ data.description }}</p>
       </li>
     </ul>
   </div>
@@ -158,9 +158,9 @@ export default {
       <li
         v-for="(data, index) in datas"
         :key="index"
-        class="bg-primary mt-xl px-lg py-xl flex flex-col justify-center items-start border-b-black border-b-2"
+        class="bg-primary h-[50vh] mt-xl px-lg pr-100 py-xl flex flex-col justify-center items-start border-b-black border-b-2"
       >
-        <p class="font-display text-display-value leading-30 text-foreground">
+        <p class="font-display text-display-extra leading-none text-foreground">
           {{ data.number }}
         </p>
         <p class="text-lead font-bold">{{ data.description }}</p>

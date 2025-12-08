@@ -41,7 +41,7 @@ export default {
       <h1 class="animation-opacity !font-display !text-display pb-sm" v-html="intro.title"></h1>
     </div>
     <p
-      class="text-lead font-bold w-full md:max-w-max-w-text"
+      class="text-lead font-bold w-full md:max-w-max-w-text pt-20"
       v-html="intro.paragraph"
     ></p>
   </div>

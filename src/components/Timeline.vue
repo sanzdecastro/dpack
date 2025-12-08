@@ -13,6 +13,9 @@ export default {
     hitos: {
       type: Array,
     },
+    color_de_fondo: {
+      type: String,
+    }
   },
   data() {
     return {};
@@ -74,8 +77,8 @@ export default {
 </script>
 
 <template>
-  <div class="timeline flex flex-row pb-sm h-[80dvh]" ref="timeline">
-    <div v-for="(hito, index) in hitos" class="hito w-auto flex flex-row h-full">
+  <div class="timeline flex flex-row pb-sm h-[80dvh]"  ref="timeline" >
+    <div v-for="(hito, index) in hitos" class="hito w-auto flex flex-row h-full" :style="{ backgroundColor: color_de_fondo }" >
       <div class="flex flex-row gap-md justify-between min-w-1/2 h-full">
         <div class="flex flex-col justify-between w-full min-w-[800px] ml-xl">
           <div></div>

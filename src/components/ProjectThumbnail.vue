@@ -38,7 +38,7 @@ export default {
   <div class="featured-project w-full flex flex-col gap-xs md:gap-xxs mb-sm md:mb-md" >
     <div
       class="overflow-hidden rounded-dpack w-full  flex justify-center items-center"
-      :class="full ? 'aspect-video' : 'aspect-[695/502]'"
+      :class="full ? 'aspect-square md:aspect-video' : 'aspect-square md:aspect-[695/502]'"
       v-if="projectData?.acf?.project_info?.thumbnail != false">
       
       <img v-if="!projectData?.acf?.project_info?.thumbnail_video_externo_check" :src="projectData?.acf?.project_info?.thumbnail" class="w-full h-full object-cover"></img>
@@ -46,7 +46,7 @@ export default {
     </div>
     <div
       v-else
-      class="w-full video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-[1393/1005]'"
+      class="w-full video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-square md:aspect-[1393/1005]'"
     >
       <video
         autoplay

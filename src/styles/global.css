@@ -55,7 +55,7 @@
         --color-primary: var(--color-red);
         --color-foreground: var(--color-yellow);
         --color-foreground-fix: var(--color-red);
-        --color-foreground-fix-2: var(--color-red);
+        --color-foreground-fix-2: var(--color-yellow);
         --color-foreground-50: var(--color-red-50);
         path {
             fill: var(--color-yellow);
@@ -148,6 +148,9 @@
 
     --text-title-2: clamp(32px,calc((47/1440) * 100vw), 47px);
     --text-title-2--line-height: 100%;
+
+    --text-title-3: clamp(24px,calc((36/1440) * 100vw), 36px);
+    --text-title-3--line-height: 100%;
 
     --text-lead: clamp(18px, calc((24/1440) * 100vw), 24px);
     --text-lead--line-height: 140%;
@@ -252,6 +255,17 @@
         & > div {
             @apply
             rounded-none;
+        }
+    }
+}
+
+.featured-result {
+    @apply
+    col-span-1;
+    .featured-project {
+        & > div:first-of-type {
+            @apply
+            aspect-[695/502];
         }
     }
 }
