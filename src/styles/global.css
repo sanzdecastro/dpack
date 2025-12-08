@@ -22,12 +22,14 @@
     --color-zinc-100: #FBF9F4;
     --color-zinc-50: #FAFAFA;
     --color-default-10: #FBF9F4;
+    --color-white: #FBF9F4;
 
 
     --color-primary: var(--color-zinc-200);
     --color-foreground: var(--color-zinc);
     --color-foreground-fix: var(--color-zinc-200);
     --color-foreground-fix-2: var(--color-zinc);
+    --color-foreground-fix-3: var(--color-white);
     --color-foreground-50: var(--color-zinc-800);
 
 }
