@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { gsap } from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger, SplitText);
-import { SplitText } from "gsap/SplitText";
+import  SplitText  from "gsap/SplitText";
 import separador from './separador.vue';
 
 export default {
