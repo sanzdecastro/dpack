@@ -11,7 +11,6 @@ export default {
     };
   },
   mounted() {
-     this.animateLoading();
     const firstLoad = !sessionStorage.getItem("loader_shown");
 
     if (firstLoad) {
@@ -36,7 +35,7 @@ export default {
       return themes[Math.floor(Math.random() * themes.length)];
     },
     animateEnd() {
-        const loading = this.$refs.loadingContainer;
+        const loading = document.querySelector(".loading");
 
         gsap.to(loading, {
           autoAlpha: 0,
@@ -48,7 +47,7 @@ export default {
       const maxRepeats = 3;
 
 
-        const loading = this.$refs.loadingContainer;
+        const loading = document.querySelector(".loading");
         const d = loading.querySelector("#d");
         const p = loading.querySelector("#p");
         const a = loading.querySelector("#a");
