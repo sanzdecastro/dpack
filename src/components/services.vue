@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { gsap } from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { SplitText } from "gsap/SplitText";
+import SplitText from "gsap/SplitText";
 gsap.registerPlugin(SplitText);
 import separador from './separador.vue';
 
@@ -17,7 +17,7 @@ export default {
         type: Number,
       },
       section: {
-        type: String,
+        type: Object, required: true
       },
       lang: {
         type: String,
@@ -60,25 +60,16 @@ export default {
 
     },
     animationSubtitles() {
-      const wrappers = this.$refs.titleWrapper;
-      if (!wrappers) return;
+  const list = toArray(this.$refs.titleWrapper);
+  const seps = toArray(this.$refs.separador);
+  if (!list.length && !seps.length) return;
 
-      const list = this.$refs.titleWrapper;
-      const separador = this.$refs.separador;
+  list.forEach((el) => gsap.killTweensOf(el));
+  seps.forEach((el) => gsap.killTweensOf(el));
 
-      // Opcional: mata tweens previos para evitar que se acumulen al abrir/cerrar
-      list.forEach((el) => gsap.killTweensOf(el));
-      gsap.fromTo(
-        separador,
-        { xPercent: -100, autoAlpha: 0 },
-        { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 }
-      );
-      gsap.fromTo(
-        list,
-        { xPercent: -100, autoAlpha: 0 },
-        { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 }
-      );
-    },
+  gsap.fromTo(seps, { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 });
+  gsap.fromTo(list, { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 });
+},
     animationText() {
       const titles = this.$refs.serviceTitle; // array
 
