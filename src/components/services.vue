@@ -1,11 +1,11 @@
 <script>
 import { ref } from 'vue';
-import  gsap  from 'gsap';
+import { gsap } from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import SplitText from "gsap/SplitText";
+import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(SplitText);
-import separador from './separador.vue';
+
 
 export default {
   name: 'services',
@@ -17,15 +17,13 @@ export default {
         type: Number,
       },
       section: {
-        type: Object, required: true
+        type: String,
       },
       lang: {
         type: String,
       }
   },
-  components: {
-    separador
-  },
+
   data() {
     return {
       services: this.section && this.section.services ? this.section.services : [],
@@ -60,16 +58,21 @@ export default {
 
     },
     animationSubtitles() {
-  const list = toArray(this.$refs.titleWrapper);
-  const seps = toArray(this.$refs.separador);
-  if (!list.length && !seps.length) return;
+      const wrappers = this.$refs.titleWrapper;
+      if (!wrappers) return;
 
-  list.forEach((el) => gsap.killTweensOf(el));
-  seps.forEach((el) => gsap.killTweensOf(el));
+      const list = this.$refs.titleWrapper;
+      const separador = this.$refs.separador;
 
-  gsap.fromTo(seps, { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 });
-  gsap.fromTo(list, { xPercent: -100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 });
-},
+      // Opcional: mata tweens previos para evitar que se acumulen al abrir/cerrar
+      list.forEach((el) => gsap.killTweensOf(el));
+
+      gsap.fromTo(
+        list,
+        { xPercent: -100, autoAlpha: 0 },
+        { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 }
+      );
+    },
     animationText() {
       const titles = this.$refs.serviceTitle; // array
 
@@ -171,7 +174,7 @@ export default {
         
         <div class="accordion-content gap-2 h-0 overflow-hidden  flex flex-col">
           <div class="flex gap-2 first:mt-30 pt-3  items-start" v-for="(subservice, index) in service.subservices" :key="index">
-              <h3 class="ml-2  font-bold text-title-3  w-1/2 flex items-start md:pr-40"><div ref="separador" class="separador-container"><separador/></div><div class="overflow-hidden"><div ref="titleWrapper" class="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
+              <h3 class="ml-2  font-bold text-title-3  w-1/2 flex items-start md:pr-40"><div ref="separador" className="separador-container"></div><div className="overflow-hidden"><div ref="titleWrapper" className="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
               <div class="w-1/2 text-title-3 leading-[120%] flex items-end md:pr-10 pb-10 ">{{ subservice.subservice_text }}</div>
           </div>
         </div>
