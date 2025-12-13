@@ -12,6 +12,7 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Loading from "../components/Loading.vue";
 import LoadingOld from "../components/Loading_old.vue";
+import LoadingNew from "../components/Loading_new.vue";
 
 import { getLangFromUrl, languages } from "../lib/i18n.js";
 const lang = getLangFromUrl(Astro.url);
@@ -48,8 +49,8 @@ const slug = Astro.params.slug;
         pages={pages}
         client:load
       />
-      <LoadingOld client:load ></LoadingOld>
-      <Loading client:load  class="loading-back w-[100vw] h-[0dvh] fixed overflow-hidden !p-0" />
+      <LoadingOld  client:load ></LoadingOld>
+      <Loading client:load class="loading-back w-[100vw] h-[0dvh] fixed overflow-hidden !p-0" />
       <!-- <div class="text-black" id="content" transition:animate={slide({ duration: '2s' })}> -->
       <div class="main bg-default-10">
         <slot />
