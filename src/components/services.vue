@@ -3,9 +3,7 @@ import { ref } from 'vue';
 import { gsap } from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-// import { SplitText } from "gsap/SplitText";
-// gsap.registerPlugin(SplitText);
-import separador from './separador.vue';
+gsap.registerPlugin(SplitText);
 
 export default {
   name: 'services',
@@ -23,9 +21,6 @@ export default {
         type: String,
       }
   },
-  components: {
-    separador
-  },
   data() {
     return {
       services: this.section && this.section.services ? this.section.services : [],
@@ -35,8 +30,6 @@ export default {
  mounted() {
   this.openAccordeon()
   this.animationTags()
-  // this.animationText()
-  
     
   },
   methods: {
@@ -59,48 +52,6 @@ export default {
       })
 
     },
-    animationSubtitles() {
-      const wrappers = this.$refs.titleWrapper;
-      if (!wrappers) return;
-
-      const list = this.$refs.titleWrapper;
-      const separador = this.$refs.separador;
-
-      // Opcional: mata tweens previos para evitar que se acumulen al abrir/cerrar
-      list.forEach((el) => gsap.killTweensOf(el));
-      gsap.fromTo(
-        separador,
-        { xPercent: -100, autoAlpha: 0 },
-        { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 }
-      );
-      gsap.fromTo(
-        list,
-        { xPercent: -100, autoAlpha: 0 },
-        { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 }
-      );
-    },
-    animationText() {
-      const titles = this.$refs.serviceTitle; // array
-
-      if (!titles || !titles.length) return;
-
-      titles.forEach((el) => {
-        const split = SplitText.create(el, { type: "chars,words,lines" });
-
-        gsap.from(split.chars, {
-          y: 6,
-          opacity: 0,
-          duration: 0.7,
-          ease: "power4.out",
-          stagger: 0.04,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        });
-      });
-    },
     openAccordeon() {
       const accordeon = document.querySelectorAll('.accordion .service');
       accordeon.forEach((item) => {
@@ -109,12 +60,11 @@ export default {
 
           ScrollTrigger.refresh();
 
-          
           accordeon.forEach((el) => {
             if (el !== item) {
               el.querySelector('.accordion-content').classList.remove('opened');
               
-              ScrollTrigger.refresh();
+              
               gsap.to(el.querySelector('.accordion-content'), {
                 minHeight: '0',
                 height: '0',
@@ -129,7 +79,7 @@ export default {
           if(description.classList.contains('opened')) {
             description.classList.remove('opened'); 
             item.classList.remove('bg-primary'); 
-            ScrollTrigger.refresh();
+            
             gsap.to(description, {
                 minHeight: '0',
                 height: '0',
@@ -138,8 +88,8 @@ export default {
           }); 
           } else {
             description.classList.add('opened'); 
-            ScrollTrigger.refresh();
-            this.animationSubtitles()
+ 
+            
             gsap.to(description, {
                 minHeight: 'auto',
                 height: "auto",
@@ -168,7 +118,7 @@ export default {
       <li v-for="(service, index) in services" :key="index" :theme="service.theme" class="p-sm service border-t-2 border-black ">
         <div class="flex justify-between items-center overflow-hidden">
           <div class="flex flex-col">
-            <h3 ref="serviceTitle" class="font-display text-big ">{{ service.service_title }}</h3>
+            <h3 class="font-display text-big ">{{ service.service_title }}</h3>
             <div v-if="service.services_tags" class="flex gap-2 mt-3">
               <div v-for="(tag, index) in service.services_tags" :key="index" ref="tags" class="bg-stone-200 rounded-full py-1 px-4">
                 {{ tag.tag }}
@@ -180,7 +130,7 @@ export default {
         
         <div class="accordion-content gap-2 h-0 overflow-hidden  flex flex-col">
           <div class="flex gap-2 first:mt-30 pt-3  items-start" v-for="(subservice, index) in service.subservices" :key="index">
-              <h3 class="ml-2  font-bold text-title-3  w-1/2 flex items-start md:pr-40"><div ref="separador" className="separador-container"><separador/></div><div className="overflow-hidden"><div ref="titleWrapper" className="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
+              <h3 class="ml-2  font-bold text-title-3  w-1/2 flex items-end md:pr-40">{{ subservice.subservice_title }}</h3>
               <div class="w-1/2 text-title-3 leading-[120%] flex items-end md:pr-10 pb-10 ">{{ subservice.subservice_text }}</div>
           </div>
         </div>
