@@ -10,9 +10,11 @@ export default {
       activeCategory: 'Todos',
       filters: [
         { category: 'Todos', label: 'Todos' },
-        { category: '27', label: 'Nuevo lanzamiento' },
         { category: '29', label: 'Reposicionamiento' },
         { category: '31', label: 'Rediseño' },
+        { category: '27', label: 'Nuevo lanzamiento' },
+        
+        
       ],
     };
   },
