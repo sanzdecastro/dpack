@@ -12,22 +12,22 @@ export default {
   },
   mounted() {
      this.animateLoading();
-    // const firstLoad = !sessionStorage.getItem("loader_shown");
+    const firstLoad = !sessionStorage.getItem("loader_shown");
 
-    // if (firstLoad) {
-    //   // Marcamos que ya se ha mostrado
-    //   sessionStorage.setItem("loader_shown", "true");
-    //   // Lanzamos la animación completa
-    //   this.animateLoading();
-    // } else {
-    //   // No es la primera vez → ocultar loader al instante
-    //   const loading = document.querySelector(".loading");
+    if (firstLoad) {
+      // Marcamos que ya se ha mostrado
+      sessionStorage.setItem("loader_shown", "true");
+      // Lanzamos la animación completa
+      this.animateLoading();
+    } else {
+      // No es la primera vez → ocultar loader al instante
+      const loading = document.querySelector(".loading");
 
-    //   gsap.set(loading, {
-    //     autoAlpha: 0,
-    //     pointerEvents: "none",
-    //   })
-    // }
+      gsap.set(loading, {
+        autoAlpha: 0,
+        pointerEvents: "none",
+      })
+    }
   },
 
   methods: {
