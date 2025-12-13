@@ -32,6 +32,7 @@ export default {
     }
   },
  mounted() {
+   if (typeof window === "undefined") return;
   this.openAccordeon()
   this.animationTags()
   this.animationText()
