@@ -153,12 +153,12 @@ export default {
       </li>
     </ul>
   </div>
-  <div v-else class="section" theme="Default">
+  <div v-else class="section bg-primary" theme="Default">
     <ul class="flex slider-data" ref="sliderDatas">
       <li
         v-for="(data, index) in datas"
         :key="index"
-        class="bg-primary h-[50vh] mt-xl px-lg pr-100 py-xl flex flex-col justify-center items-start border-b-black border-b-2"
+        class="bg-primary h-[50vh] px-lg pr-100 py-xl flex flex-col justify-center items-start border-b-black border-b-2"
       >
         <p class="font-display text-display-extra leading-none text-foreground">
           {{ data.number }}
@@ -173,9 +173,9 @@ export default {
     class="bg-primary text-foreground flex pb-lg justify-end p-sm"
   >
     <a
-      class="w-full animation-opacity  md:w-fit font-bold  bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
+      class="w-full  md:w-fit font-medium text-p  bg-white text-foreground-fix rounded flex justify-center items-center px-button-x py-button-y hover:bg-foreground hover:text-primary"
       :href="section.link.url"
-      ><span class="leading-none">{{ section.link.title }}</span></a
+      ><span class="">{{ section.link.title }}</span></a
     >
   </div>
 </template>

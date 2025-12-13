@@ -314,3 +314,9 @@
         }
       }
     }
+
+
+    .video-wrapper {
+        @apply
+        aspect-square md:aspect-[695/502];
+    }

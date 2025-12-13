@@ -194,8 +194,8 @@ export default {
       </li>
     </ul>
     <div class="flex pb-lg justify-end p-sm">
-      <a class="font-bold bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary" :href=section.link.url>
-        <span class="leading-none">{{ section.link.title }}</span>
+      <a class="font-medium text-p bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary" :href=section.link.url>
+        <span class="">{{ section.link.title }}</span>
       </a>
     </div>
     

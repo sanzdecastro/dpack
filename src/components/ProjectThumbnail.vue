@@ -46,14 +46,15 @@ export default {
     </div>
     <div
       v-else
-      class="w-full video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-square md:aspect-[1393/1005]'"
+      class="w-full video-wrapper flex justify-center items-center overflow-hidden rounded object-cover relative aspect-[695/502]'"
     >
       <video
         autoplay
+        loop
         playsinline
         muted
         class="object-cover w-full h-full"
-        :src="projectData?.acf?.project_info?.video"
+        :src="projectData?.acf?.project_info?.thumbnail_video?.url"
       ></video>
     </div>
     <div v-if="projectData" class="flex flex-col gap-1">
