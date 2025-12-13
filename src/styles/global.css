@@ -277,3 +277,40 @@
         }
     }
 }
+
+/* Servicios */  
+
+.service {
+    &:last-of-type {
+      @apply
+      border-b-2;
+    }
+
+    
+   
+  }
+
+  .accordion {
+      .service {
+        @apply
+        
+        hover:bg-primary
+        hover:text-foreground
+        cursor-pointer;
+
+      
+
+        &:has(.opened) {
+            @apply
+            bg-primary
+            text-foreground;
+
+            .plus {
+                @apply
+                transition-transform
+                ease-in-out
+                rotate-45;
+            }
+        }
+      }
+    }
