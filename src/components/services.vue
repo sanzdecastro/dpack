@@ -31,9 +31,9 @@ export default {
     }
   },
  mounted() {
-  this.openAccordeon()
-  this.animationTags()
-  this.animationText()
+  // this.openAccordeon()
+  // this.animationTags()
+  // this.animationText()
   
     
   },
