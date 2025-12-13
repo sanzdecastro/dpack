@@ -14,6 +14,7 @@ export default defineConfig({
     prefetchAll: true
   },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ssr: { noExternal: ["gsap"] }
   },
 });

@@ -48,9 +48,9 @@ if (page?.acf?.flexible) {
       {
         flexibleSections.map((section: any) => {
           if (section.acf_fc_layout === "slider") {
-            return <Slider pageId={page.id} section={section} client:only />;
+            return <Slider pageId={page.id} section={section} client:only="vue" />;
           } else if (section.acf_fc_layout === "data") {
-            return <Data pageId={page.id} section={section} client:only />;
+            return <Data pageId={page.id} section={section} client:only="vue" />;
           } else if (section.acf_fc_layout === "services") {
             return <Services pageId={page.id} section={section} client:only="vue" />;
           } else if (section.acf_fc_layout === "intro") {
@@ -59,7 +59,7 @@ if (page?.acf?.flexible) {
                 pageTitle={page.title.rendered}
                 pageId={page.id}
                 section={section}
-                client:only
+                client:only="vue"
               />
             );
           } else if (section.acf_fc_layout === "intro_proyectos") {
@@ -68,18 +68,18 @@ if (page?.acf?.flexible) {
                 pageTitle={page.title.rendered}
                 pageId={page.id}
                 section={section}
-                client:only
+                client:only="vue"
               />
             );
           } else if (section.acf_fc_layout === "values") {
-            return <Values pageId={page.id} section={section} client:only />;
+            return <Values pageId={page.id} section={section} client:only="vue" />;
           } else if (section.acf_fc_layout === "method") {
             return (
               <Method
                 lang={lang}
                 pageId={page.id}
                 section={section}
-                client:only
+                client:only="vue"
               />
             );
           } else if (section.acf_fc_layout === "projects") {
@@ -108,7 +108,7 @@ if (page?.acf?.flexible) {
                         href={`/${lang}/${defaultCustomType}/${item.project.post_name}`}
                       >
                         <ProjectThumbnail 
-                          client:only
+                          client:only="vue"
                           pageId={item.project.ID}
                           thumbnail={item.image}
                           full={item.full}
