@@ -52,7 +52,7 @@ if (page?.acf?.flexible) {
           } else if (section.acf_fc_layout === "data") {
             return <Data pageId={page.id} section={section} client:only />;
           } else if (section.acf_fc_layout === "services") {
-            return <Services pageId={page.id} section={section} client:load />;
+            return <Services pageId={page.id} section={section} client:only="vue" />;
           } else if (section.acf_fc_layout === "intro") {
             return (
               <Intro
