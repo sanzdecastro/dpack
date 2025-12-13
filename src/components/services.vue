@@ -7,6 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 gsap.registerPlugin(SplitText);
 
+import separador from './separador.vue';
+
 
 export default {
   name: 'services',
@@ -23,6 +25,9 @@ export default {
       lang: {
         type: String,
       }
+  },
+  components: {
+    separador
   },
 
   data() {
@@ -67,6 +72,12 @@ export default {
 
       // Opcional: mata tweens previos para evitar que se acumulen al abrir/cerrar
       list.forEach((el) => gsap.killTweensOf(el));
+
+      gsap.fromTo(
+        separador,
+        { xPercent: -100, autoAlpha: 0 },
+        { xPercent: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out", stagger: 0.05 }
+      );
 
       gsap.fromTo(
         list,
@@ -175,7 +186,7 @@ export default {
         
         <div class="accordion-content gap-2 h-0 overflow-hidden  flex flex-col">
           <div class="flex gap-2 first:mt-30 pt-3  items-start" v-for="(subservice, index) in service.subservices" :key="index">
-              <h3 class="ml-2  font-bold text-title-3  w-1/2 flex items-start md:pr-40"><div ref="separador" className="separador-container"></div><div className="overflow-hidden"><div ref="titleWrapper" className="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
+              <h3 class="ml-2  font-bold text-title-3  w-1/2 flex items-start md:pr-40"><div ref="separador" className="separador-container"><separador/></div><div className="overflow-hidden"><div ref="titleWrapper" className="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
               <div class="w-1/2 text-title-3 leading-[120%] flex items-end md:pr-10 pb-10 ">{{ subservice.subservice_text }}</div>
           </div>
         </div>
