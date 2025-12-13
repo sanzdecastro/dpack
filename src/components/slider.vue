@@ -1,6 +1,6 @@
 <script>
 import { ref } from "vue";
-import { gsap } from "gsap";
+import gsap from "gsap";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Thumbs } from "swiper/modules";
 import "swiper/css";

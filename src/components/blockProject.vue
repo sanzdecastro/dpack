@@ -1,6 +1,6 @@
 <script>
 import { ref } from "vue";
-import { gsap } from "gsap";
+import gsap from "gsap";
 
 export default {
   name: "blockProject",

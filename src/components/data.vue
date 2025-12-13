@@ -1,6 +1,6 @@
 <script>
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import { gsap } from "gsap";
+import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Thumbs } from "swiper/modules";

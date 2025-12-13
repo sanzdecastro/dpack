@@ -1,5 +1,5 @@
 <script>
-import { gsap } from "gsap";
+import gsap from "gsap";
 import Loading_new from "./Loading_new.vue";
 
 
