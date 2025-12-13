@@ -2,8 +2,9 @@
 import { ref } from 'vue';
 import { gsap } from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger, SplitText);
-import  SplitText  from "gsap/SplitText";
+gsap.registerPlugin(ScrollTrigger);
+// import { SplitText } from "gsap/SplitText";
+// gsap.registerPlugin(SplitText);
 import separador from './separador.vue';
 
 export default {
@@ -32,10 +33,9 @@ export default {
     }
   },
  mounted() {
-   if (typeof window === "undefined") return;
   this.openAccordeon()
   this.animationTags()
-  this.animationText()
+  // this.animationText()
   
     
   },
