@@ -205,7 +205,7 @@ export default {
             ><span>Menú</span></a
           >
           <a
-            class="close-button flex items-center leading-none absolute top-0 left-full bg-black text-white open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
+            class="close-button w-fit flex items-center leading-none absolute top-0 left-full bg-black text-white open py-button-y px-button-x cursor-pointer font-medium text-p rounded-dpack"
             ><span>Close</span></a
           >
         </li>

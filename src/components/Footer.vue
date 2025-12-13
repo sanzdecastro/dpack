@@ -97,14 +97,14 @@ export default {
       <ul>
         <li class="text-big font-display text-foreground"><a href="/es/proyectos">Proyectos</a></li>
         <li class="text-big font-display text-foreground"><a href="/es/servicios">Servicios</a></li>
-        <li class="text-big font-display text-foreground"><a href="/es/about-es">About</a></li>
+        <li class="text-big font-display text-foreground"><a href="/es/about-es">Nosotras</a></li>
       </ul>
     </div>
     <div class="col-info w-1/4">
       <p class="mb-md text-sans uppercase text-foreground text-mini">Social</p>
       <ul>
-        <li class="text-big font-display text-foreground">Instagram</li>
-        <li class="text-big font-display text-foreground">LinkedIn</li>
+        <li class="text-big font-display text-foreground"><a href="https://www.instagram.com/dpack.studio/">Instagram</a></li>
+        <li class="text-big font-display text-foreground"><a href="https://www.linkedin.com/company/dpackbcn/?originalSubdomain=es">LinkedIn</a></li>
       </ul>
     </div>
     <div class="col-info w-2/4">
