@@ -45,7 +45,7 @@
         }
     }
     [theme = "Yellow"] {
-        --color-primary: var(--color-yellow);
+        --color-primary: var(--color-red);
         --color-foreground: var(--color-red);
         --color-foreground-fix: var(--color-red);
         --color-foreground-fix-2: var(--color-red);
@@ -79,7 +79,7 @@
         
     }
     [theme = "Coral"] {
-        --color-primary: var(--color-blue);
+        --color-primary: var(--color-coral);
         --color-foreground: var(--color-coral);
         --color-foreground-fix: var(--color-coral);
         --color-foreground-fix-2: var(--color-coral);
@@ -145,7 +145,7 @@
 
     --text-display-value: clamp(50px, calc((128/1440) * 100vw), 128px);
 
-    --text-display: clamp(40px, calc((100/1440) * 100vw), 100px);
+    --text-display: clamp(40px, calc((92/1440) * 100vw), 92px);
     --text-display--line-height: 100%;
 
     --text-big: clamp(35px,calc((64/1440) * 100vw), 64px);
@@ -320,3 +320,21 @@
         @apply
         aspect-square md:aspect-[695/502];
     }
+
+   .project-header + .details, .text-block {
+     p {
+        @apply
+        pb-2;
+
+        br {
+            @apply
+            pb-2;
+        }
+     }
+   }
+
+   header {
+    @apply
+    invert-100
+    mix-blend-difference;
+   }

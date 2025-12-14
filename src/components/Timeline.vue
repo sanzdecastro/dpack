@@ -80,7 +80,7 @@ export default {
   <div class="timeline flex flex-row pb-sm h-[80dvh]"  ref="timeline" >
     <div v-for="(hito, index) in hitos" class="hito w-auto flex flex-row h-full" :style="{ backgroundColor: color_de_fondo }" >
       <div class="flex flex-row gap-md justify-between min-w-1/2 h-full">
-        <div class="flex flex-col justify-between w-full min-w-[800px] ml-xl">
+        <div class="flex flex-col justify-between w-full w-fit ml-xl">
           <div></div>
           <h3 class="font-display w-full text-display-value text-foreground-50 whitespace-nowrap">{{ hito.title }}</h3>
           <div class="flex flex-col pb-sm">

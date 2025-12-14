@@ -39,7 +39,7 @@ export default {
         <span class="text-mini text-trim leading-none">{{ title }}</span>
       </div>
       
-      <h1 class="animation-opacity !font-display !text-display pb-sm md:max-w-3/4" v-html="intro.title"></h1>
+      <h1 class="animation-opacity !font-display !text-display pb-sm md:max-w-3/4 " v-html="intro.title"></h1>
     </div>
   </div>
 </template>

@@ -129,11 +129,11 @@ export default {
     v-if="!sliderMode"
     ref="section"
     :theme="theme"
-    class="section-data  flex flex-col md:flex-row relative bg-primary text-foreground min-h-[100dvh] md:h-auto justify-between"
+    class="section-data  flex flex-col md:flex-row relative bg-primary text-foreground min-h-[100svh] md:h-auto justify-between"
   >
     <div
       ref="stickyBlock"
-      class="sticky-block w-full md:w-1/2 flex-1 !h-fit md:!h-[100dvh] flex flex-col justify-between p-sm"
+      class="sticky-block w-full md:w-1/2 flex-1 !h-fit md:!h-[100svh] flex flex-col justify-between p-sm"
     >
       <h2 class="!font-display !text-display pt-header pb-sm">{{ title }}</h2>
       <p class="text-lead font-bold max-w-[500px]">{{ subtitle }}</p>

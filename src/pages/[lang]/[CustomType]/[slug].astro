@@ -64,13 +64,13 @@ if (project?.acf?.flexible_project) {
 
     <div class="tags-line flex px-sm mt-md ">
       <p
-        class="text-mini items-end flex font-sans px-tag-x py-tag-y bg-primary text-fore rounded-dpack"
+        class="text-mini items-end text-foreground-fix-3 flex font-sans px-tag-x py-tag-y leading-none bg-primary rounded-dpack"
       >
         {project?.acf?.project_info?.client}
       </p>
        
       {project?.acf?.project_info?.brand && (
-        <p class="text-mini items-end flex font-sans px-tag-x py-tag-y bg-zinc-100 text-primary border border-solid rounded-full">
+        <p class="text-mini items-end flex font-sans px-tag-x py-tag-y  bg-zinc-100 text-primary border border-solid rounded-full">
           {project?.acf?.project_info?.brand}
         </p>
       )}
@@ -79,7 +79,7 @@ if (project?.acf?.flexible_project) {
     </div>
     <div class="flex flex-col text-primary ">
       <div class="flex flex-col md:flex-row m-sm gap-sm py-md mb-lg border-y-2 border-primary">
-        <div class="project-header w-full md:w-1/2 ">
+        <div class="project-header w-full md:w-1/2 pr-md">
           <h1 class="text-display font-display">{project?.title?.rendered}</h1>
         </div>
 
