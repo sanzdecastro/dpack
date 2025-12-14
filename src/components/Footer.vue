@@ -53,7 +53,7 @@ export default {
         scrollTrigger: {
           // NO pasar el NodeList entero, mejor el contenedor o el primer li
           trigger: colsE[0].parentElement || colsE[0],
-          start: 'top center',
+          start: 'top bottom',
           toggleActions: 'play none none reverse',
         },
       });

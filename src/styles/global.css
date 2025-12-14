@@ -27,30 +27,32 @@
 
     --color-primary: var(--color-zinc-200);
     --color-foreground: var(--color-zinc);
-    --color-foreground-fix: var(--color-zinc-200);
+    --color-foreground-fix: var(--color-zinc);
     --color-foreground-fix-2: var(--color-zinc);
     --color-foreground-fix-3: var(--color-white);
     --color-foreground-50: var(--color-zinc-800);
-
+    --color-back: var(--color-zinc-200);
 }
     [theme = "Default"] {
         --color-primary: var(--color-zinc-200);
         --color-foreground: var(--color-zinc);
-        --color-foreground-fix: var(--color-zinc-200);
+        --color-foreground-fix: var(--color-black);
         --color-foreground-fix-2: var(--color-zinc);
         --color-foreground-fix-3: var(--color-white);
         --color-foreground-50: var(--color-zinc-200);
+        --color-back: var(--color-zinc-200);
         path {
             fill: var(--color-zinc);
         }
     }
     [theme = "Yellow"] {
-        --color-primary: var(--color-red);
+        --color-primary: var(--color-yellow);
         --color-foreground: var(--color-red);
         --color-foreground-fix: var(--color-red);
         --color-foreground-fix-2: var(--color-red);
         --color-foreground-fix-3: var(--color-white);
         --color-foreground-50: var(--color-yellow-50);
+        --color-back: var(--color-yellow);
         path {
             fill: var(--color-red);
         }
@@ -62,6 +64,7 @@
         --color-foreground-fix-2: var(--color-yellow);
         --color-foreground-fix-3: var(--color-white);
         --color-foreground-50: var(--color-red-50);
+        --color-back: var(--color-red);
         path {
             fill: var(--color-yellow);
         }
@@ -73,6 +76,7 @@
         --color-foreground-fix-2: var(--color-green);
         --color-foreground-fix-3: var(--color-white);
         --color-foreground-50: var(--color-blue-50);
+        --color-back: var(--color-blue);
         path {
             fill: var(--color-green);
         }
@@ -85,18 +89,19 @@
         --color-foreground-fix-2: var(--color-coral);
         --color-foreground-fix-3: var(--color-white);
         --color-foreground-50: var(--color-coral-50);
+        --color-back: var(--color-coral);
          path {
-            fill: var(--color-coral);
+            fill: var(--color-blue);
         }
     }
 
-    .project[theme = "Default"] {
+    /* .project[theme = "Default"] {
         --color-primary: var(--color-zinc);
         --color-foreground: var(--color-zinc-200);
         --color-foreground-fix: var(--color-zinc-200);
         --color-foreground-fix-2: var(--color-zinc);
         --color-foreground-fix-3: var(--color-white);
-    }
+    } */
 
     .project[theme = "Blue"] {
         @apply
@@ -321,6 +326,8 @@
         aspect-square md:aspect-[695/502];
     }
 
+
+
    .project-header + .details, .text-block {
      p {
         @apply
@@ -338,3 +345,40 @@
     invert-100
     mix-blend-difference;
    }
+
+
+   /* valores */
+
+
+
+.value-about {
+     & + div .marquee-flex-row {
+        @apply
+        opacity-50
+        brightness-200;
+    }
+
+    svg {
+        @apply
+        w-[80vw]
+        md:w-auto;
+    }
+
+    p {
+        @apply
+        scale-80
+        md:scale-100;
+    }
+}
+
+.animation-text {
+    
+    @apply
+    opacity-0;
+
+    &:has(div) {
+        @apply
+    opacity-100;
+    }
+    
+}

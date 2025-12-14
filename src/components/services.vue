@@ -175,8 +175,8 @@ export default {
         <div class="flex justify-between items-center overflow-hidden">
           <div class="flex flex-col">
             <h3 ref="serviceTitle" class="font-display text-big ">{{ service.service_title }}</h3>
-            <div v-if="service.services_tags" class="flex gap-2 mt-3">
-              <div v-for="(tag, index) in service.services_tags" :key="index" ref="tags" class="bg-stone-200 rounded-full py-1 px-4">
+            <div v-if="service.services_tags" class="flex flex-wrap flex-col md:flex-row gap-2 mt-3">
+              <div v-for="(tag, index) in service.services_tags" :key="index" ref="tags" class="bg-stone-200 rounded-full py-1 px-4 w-fit">
                 {{ tag.tag }}
               </div>
             </div>
@@ -185,9 +185,9 @@ export default {
         </div>
         
         <div class="accordion-content gap-2 h-0 overflow-hidden  flex flex-col">
-          <div class="flex gap-2 first:mt-30 pt-3  items-start" v-for="(subservice, index) in service.subservices" :key="index">
-              <h3 class="ml-2  font-bold text-title-3  w-1/2 flex items-start md:pr-40"><div ref="separador" className="separador-container"><separador/></div><div className="overflow-hidden"><div ref="titleWrapper" className="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
-              <div class="w-1/2 text-title-3 leading-[120%] flex items-end md:pr-10 pb-10 ">{{ subservice.subservice_text }}</div>
+          <div class="flex flex-col md:flex-row gap-2 first:mt-30 pt-3  items-start" v-for="(subservice, index) in service.subservices" :key="index">
+              <h3 class="md:ml-2 leading-[120%] font-bold text-title-3  md:w-1/2 flex items-start md:pr-40"><div ref="separador" className="hidden md:block separador-container"><separador/></div><div className="overflow-hidden"><div ref="titleWrapper" className="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
+              <div class="md:w-1/2 text-title-3 leading-[120%] flex items-end md:pr-10 pb-10 ">{{ subservice.subservice_text }}</div>
           </div>
         </div>
         

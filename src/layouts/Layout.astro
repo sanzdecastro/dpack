@@ -68,6 +68,7 @@ const slug = Astro.params.slug;
       import Lenis from "lenis";
       import { initOpacityMovement } from "../scripts/opacityMovement";
       import { initThumbnailAnim } from "../scripts/thumbnailAnimation";
+      import { initTextAnimation } from "../scripts/textMovement";
       
 
       gsap.registerPlugin(ScrollTrigger);
@@ -217,6 +218,7 @@ const slug = Astro.params.slug;
         window.scrollTo(0, 0);
 
       setTimeout(() => {
+          initTextAnimation();
           initOpacityMovement();
           initThumbnailAnim();
         }, 600)

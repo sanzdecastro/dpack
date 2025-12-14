@@ -148,7 +148,7 @@ export default {
         <span class="text-mini text-trim leading-none font-sans">{{ title }}</span>
       </div>
 
-      <h1 class="animation-opacity !font-display !text-display pb-sm" v-html="intro.title"></h1>
+      <h1 class="animation-text !font-display  !text-display pb-sm" v-html="intro.title"></h1>
     </div>
 
     <p class="text-lead font-bold w-full md:max-w-max-w-text pt-sm" v-html="intro.paragraph"></p>

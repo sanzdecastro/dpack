@@ -99,7 +99,7 @@ export default {
 </script>
 
 <template>
-  <ul class="filters flex gap-sm mx-sm pb-sm border-b-2 border-black mb-lg">
+  <ul class="filters overflow-scroll md:overflow-hidden flex gap-sm mx-sm pb-sm border-b-2 border-black mb-lg">
     <li
       v-for="(btn, idx) in filters"
       :key="idx"
@@ -107,7 +107,7 @@ export default {
       class="cursor-pointer font-medium text-p rounded flex justify-center leading-none text-trim items-center px-button-x py-button-y
              transition-colors duration-200"
       :class="{
-        'bg-white text-black hover:bg-foreground hover:text-primary':
+        'bg-white text-black whitespace-nowrap hover:bg-foreground hover:text-primary':
           activeCategory !== btn.category,
         'bg-foreground text-primary':
           activeCategory === btn.category

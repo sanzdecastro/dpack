@@ -116,68 +116,42 @@ export default {
         
     },
     textAnimConsolidadas() {
-  const consolidadasText = document.querySelector(".consolidadas p");
+      const consolidadasText = document.querySelector(".consolidadas p");
 
-  const consolidadasTL = gsap.timeline({
-    repeat: -1,
-    delay: 2,
-    repeatDelay: 4,
-    yoyo: false,
-  });
+      const consolidadasTL = gsap.timeline({
+        repeat: -1,
+        delay: 1,
+        repeatDelay: 2,
+        yoyo: false,
+      });
 
-  // Aseguramos perspectiva en el contenedor
-  gsap.set(".consolidadas", { perspective: 800 });
+      gsap.set(consolidadasText, {
+        yPercent: -300,
+        rotate: 20,
 
-  // Estilos iniciales del texto
-  gsap.set(consolidadasText, {
-    transformStyle: "preserve-3d",
-    backfaceVisibility: "hidden",
-  });
+      })
 
-  consolidadasTL
-    // SALE volteando hacia atrás
-    .to(consolidadasText, {
-      rotateX: 90,
-      duration: 0.4,
-      ease: "power2.in",
-      onComplete: () => {
-        consolidadasText.textContent = "consolidadas";
-      },
+
+     consolidadasTL
+     
+      .to(consolidadasText, {
+        yPercent: 0,
+        duration: 0.4,
+        rotate: 0,
+        ease: "bounce.out",
+        
     })
 
-    // ENTRA desde atrás hacia adelante
-    .to(consolidadasText, {
-      rotateX: 0,
-      duration: 0.5,
-      ease: "back.out(1.4)",
-    })
-
-    // SEGUNDO CAMBIO DE TEXTO
-    .to(consolidadasText, {
-      rotateX: 90,
-      duration: 0.4,
-      ease: "power2.in",
-      delay: 2,
-      onComplete: () => {
-        consolidadasText.textContent = "CONSOLIDADAS";
-      },
-    })
-
-    // VUELVE A APARECER
-    .to(consolidadasText, {
-      rotateX: 0,
-      duration: 0.5,
-      ease: "back.out(1.4)",
-    });
+    
 },
     textAnimIntuitivas() {
-      const intuitivasTL = gsap.timeline({ repeat: -1, delay: 0, repeatDelay: 3, yoyo:true });
+      const intuitivasTL = gsap.timeline({ repeat: -1, delay: 0, repeatDelay: 0, yoyo:true });
       const intuitivasText = document.querySelector(".intuitivas");
       const intuitivasVocales = intuitivasText.querySelectorAll(".vocal");
       const intuitivasNoVocales = intuitivasText.querySelectorAll(":not(.vocal)");
 
       gsap.set(intuitivasVocales, {
-        yPercent: 110,
+        yPercent: 200,
       })
 
       gsap.set(intuitivasNoVocales, {
@@ -193,7 +167,10 @@ export default {
           yPercent: 0,
           stagger: .08,
           ease: "power2.inOut",
-        },"-=.6")
+        },"-=.6").to(intuitivasNoVocales, {
+          delay: 3,
+         autoAlpha: 0,
+        })
         
     },
     textAnimAccesibles() {
@@ -245,10 +222,10 @@ export default {
         v-for="(value, index) in values.values"
         :key="index"
         :theme="value.theme"
-        class="overflow-hidden flex relative bg-primary text-foreground justify-center items-center h-[100dvh] w-[100vw]"
+        class="overflow-hidden flex relative bg-back text-foreground justify-center items-center h-[100dvh] w-[100vw]"
       >
 
-      <div :class="value.animation"  v-if="value.value === 'entusiastas'">
+      <div :class="value.animation" class="value-about z-9" v-if="value.value === 'entusiastas'">
         <!-- <p class="text-display-value font-display"> entusiastas</p> -->
         <svg class="overflow-visible" width="687" height="94" viewBox="0 0 687 94" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path  d="M657.306 93.28C648.858 93.28 644.25 91.488 635.546 91.488H631.322V68.448H637.082C638.746 72.416 641.946 76.896 646.298 81.376C648.73 83.936 652.826 87.648 657.69 87.648C662.554 87.648 665.754 85.216 665.754 81.376C665.754 78.432 663.962 75.488 654.234 71.392C643.994 67.04 631.962 63.072 631.962 49.248C631.962 37.6 642.97 28.896 659.354 28.896C666.778 28.896 670.234 29.792 678.938 29.792L682.906 29.408V49.76H677.402C675.354 46.304 671.77 41.568 669.082 38.88C666.778 36.576 663.834 34.144 660.25 34.144C656.922 34.144 652.826 35.68 652.826 39.52C652.826 42.976 655.77 45.664 664.986 48.992C678.298 53.856 686.618 59.104 686.618 71.008C686.618 84.96 674.714 93.28 657.306 93.28Z" fill="#09090B"/>
@@ -266,12 +243,12 @@ export default {
         </svg>
       </div>
 
-      <div :class="value.animation"  v-if="value.value === 'transformadoras'">
+      <div :class="value.animation" class="value-about z-9" v-if="value.value === 'transformadoras'">
         <p  class="text-display-value font-display"> transformadoras</p>
       </div>
 
-      <div :class="value.animation"  v-if="value.value === 'accesibles'">
-        <svg class="overflow-visible" width="617" height="92" viewBox="0 0 617 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div :class="value.animation" class="value-about z-9" v-if="value.value === 'accesibles'">
+        <svg class="overflow-visible " width="617" height="92" viewBox="0 0 617 92" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="move" d="M587.431 91.28C578.983 91.28 574.375 89.488 565.671 89.488H561.447V66.448H567.207C568.871 70.416 572.071 74.896 576.423 79.376C578.855 81.936 582.951 85.648 587.815 85.648C592.679 85.648 595.879 83.216 595.879 79.376C595.879 76.432 594.087 73.488 584.359 69.392C574.119 65.04 562.087 61.072 562.087 47.248C562.087 35.6 573.095 26.896 589.479 26.896C596.903 26.896 600.359 27.792 609.063 27.792L613.031 27.408V47.76H607.527C605.479 44.304 601.895 39.568 599.207 36.88C596.903 34.576 593.959 32.144 590.375 32.144C587.047 32.144 582.951 33.68 582.951 37.52C582.951 40.976 585.895 43.664 595.111 46.992C608.423 51.856 616.743 57.104 616.743 69.008C616.743 82.96 604.839 91.28 587.431 91.28Z" fill="#09090B"/>
           <path class="move" d="M523.61 91.408C510.554 91.408 494.554 80.912 494.554 59.28C494.554 42 508.634 26.896 527.706 26.896C547.162 26.896 556.506 35.472 556.506 55.824H521.946C521.946 72.08 528.09 78.352 537.69 78.352C545.498 78.352 552.41 76.176 556.634 74.512V80.4C548.442 87.44 536.538 91.408 523.61 91.408ZM521.946 49.808H531.418C531.418 35.344 531.674 32.4 526.81 32.4C522.586 32.4 521.946 35.088 521.946 49.808Z" fill="#09090B"/>
           <path class="move" d="M454.396 90V85.264L459.26 83.984V8.84801L452.86 7.82401V3.08801H486.268V83.984L490.62 85.264V90H454.396Z" fill="#09090B"/>
@@ -285,12 +262,12 @@ export default {
         </svg>
       </div>
 
-      <div :class="value.animation" class="overflow-hidden"  v-if="value.value === 'consolidadas'">
-        <p  class="text-display-value font-display"> consolidadas</p>
+      <div :class="value.animation" class="value-about z-9"  v-if="value.value === 'consolidadas'">
+        <p  class="text-display-value font-display"> CONSOLIDADAS</p>
 
       </div>
 
-      <div :class="value.animation"  v-if="value.value === 'intuitivas'">
+      <div :class="value.animation" class="value-about z-9" v-if="value.value === 'intuitivas'">
         <svg width="561" height="92" viewBox="0 0 561 92" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="vocal" d="M531.431 91.28C522.983 91.28 518.375 89.488 509.671 89.488H505.447V66.448H511.207C512.871 70.416 516.071 74.896 520.423 79.376C522.855 81.936 526.951 85.648 531.815 85.648C536.679 85.648 539.879 83.216 539.879 79.376C539.879 76.432 538.087 73.488 528.359 69.392C518.119 65.04 506.087 61.072 506.087 47.248C506.087 35.6 517.095 26.896 533.479 26.896C540.903 26.896 544.359 27.792 553.063 27.792L557.031 27.408V47.76H551.527C549.479 44.304 545.895 39.568 543.207 36.88C540.903 34.576 537.959 32.144 534.375 32.144C531.047 32.144 526.951 33.68 526.951 37.52C526.951 40.976 529.895 43.664 539.111 46.992C552.423 51.856 560.743 57.104 560.743 69.008C560.743 82.96 548.839 91.28 531.431 91.28Z" fill="black"/>
           <path d="M451.661 91.536C442.445 91.536 435.021 84.368 435.021 76.176C435.021 62.608 445.005 60.944 469.581 53.392V39.184C469.581 37.008 467.917 33.808 462.925 33.808C459.853 33.808 458.189 34.192 456.781 34.704C459.725 37.008 463.053 40.208 463.053 44.56C463.053 49.552 457.933 53.776 450.125 53.776C441.549 53.776 437.325 49.68 437.325 44.304C437.325 35.216 452.429 26.896 467.533 26.896C489.293 26.896 496.461 33.168 496.461 47.632V74C496.461 77.712 497.741 78.096 498.765 78.736C499.917 79.504 500.941 79.76 502.989 80.656V84.24C497.613 87.696 490.189 91.536 484.813 91.536C477.133 91.536 472.653 88.848 470.093 82.704C464.461 90.384 460.109 91.536 451.661 91.536ZM466.125 79.248C467.149 79.248 468.045 78.864 469.581 78.096V59.28C464.973 61.456 461.645 61.328 461.645 69.904C461.645 76.944 462.669 79.248 466.125 79.248Z" fill="black"/>
@@ -307,7 +284,7 @@ export default {
       </div>
         
         <div
-          class="absolute w-full h-full flex justify-center items-center text-display-ultra font-display opacity-10"
+          class="absolute w-full h-full flex justify-center items-center text-[530px] md:text-display-ultra font-display "
         >
           <Marquee
             class="gap-[3rem] [--duration:10s] [--gap:3rem]"
