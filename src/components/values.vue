@@ -118,6 +118,7 @@ export default {
     textAnimConsolidadas() {
       const consolidadasText = document.querySelector(".consolidadas p");
 
+      const consolidadasBack = document.querySelector(".consolidadas + .marquee p");
       const consolidadasTL = gsap.timeline({
         repeat: -1,
         delay: 1,
@@ -125,27 +126,36 @@ export default {
         yoyo: false,
       });
 
-      gsap.set(consolidadasText, {
-        yPercent: -300,
-        rotate: 20,
+    //   gsap.set(consolidadasText, {
+    //     yPercent: -300,
+    //     rotate: 20,
 
-      })
+    //   })
 
 
-     consolidadasTL
+    //  consolidadasTL
      
-      .to(consolidadasText, {
-        yPercent: 0,
-        duration: 0.4,
-        rotate: 0,
-        ease: "bounce.out",
+    //   .to(consolidadasText, {
+    //     yPercent: 0,
+    //     duration: 0.4,
+    //     rotate: 0,
+    //     ease: "bounce.out",
+        
+    // })
+     consolidadasTL.to(consolidadasBack, {
+        color: "white",
+        duration: 2,
+        
+    }).to(consolidadasBack, {
+        color: "auto",
+        duration: 2,
         
     })
 
     
 },
     textAnimIntuitivas() {
-      const intuitivasTL = gsap.timeline({ repeat: -1, delay: 0, repeatDelay: 0, yoyo:true });
+      const intuitivasTL = gsap.timeline({ repeat: -1, delay: 0, repeatDelay: 2 });
       const intuitivasText = document.querySelector(".intuitivas");
       const intuitivasVocales = intuitivasText.querySelectorAll(".vocal");
       const intuitivasNoVocales = intuitivasText.querySelectorAll(":not(.vocal)");
@@ -167,10 +177,7 @@ export default {
           yPercent: 0,
           stagger: .08,
           ease: "power2.inOut",
-        },"-=.6").to(intuitivasNoVocales, {
-          delay: 3,
-         autoAlpha: 0,
-        })
+        },"-=.6")
         
     },
     textAnimAccesibles() {
@@ -263,7 +270,7 @@ export default {
       </div>
 
       <div :class="value.animation" class="value-about z-9"  v-if="value.value === 'consolidadas'">
-        <p  class="text-display-value font-display"> CONSOLIDADAS</p>
+        <!-- <p  class="text-display-value font-display"> CONSOLIDADAS</p> -->
 
       </div>
 
@@ -284,14 +291,15 @@ export default {
       </div>
         
         <div
-          class="absolute w-full h-full flex justify-center items-center text-[530px] md:text-display-ultra font-display "
+          class="marquee absolute w-full h-full flex justify-center items-center text-[530px] md:text-display-ultra font-display "
         >
           <Marquee
-            class="gap-[3rem] [--duration:10s] [--gap:3rem]"
+          
+            class=" gap-[3rem] [--duration:10s] [--gap:3rem]"
             innerClassName="gap-[3rem]"
             :fade="true"
           >
-            {{ value.value }}
+            <p>{{ value.value }}</p>
           </Marquee>
         </div>
       </li>

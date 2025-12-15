@@ -111,8 +111,9 @@ export default {
       <p class="mb-md text-sans uppercase text-foreground text-mini">Contact</p>
       <ul>
         <li class="text-big font-display text-foreground">hola@dpack.es</li>
-        <li class="text-big font-display text-foreground">Plató 2n</li>
+        <li class="text-big font-display text-foreground">Plató 26, 2n</li>
         <li class="text-big font-display text-foreground">08006 Barcelona</li>
+        <li class="text-big font-display text-foreground">932 419 062</li>
       </ul>
     </div>
   </div>

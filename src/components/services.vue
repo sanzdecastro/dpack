@@ -187,13 +187,13 @@ export default {
         <div class="accordion-content gap-2 h-0 overflow-hidden  flex flex-col">
           <div class="flex flex-col md:flex-row gap-2 first:mt-30 pt-3  items-start" v-for="(subservice, index) in service.subservices" :key="index">
               <h3 class="md:ml-2 leading-[120%] font-bold text-title-3  md:w-1/2 flex items-start md:pr-40"><div ref="separador" className="hidden md:block separador-container"><separador/></div><div className="overflow-hidden"><div ref="titleWrapper" className="title-wrapper">{{ subservice.subservice_title }}</div></div></h3>
-              <div class="md:w-1/2 text-title-3 leading-[120%] flex items-end md:pr-10 pb-10 ">{{ subservice.subservice_text }}</div>
+              <div class="md:w-1/2 text-lead max-w-200 leading-[120%] flex items-end md:pr-10 pb-10 ">{{ subservice.subservice_text }}</div>
           </div>
         </div>
         
       </li>
     </ul>
-    <div class="flex pb-lg justify-end p-sm">
+    <div v-if="section.link.title" class="flex pb-lg justify-end p-sm">
       <a class="font-medium text-p bg-primary text-foreground rounded flex items-center px-button-x py-button-y hover:bg-foreground hover:text-primary" :href=section.link.url>
         <span class="">{{ section.link.title }}</span>
       </a>

@@ -94,7 +94,7 @@ if (project?.acf?.flexible_project) {
           <ul>
             {
               project?._embedded?.["wp:term"]?.[1]?.map((tag: any) => (
-                <li class="capitalize">{tag.slug}</li>
+                <li class="">{tag.name}</li>
               ))
             }
           </ul>
