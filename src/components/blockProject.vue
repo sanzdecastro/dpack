@@ -60,7 +60,7 @@ export default {
       <div
         v-if="image.video === false"
         :class="image.aspect_ratio"
-        class="animation-opacity image-wrapper flex justify-center items-center w-full rounded-dpack overflow-hidden"
+        class="animation-opacity image-wrapper flex justify-center items-center w-full h-full rounded-dpack overflow-hidden"
         
       >
         <img
