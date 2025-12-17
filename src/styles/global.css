@@ -382,3 +382,10 @@
     }
     
 }
+
+.intro-block {
+    p {
+         @apply
+        pb-2;
+    }
+}
