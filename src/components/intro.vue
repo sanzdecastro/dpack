@@ -156,7 +156,7 @@ export default {
     
   </div>
   <!-- Trail layer -->
-      <div class="images-back-container absolute inset-0 pointer-events-none overflow-hidden rounded-lg">
+      <div class="images-back-container h-full absolute inset-0 pointer-events-none overflow-hidden rounded-lg">
         <img
           v-for="(image, index) in section.images"
           :key="index"

@@ -389,3 +389,22 @@
         pb-2;
     }
 }
+
+.consolidadas  + .marquee {
+    .marquee-flex-row {
+        @apply
+        opacity-100;
+
+        p {
+            @apply
+            text-white
+            opacity-50;
+        }
+
+        p + p {
+            @apply
+            opacity-100
+            text-white;
+        }
+    }
+}
