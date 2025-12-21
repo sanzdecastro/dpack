@@ -299,7 +299,7 @@ export default {
         >
           <Marquee
           
-            class=" gap-[3rem] [--duration:10s] [--gap:3rem]"
+            class=" gap-[3rem] [--duration:20s] [--gap:3rem]"
             innerClassName="gap-[3rem]"
             :fade="true"
           >

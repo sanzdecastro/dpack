@@ -97,7 +97,7 @@ export default {
       <ul>
         <li class="text-big font-display text-foreground"><a href="/es/proyectos">Proyectos</a></li>
         <li class="text-big font-display text-foreground"><a href="/es/servicios">Servicios</a></li>
-        <li class="text-big font-display text-foreground"><a href="/es/about-es">Nosotras</a></li>
+        <li class="text-big font-display text-foreground"><a href="/es/about-es">Nosotros</a></li>
       </ul>
     </div>
     <div class="col-info w-1/4">

@@ -393,6 +393,7 @@
 .consolidadas  + .marquee {
     .marquee-flex-row {
         @apply
+        [--duration:30s]
         opacity-100;
 
         p {
@@ -406,5 +407,13 @@
             opacity-100
             text-white;
         }
+    }
+}
+
+
+.transformadoras  + .marquee {
+    .marquee-flex-row {
+        @apply
+        [--duration:30s];
     }
 }
