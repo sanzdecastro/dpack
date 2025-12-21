@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col  md:flex-wrap md:flex-row " :class="[ section.no_padding_bottom ? 'mb-0' : 'mb-lg', section.no_paddings ? 'px-0 no-paddings' : 'pl-sm', section.inverted ? 'md:flex-row-reverse' : '' ]">
+  <div class="flex flex-col  md:flex-wrap md:flex-row " :class="[ section.no_padding_bottom ? 'mb-0' : 'mb-lg', section.no_paddings ? 'px-0 no-paddings' : 'px-sm md:pl-sm md:pr-0', section.inverted ? 'md:flex-row-reverse' : '' ]">
 
     <div v-if="section.block_text_check"
       class="animation-opacity text-block flex flex-col justify-between pb-sm "
