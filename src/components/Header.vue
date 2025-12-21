@@ -42,7 +42,7 @@ export default {
     async fetchPages(lang) {
       try {
         const response = await fetch(
-          `https://santisanchez.ovh/wp-json/wp/v2/pages?lang=${lang}`
+          `https://admin.dpack.es/wp-json/wp/v2/pages?lang=${lang}`
         );
         this.currentPages = await response.json();
       } catch (error) {

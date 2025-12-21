@@ -13,7 +13,7 @@ export default {
     }
   },
   mounted() {
-    fetch(`https://santisanchez.ovh/wp-json/wp/v2/posts?lang=${this.lang}`)
+    fetch(`https://admin.dpack.es/wp-json/wp/v2/posts?lang=${this.lang}`)
       .then(response => response.json())
       .then(data => {
         this.posts = data;
