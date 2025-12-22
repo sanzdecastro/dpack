@@ -120,13 +120,14 @@ export default {
             if (el !== item) {
               el.querySelector('.accordion-content').classList.remove('opened');
               
-              ScrollTrigger.refresh();
+              
               gsap.to(el.querySelector('.accordion-content'), {
                 minHeight: '0',
                 height: '0',
                 duration: 0.5,
                 ease: 'power2.inOut',
               });
+              ScrollTrigger.refresh();
             } else {
              
             }
@@ -135,16 +136,18 @@ export default {
           if(description.classList.contains('opened')) {
             description.classList.remove('opened'); 
             item.classList.remove('bg-primary'); 
-            ScrollTrigger.refresh();
+            
             gsap.to(description, {
                 minHeight: '0',
                 height: '0',
                 duration: 0.5,
                 ease: 'power2.inOut',
           }); 
+
+          ScrollTrigger.refresh();
           } else {
             description.classList.add('opened'); 
-            ScrollTrigger.refresh();
+           
             this.animationSubtitles()
             gsap.to(description, {
                 minHeight: 'auto',
@@ -152,6 +155,8 @@ export default {
                 duration: 0.5,
                 ease: 'power2.inOut',
           }); 
+
+           ScrollTrigger.refresh();
           }
           
         });
