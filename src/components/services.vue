@@ -127,9 +127,9 @@ export default {
                 duration: 0.5,
                 ease: 'power2.inOut',
               });
-              ScrollTrigger.refresh();
+             
             } else {
-             ScrollTrigger.refresh();
+            
             }
           })
 
@@ -144,7 +144,7 @@ export default {
                 ease: 'power2.inOut',
           }); 
 
-          ScrollTrigger.refresh();
+         
           } else {
             description.classList.add('opened'); 
            
@@ -156,9 +156,9 @@ export default {
                 ease: 'power2.inOut',
           }); 
 
-           ScrollTrigger.refresh();
+          
           }
-          ScrollTrigger.refresh();
+         
         });
       });
     },
