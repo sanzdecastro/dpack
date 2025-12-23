@@ -113,7 +113,7 @@ export default {
         item.addEventListener('click', () => {
           const description = item.querySelector('.accordion-content');
 
-          ScrollTrigger.refresh();
+          
 
           
           accordeon.forEach((el) => {
@@ -129,7 +129,7 @@ export default {
               });
               ScrollTrigger.refresh();
             } else {
-             
+             ScrollTrigger.refresh();
             }
           })
 
@@ -158,7 +158,7 @@ export default {
 
            ScrollTrigger.refresh();
           }
-          
+          ScrollTrigger.refresh();
         });
       });
     },
