@@ -3,9 +3,8 @@ import { ref } from 'vue';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 import  SplitText  from "gsap/SplitText";
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.registerPlugin(SplitText);
+import ScrollToPlugin from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
 
 import separador from './separador.vue';
 
@@ -149,6 +148,7 @@ export default {
             description.classList.add('opened'); 
            
             this.animationSubtitles()
+            gsap.to(window, { duration: 2, scrollTo: "#services-block" });
             gsap.to(description, {
                 minHeight: 'auto',
                 height: "auto",
@@ -171,7 +171,7 @@ export default {
 </script>
 
 <template>
-  <div class="services-block " :class="section.desplegable ? 'accordion' : ''">
+  <div id="services-block" class="services-block " :class="section.desplegable ? 'accordion' : ''">
     <h2 class="text-p font-bold p-sm">{{ section.title }}</h2>
     
     

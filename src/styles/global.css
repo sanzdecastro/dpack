@@ -417,3 +417,17 @@
         [--duration:30s];
     }
 }
+
+
+footer {
+    .col-info {
+        @apply
+        mb-8;
+        li {
+            a {
+                @apply
+                no-underline;
+            }
+        }
+    }
+}

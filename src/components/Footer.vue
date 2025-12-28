@@ -92,7 +92,7 @@ export default {
 <footer>
 <div :theme="theme" class="bg-primary flex flex-col justify-between min-h-[100svh]  text-foreground p-sm pb-0">
   <div class="menu-footer flex flex-col md:flex-row">
-    <div class="col-info w-1/4"  >
+    <div class="col-info  md:w-1/4"  >
       <p class="mb-md text-sans uppercase text-foreground text-mini">Explore</p>
       <ul>
         <li class="text-big font-display text-foreground"><a href="/es/proyectos">Proyectos</a></li>
@@ -100,14 +100,14 @@ export default {
         <li class="text-big font-display text-foreground"><a href="/es/about-es">Nosotros</a></li>
       </ul>
     </div>
-    <div class="col-info w-1/4">
+    <div class="col-info md:w-1/4">
       <p class="mb-md text-sans uppercase text-foreground text-mini">Social</p>
       <ul>
         <li class="text-big font-display text-foreground"><a href="https://www.instagram.com/dpack.studio/">Instagram</a></li>
         <li class="text-big font-display text-foreground"><a href="https://www.linkedin.com/company/dpackbcn/?originalSubdomain=es">LinkedIn</a></li>
       </ul>
     </div>
-    <div class="col-info w-2/4">
+    <div class="col-info md:w-2/4">
       <p class="mb-md text-sans uppercase text-foreground text-mini">Contact</p>
       <ul>
         <li class="text-big font-display text-foreground">hola@dpack.es</li>
