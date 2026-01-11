@@ -141,7 +141,7 @@ export default {
 <template>
   <div
     ref="introBlock"
-    class="intro-block p-sm h-[100vh] pt-header flex flex-col justify-between relative overflow-hidden min-h-fit"
+    class="intro-block p-sm md:h-[100vh] pt-header flex flex-col justify-between relative overflow-hidden min-h-fit h-fit"
   >
     <div class="intro-top !border-black !border-b-2 flex flex-col gap-y-sm relative">
       <div class="animation-opacity w-fit px-tag-x py-tag-y bg-white flex items-end border border-solid text-foreground rounded-dpack">

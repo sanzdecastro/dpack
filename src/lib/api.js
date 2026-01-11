@@ -50,6 +50,26 @@ export async function getPage(slug, lang) {
 
  }
 
+ export async function getProjectsByIds(ids = [], lang) {
+  if (!ids.length) return [];
+
+  const query = new URLSearchParams();
+  query.set("include", ids.join(","));
+  query.set("per_page", String(Math.min(ids.length, 100))); // WP suele limitar a 100 por página
+  query.set("lang", lang);
+  query.set("_embed", "1");
+
+  const url = `${apiUrl}/projects?${query.toString()}`;
+
+  const res = await fetch(url, { headers: { Accept: "application/json" } });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`HTTP ${res.status} ${res.url}\n${text.slice(0, 200)}`);
+  }
+  return await res.json();
+}
+
+
   // Nueva función para cargar traducciones después de la transición
 // export async function getTranslations(page) {
 //   if (!page || !page.translations) return {};
